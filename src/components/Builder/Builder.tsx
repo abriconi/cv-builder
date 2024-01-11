@@ -7,6 +7,7 @@ import { Summary } from "./components/Summary";
 import { Experience } from "./components/Experience";
 import { Education } from "./components/Education";
 import { Languages } from "./components/Langages";
+import { Social } from "./components/Social";
 
 export const Builder = () => {
   const methods = useForm({
@@ -27,6 +28,7 @@ export const Builder = () => {
       experience: [],
       education: [],
       languages: [],
+      social: [],
     },
   });
 
@@ -44,6 +46,7 @@ export const Builder = () => {
         <Experience />
         <Education />
         <Languages />
+        <Social />
         <button type="submit">Submit</button>
       </form>
     </FormProvider>

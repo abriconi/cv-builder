@@ -18,12 +18,12 @@ export const CustomSelect: React.FC<SelectProps> = ({ name, control, options, ru
       render={({ field }) => (
         <select
           {...field}
-          className="pr-2 bg-gray-50 border border-gray-300 shadow-md text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-          <option className="text-gray-300 text-sm" value="" disabled>
+          className="relative flex flex-col bg-gray-50 border border-gray-300 shadow-md text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-pointer appearance-none">
+          <option className="text-gray-300 text-sm px-4 bg-red-50" value="" disabled>
             Select your level
           </option>
           {options.map((option) => (
-            <option value={option.value} key={option.value}>
+            <option value={option.value} key={option.value} className="px-4 bg-red-50 hover:bg-blue-100">
               {option.label}
             </option>
           ))}
