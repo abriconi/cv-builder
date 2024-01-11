@@ -1,13 +1,13 @@
-import { useForm } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { CustomInput } from "../../../shared-components/CustomInput";
-import { cvFields } from "../../../constants";
+import { CV_FIELDS } from "../../../constants";
 import { CustomUploadFile } from "../../../shared-components/CustomUploadFile";
 
 export const Header = () => {
-  const { control } = useForm();
+  const { control } = useFormContext();
   return (
-    <div className="flex flex-col items-center sm:flex-row md:flex-row gap-4">
-      <CustomInput name="jobPosition" control={control} type="text" placeholder={cvFields.jobPosition} rules={{ required: true }} />
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 items-center">
+      <CustomInput name="jobPosition" control={control} type="text" placeholder={CV_FIELDS.jobPosition} rules={{ required: true }} />
       <CustomUploadFile />
     </div>
   );

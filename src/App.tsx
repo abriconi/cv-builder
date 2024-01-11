@@ -5,7 +5,7 @@ import { Preview } from "./components/Preview/Preview";
 
 function App() {
   return (
-    <div className="flex flex-col md:flex-row sm:flex-row w-screen h-screen">
+    <div className="flex flex-col md:flex-row sm:flex-row">
       <Builder />
       <Preview />
     </div>

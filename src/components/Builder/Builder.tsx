@@ -1,12 +1,15 @@
 import React from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { CustomInput } from "../../shared-components/CustomInput";
-import { cvFields } from "../../constants";
+import { useForm, FormProvider, useFormContext } from "react-hook-form";
 import { MainInfo } from "./components/MainInfo";
 import { Header } from "./components/Header";
+import { AdditionalInfo } from "./components/AdditionalInfo";
+import { Summary } from "./components/Summary";
+import { Experience } from "./components/Experience";
+import { Education } from "./components/Education";
+import { Languages } from "./components/Langages";
 
 export const Builder = () => {
-  const { handleSubmit, control } = useForm({
+  const methods = useForm({
     defaultValues: {
       jobPosition: "",
       firstName: "",
@@ -14,18 +17,35 @@ export const Builder = () => {
       email: "",
       phone: "",
       country: "",
+      city: "",
+      address: "",
+      postalCode: "",
+      nationality: "",
+      placeOfBirth: "",
+      dateOfBirth: "",
+      summary: "",
+      experience: [],
+      education: [],
+      languages: [],
     },
   });
 
-  const onSubmit: SubmitHandler<any> = (data) => {
+  const onSubmit = (data: any) => {
     console.log(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full py-8 px-20 gap-4 sm:px-10 md:px-10">
-      <Header />
-      <MainInfo />
-      <button type="submit">Submit</button>
-    </form>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full py-8 px-20 gap-4 sm:px-10 md:px-10">
+        <Header />
+        <MainInfo />
+        <AdditionalInfo />
+        <Summary />
+        <Experience />
+        <Education />
+        <Languages />
+        <button type="submit">Submit</button>
+      </form>
+    </FormProvider>
   );
 };
