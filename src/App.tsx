@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="flex flex-col md:flex-row sm:flex-row">
       <Builder />
-      <Preview />
+      {/* <Preview /> */}
     </div>
   );
 }

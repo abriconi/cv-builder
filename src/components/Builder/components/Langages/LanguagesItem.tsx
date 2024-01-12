@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
-import { CustomInput } from "../../../shared-components/CustomInput";
-import { CV_FIELDS, LANGUAGE_LEVELS } from "../../../constants";
-import { CustomSelect } from "../../../shared-components/CustomSelect";
+import { CustomInput } from "../../../../shared-components/CustomInput";
+import { CV_FIELDS, LANGUAGE_LEVELS } from "../../../../constants";
+import { CustomSelect } from "../../../../shared-components/CustomSelect";
 
 interface ItemProps {
   item: any;

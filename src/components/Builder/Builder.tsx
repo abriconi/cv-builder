@@ -4,10 +4,12 @@ import { MainInfo } from "./components/MainInfo";
 import { Header } from "./components/Header";
 import { AdditionalInfo } from "./components/AdditionalInfo";
 import { Summary } from "./components/Summary";
-import { Experience } from "./components/Experience";
-import { Education } from "./components/Education";
-import { Languages } from "./components/Langages";
-import { Social } from "./components/Social";
+import { Experience } from "./components/Experiense/Experience";
+import { Education } from "./components/Education/Education";
+import { Languages } from "./components/Langages/Langages";
+import { Social } from "./components/Social/Social";
+import { Button } from "../../shared-components/Buttons";
+import { Skills } from "./components/Skills/Skills";
 
 export const Builder = () => {
   const methods = useForm({
@@ -29,6 +31,7 @@ export const Builder = () => {
       education: [],
       languages: [],
       social: [],
+      skills: [],
     },
   });
 
@@ -47,7 +50,8 @@ export const Builder = () => {
         <Education />
         <Languages />
         <Social />
-        <button type="submit">Submit</button>
+        <Skills />
+        <Button name={"Create CV"} type="submit" />
       </form>
     </FormProvider>
   );

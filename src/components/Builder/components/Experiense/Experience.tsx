@@ -1,6 +1,6 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { ExperienceItem } from "./ExperienceItem";
-import { Button, ButtonText } from "../../../shared-components/Buttons";
+import { Button, ButtonText } from "../../../../shared-components/Buttons";
 
 export const Experience = () => {
   const { control, reset, trigger, setError } = useFormContext();

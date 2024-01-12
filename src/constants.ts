@@ -26,6 +26,7 @@ export const CV_FIELDS = {
   level: "Level",
   socialNet: "Social network",
   link: "Link",
+  skill: "Skill",
 };
 
 export const LANGUAGE_LEVELS: SelectOptions[] = [

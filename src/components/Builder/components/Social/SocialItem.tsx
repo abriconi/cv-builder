@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
-import { CustomInput } from "../../../shared-components/CustomInput";
-import { CV_FIELDS } from "../../../constants";
+import { CustomInput } from "../../../../shared-components/CustomInput";
+import { CV_FIELDS } from "../../../../constants";
 
 interface ItemProps {
   item: any;
