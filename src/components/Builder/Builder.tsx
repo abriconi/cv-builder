@@ -10,6 +10,7 @@ import { Languages } from "./components/Languages/Languages";
 import { Social } from "./components/Social/Social";
 import { Button } from "../../shared-components/Buttons";
 import { Skills } from "./components/Skills/Skills";
+import { useCvData } from "../../context/CvDataContext";
 
 export const Builder = () => {
   const methods = useForm({
@@ -34,11 +35,11 @@ export const Builder = () => {
       skills: [],
     },
   });
+  const { setCvData } = useCvData();
 
   const onSubmit = (data: any) => {
     localStorage.setItem("user", JSON.stringify(data));
-    const user = localStorage.getItem("user");
-    user ? console.log("user", JSON.parse(user)) : console.log("user not found");
+    setCvData(data);
   };
 
   return (
