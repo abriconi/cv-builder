@@ -9,7 +9,7 @@ export const Education = () => {
     control,
   });
 
-  const handleAddClick = () => append({ course: "", institution: "", startDate: "", endDate: "", location: "", description: "" });
+  const handleAddClick = () => append({ school: "", degree: "", startDate: "", endDate: "", location: "", description: "" });
 
   return (
     <div className="flex flex-col gap-4">

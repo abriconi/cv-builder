@@ -17,10 +17,16 @@ export const LanguagesItem: React.FC<ItemProps> = ({ item, index }: ItemProps) =
           name={`languages.${index}.language`}
           control={control}
           type="text"
-          placeholder={CV_FIELDS.languages}
+          label={CV_FIELDS.languages}
           rules={{ required: true }}
         />
-        <CustomSelect name={`languages.${index}.level`} control={control} options={LANGUAGE_LEVELS} rules={{ required: true }} />
+        <CustomSelect
+          name={`languages.${index}.level`}
+          control={control}
+          options={LANGUAGE_LEVELS}
+          rules={{ required: true }}
+          label="Level"
+        />
       </div>
       <hr className="h-0.5" />
     </div>

@@ -12,19 +12,13 @@ export const ExperienceItem: React.FC<ItemProps> = ({ item, index }: ItemProps) 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-        <CustomInput
-          key={`${item.id}-title`}
-          name={`experience.${index}.title`}
-          control={control}
-          type="text"
-          placeholder={CV_FIELDS.jobTitle}
-        />
+        <CustomInput key={`${item.id}-title`} name={`experience.${index}.title`} control={control} type="text" label={CV_FIELDS.jobTitle} />
         <CustomInput
           key={`${item.id}-companyName`}
           name={`experience.${index}.companyName`}
           control={control}
           type="text"
-          placeholder={CV_FIELDS.companyName}
+          label={CV_FIELDS.companyName}
         />
       </div>
       <div className="flex flex-col sm:flex-row md:flex-row gap-4">
@@ -33,14 +27,14 @@ export const ExperienceItem: React.FC<ItemProps> = ({ item, index }: ItemProps) 
           name={`experience.${index}.startDate`}
           control={control}
           type="date"
-          placeholder={CV_FIELDS.startDate}
+          label={CV_FIELDS.startDate}
         />
         <CustomInput
           key={`${item.id}-endDate`}
           name={`experience.${index}.endDate`}
           control={control}
           type="date"
-          placeholder={CV_FIELDS.endDate}
+          label={CV_FIELDS.endDate}
         />
 
         <CustomInput
@@ -48,7 +42,7 @@ export const ExperienceItem: React.FC<ItemProps> = ({ item, index }: ItemProps) 
           name={`experience.${index}.location`}
           control={control}
           type="text"
-          placeholder={CV_FIELDS.location}
+          label={CV_FIELDS.location}
         />
       </div>
       <div className="flex flex-col gap-2 pb-2">

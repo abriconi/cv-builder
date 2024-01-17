@@ -9,23 +9,12 @@ interface ItemProps {
 }
 export const EducationItem: React.FC<ItemProps> = ({ item, index }: ItemProps) => {
   const { control, reset, trigger, setError } = useFormContext();
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-        <CustomInput
-          key={`${item.id}-school`}
-          name={`education.${index}.school`}
-          control={control}
-          type="text"
-          placeholder={CV_FIELDS.school}
-        />
-        <CustomInput
-          key={`${item.id}-degree`}
-          name={`education.${index}.degree`}
-          control={control}
-          type="text"
-          placeholder={CV_FIELDS.degree}
-        />
+        <CustomInput key={`${item.id}-school`} name={`education.${index}.school`} control={control} type="text" label={CV_FIELDS.school} />
+        <CustomInput key={`${item.id}-degree`} name={`education.${index}.degree`} control={control} type="text" label={CV_FIELDS.degree} />
       </div>
       <div className="flex flex-col sm:flex-row md:flex-row gap-4">
         <CustomInput
@@ -33,14 +22,14 @@ export const EducationItem: React.FC<ItemProps> = ({ item, index }: ItemProps) =
           name={`education.${index}.startDate`}
           control={control}
           type="date"
-          placeholder={CV_FIELDS.startDate}
+          label={CV_FIELDS.startDate}
         />
         <CustomInput
           key={`${item.id}-endDate`}
           name={`education.${index}.endDate`}
           control={control}
           type="date"
-          placeholder={CV_FIELDS.endDate}
+          label={CV_FIELDS.endDate}
         />
 
         <CustomInput
@@ -48,7 +37,7 @@ export const EducationItem: React.FC<ItemProps> = ({ item, index }: ItemProps) =
           name={`education.${index}.location`}
           control={control}
           type="text"
-          placeholder={CV_FIELDS.location}
+          label={CV_FIELDS.location}
         />
       </div>
       <div className="flex flex-col gap-2 pb-2">

@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS, LANGUAGE_LEVELS } from "../../../../constants";
-import { CustomSelect } from "../../../../shared-components/CustomSelect";
+import { CV_FIELDS } from "../../../../constants";
+import { CustomRange } from "../../../../shared-components/CusstomRange";
 
 interface ItemProps {
   item: any;
@@ -17,10 +17,16 @@ export const SkillsItem: React.FC<ItemProps> = ({ item, index }: ItemProps) => {
           name={`skills.${index}.skill`}
           control={control}
           type="text"
-          placeholder={CV_FIELDS.skill}
+          label={CV_FIELDS.skill}
           rules={{ required: true }}
         />
-        <CustomSelect name={`skills.${index}.level`} control={control} options={LANGUAGE_LEVELS} rules={{ required: true }} />
+        <CustomRange
+          key={`${item.id}-level`}
+          name={`skills.${index}.level`}
+          control={control}
+          rules={{ required: true }}
+          id={`${item.id}-level`}
+        />
       </div>
       <hr className="h-0.5" />
     </div>

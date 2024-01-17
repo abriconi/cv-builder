@@ -1,4 +1,4 @@
-import { ExperienceItemType, SelectOptions } from "./types";
+import { SelectOption, SkillOption } from "./types";
 
 export const CV_FIELDS = {
   jobPosition: "Job position",
@@ -29,7 +29,7 @@ export const CV_FIELDS = {
   skill: "Skill",
 };
 
-export const LANGUAGE_LEVELS: SelectOptions[] = [
+export const LANGUAGE_LEVELS: SelectOption[] = [
   { value: "native", label: "Native speaker" },
   { value: "a1", label: "A1 - Beginner" },
   { value: "a2", label: "A2 - Elementary" },
@@ -38,3 +38,11 @@ export const LANGUAGE_LEVELS: SelectOptions[] = [
   { value: "c1", label: "C1 - Advanced" },
   { value: "c2", label: "C2 - Proficiency" },
 ];
+
+export const SKILL_LEVELS: Record<string, SkillOption> = {
+  novice: { value: "novice", label: "Novice", color: "red" },
+  beginner: { value: "beginner", label: "Beginner", color: "orange" },
+  skillful: { value: "skillful", label: "Skillful", color: "yellow" },
+  experienced: { value: "experienced", label: "Experienced", color: "blue" },
+  expert: { value: "expert", label: "Expert", color: "green" },
+};

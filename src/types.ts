@@ -8,7 +8,13 @@ export interface ExperienceItemType {
   description: string;
 }
 
-export interface SelectOptions {
+export interface SelectOption {
   value: string;
   label: string;
+}
+
+export interface SkillOption {
+  value: string;
+  label: string;
+  color: string;
 }

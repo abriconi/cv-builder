@@ -1,6 +1,7 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { ButtonText } from "../../../../shared-components/Buttons";
 import { SkillsItem } from "./SkillsItem";
+import { SKILL_LEVELS } from "../../../../constants";
 
 export const Skills = () => {
   const { control, reset, trigger, setError } = useFormContext();

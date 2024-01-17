@@ -1,12 +1,12 @@
 import React from "react";
-import { useForm, FormProvider, useFormContext } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { MainInfo } from "./components/MainInfo";
 import { Header } from "./components/Header";
 import { AdditionalInfo } from "./components/AdditionalInfo";
 import { Summary } from "./components/Summary";
-import { Experience } from "./components/Experiense/Experience";
+import { Experience } from "./components/Experience/Experience";
 import { Education } from "./components/Education/Education";
-import { Languages } from "./components/Langages/Langages";
+import { Languages } from "./components/Languages/Languages";
 import { Social } from "./components/Social/Social";
 import { Button } from "../../shared-components/Buttons";
 import { Skills } from "./components/Skills/Skills";
@@ -36,7 +36,9 @@ export const Builder = () => {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    localStorage.setItem("user", JSON.stringify(data));
+    const user = localStorage.getItem("user");
+    user ? console.log("user", JSON.parse(user)) : console.log("user not found");
   };
 
   return (

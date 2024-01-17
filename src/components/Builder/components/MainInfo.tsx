@@ -8,16 +8,16 @@ export const MainInfo = () => {
     <>
       <h1 className="text-xl font-semibold">Personal details</h1>
       <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-        <CustomInput name="firstName" control={control} type="text" placeholder={CV_FIELDS.firstName} rules={{ required: true }} />
-        <CustomInput name="lastName" control={control} type="text" placeholder={CV_FIELDS.lastName} rules={{ required: true }} />
+        <CustomInput name="firstName" control={control} type="text" label={CV_FIELDS.firstName} rules={{ required: true }} />
+        <CustomInput name="lastName" control={control} type="text" label={CV_FIELDS.lastName} rules={{ required: true }} />
       </div>
       <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-        <CustomInput name="email" control={control} type="email" placeholder={CV_FIELDS.email} rules={{ required: true }} />
-        <CustomInput name="phone" control={control} type="tel" placeholder={CV_FIELDS.phone} rules={{ required: true }} />
+        <CustomInput name="email" control={control} type="email" label={CV_FIELDS.email} rules={{ required: true }} />
+        <CustomInput name="phone" control={control} type="tel" label={CV_FIELDS.phone} rules={{ required: true }} />
       </div>
       <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-        <CustomInput name="country" control={control} type="text" placeholder={CV_FIELDS.country} rules={{ required: true }} />
-        <CustomInput name="city" control={control} type="text" placeholder={CV_FIELDS.city} rules={{ required: true }} />
+        <CustomInput name="country" control={control} type="text" label={CV_FIELDS.country} rules={{ required: true }} />
+        <CustomInput name="city" control={control} type="text" label={CV_FIELDS.city} rules={{ required: true }} />
       </div>
     </>
   );
