@@ -3,7 +3,7 @@ import { Controller, RegisterOptions } from "react-hook-form";
 interface InputProps {
   name: string;
   control: any;
-  type: "number" | "text" | "date" | "email" | "tel";
+  type: "number" | "text" | "date" | "month" | "email" | "tel";
   rules?: RegisterOptions;
   label: string;
 }

@@ -1,34 +1,40 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS } from "../../../../constants";
-import { CustomRange } from "../../../../shared-components/CusstomRange";
+import { CV_FIELDS, HEADING } from "../../../../constants";
+import { CustomRange } from "../../../../shared-components/CustomRange";
+import { Accordion } from "../../../../shared-components/Accordion";
+import { IconButtonDelete } from "../../../../shared-components/Buttons";
 
 interface ItemProps {
-  item: any;
   index: number;
+  handleDelete: (index: number) => void;
 }
-export const SkillsItem: React.FC<ItemProps> = ({ item, index }: ItemProps) => {
-  const { control, reset, trigger, setError } = useFormContext();
+export const SkillsItem: React.FC<ItemProps> = ({ index, handleDelete }: ItemProps) => {
+  const { control } = useFormContext();
+
+  const skill = useWatch({
+    name: `skills.${index}.skill`,
+    control,
+  });
+  const level = useWatch({
+    name: `skills.${index}.level`,
+    control,
+  });
+
+  const title = skill || HEADING.notSpecified;
+  const status = title === HEADING.notSpecified ? true : false;
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-        <CustomInput
-          key={`${item.id}-skill`}
-          name={`skills.${index}.skill`}
-          control={control}
-          type="text"
-          label={CV_FIELDS.skill}
-          rules={{ required: true }}
-        />
-        <CustomRange
-          key={`${item.id}-level`}
-          name={`skills.${index}.level`}
-          control={control}
-          rules={{ required: true }}
-          id={`${item.id}-level`}
-        />
-      </div>
-      <hr className="h-0.5" />
+    <div className="flex flex-row gap-3 text-gray-500 hover:text-blue-500">
+      <Accordion title={title} description={level} status={status}>
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row md:flex-row gap-4">
+            <CustomInput name={`skills.${index}.skill`} control={control} type="text" label={CV_FIELDS.skill} rules={{ required: true }} />
+            <CustomRange name={`skills.${index}.level`} control={control} rules={{ required: true }} id={`${index}-level`} />
+          </div>
+          <hr className="h-0.5" />
+        </div>
+      </Accordion>
+      <IconButtonDelete onClick={() => handleDelete(index)} />
     </div>
   );
 };

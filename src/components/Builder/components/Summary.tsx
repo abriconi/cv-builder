@@ -1,5 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import { CustomTextarea } from "../../../shared-components/CustomTextarea";
+import { CV_FIELDS } from "../../../constants";
 
 export const Summary = () => {
   const { control } = useFormContext();
@@ -10,7 +11,7 @@ export const Summary = () => {
         Write 2-4 short & energetic sentences to interest the reader! Mention your role, experience & most importantly - your biggest
         achievements, best qualities and skills.
       </p>
-      <CustomTextarea name="summary" control={control} />
+      <CustomTextarea name="summary" control={control} label={CV_FIELDS.summary} />
     </div>
   );
 };

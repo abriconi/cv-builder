@@ -5,7 +5,7 @@ interface SelectProps {
   name: string;
   control: any;
   options: SelectOption[];
-  rules: RegisterOptions;
+  rules?: RegisterOptions;
   label: string;
   additionalLabel?: string;
 }

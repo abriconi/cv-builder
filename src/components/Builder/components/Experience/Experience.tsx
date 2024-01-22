@@ -1,27 +1,39 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { ExperienceItem } from "./ExperienceItem";
 import { ButtonText } from "../../../../shared-components/Buttons";
+import { ExperienceType } from "../../../../types";
 
 export const Experience = () => {
-  const { control, reset, trigger, setError } = useFormContext();
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
+  const { control } = useFormContext();
+  const {
+    append,
+    prepend,
+    remove: removeParameters,
+    swap,
+    move,
+    insert,
+    fields,
+  } = useFieldArray({
     name: "experience",
     control,
   });
-
+  const experience = fields as unknown as ExperienceType[];
   const handleAddClick = () => append({ title: "", companyName: "", startDate: "", endDate: "", location: "", description: "" });
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-xl font-semibold">Employment History</h1>
+      <h1 className="text-xl font-semibold">Experience</h1>
       <p className="text-gray-400 text-sm">
         Show your relevant experience (last 10 years). Use bullet points to note your achievements, if possible - use numbers/facts
       </p>
-      <div className="flex flex-col gap-4">
-        {fields.map((item, index) => (
-          <ExperienceItem item={item} index={index} key={item.id} />
-        ))}
-      </div>
+      {Boolean(fields?.length) && (
+        <>
+          {experience.map((item, index) => (
+            <ExperienceItem index={index} key={index} handleDelete={removeParameters} />
+          ))}
+        </>
+      )}
+
       <ButtonText onClick={handleAddClick} name="+ Add one more employment" />
     </div>
   );

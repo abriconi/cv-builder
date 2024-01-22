@@ -1,8 +1,9 @@
 import { createContext, useContext, ReactNode, useState } from "react";
+import { CvType } from "../types";
 
 interface CvDataContextProps {
-  cvData: any;
-  setCvData: React.Dispatch<React.SetStateAction<any>>;
+  cvData: CvType;
+  setCvData: React.Dispatch<React.SetStateAction<CvType>>;
 }
 
 const CvDataContext = createContext<CvDataContextProps | undefined>(undefined);

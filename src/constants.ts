@@ -46,3 +46,7 @@ export const SKILL_LEVELS: Record<string, SkillOption> = {
   experienced: { value: "experienced", label: "Experienced", color: "blue" },
   expert: { value: "expert", label: "Expert", color: "green" },
 };
+
+export const HEADING = {
+  notSpecified: "Not specified",
+};
