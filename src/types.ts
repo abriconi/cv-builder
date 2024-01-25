@@ -31,6 +31,11 @@ export interface LanguagesType {
   language: string;
   level: string;
 }
+export interface LanguagesTypeWithId {
+  id: string;
+  language: string;
+  level: string;
+}
 export interface SkillType {
   skill: string;
   level: string;
@@ -61,3 +66,11 @@ export interface CvType {
   social: SocialType[] | [];
   summary: string;
 }
+
+export const ItemTypes = {
+  education: "education",
+  experience: "experience",
+  languages: "languages",
+  skills: "skills",
+  social: "social",
+};

@@ -7,8 +7,10 @@ import { IconButtonDelete } from "../../../../shared-components/Buttons";
 interface ItemProps {
   index: number;
   handleDelete: (index: number) => void;
+  handleMove: (dragIndex: number, hoverIndex: number) => void;
 }
-export const SocialItem: React.FC<ItemProps> = ({ index, handleDelete }: ItemProps) => {
+
+export const SocialItem: React.FC<ItemProps> = ({ index, handleDelete, handleMove }: ItemProps) => {
   const { control } = useFormContext();
   const socialName = useWatch({
     name: `social.${index}.label`,
@@ -18,10 +20,12 @@ export const SocialItem: React.FC<ItemProps> = ({ index, handleDelete }: ItemPro
     name: `social.${index}.link`,
     control,
   });
+
   const title = socialName || HEADING.notSpecified;
   const status = title === HEADING.notSpecified ? true : false;
+
   return (
-    <div className="flex flex-row gap-3 text-gray-500 hover:text-blue-500">
+    <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
       <Accordion title={title} description={link} status={status}>
         <div className="flex flex-col sm:flex-row md:flex-row gap-4">
           <CustomInput name={`social.${index}.label`} control={control} type="text" label={CV_FIELDS.socialNet} />

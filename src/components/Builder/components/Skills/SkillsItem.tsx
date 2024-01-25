@@ -8,14 +8,16 @@ import { IconButtonDelete } from "../../../../shared-components/Buttons";
 interface ItemProps {
   index: number;
   handleDelete: (index: number) => void;
+  handleMove: (dragIndex: number, hoverIndex: number) => void;
 }
-export const SkillsItem: React.FC<ItemProps> = ({ index, handleDelete }: ItemProps) => {
+export const SkillsItem: React.FC<ItemProps> = ({ index, handleDelete, handleMove }: ItemProps) => {
   const { control } = useFormContext();
 
   const skill = useWatch({
     name: `skills.${index}.skill`,
     control,
   });
+
   const level = useWatch({
     name: `skills.${index}.level`,
     control,
@@ -23,8 +25,9 @@ export const SkillsItem: React.FC<ItemProps> = ({ index, handleDelete }: ItemPro
 
   const title = skill || HEADING.notSpecified;
   const status = title === HEADING.notSpecified ? true : false;
+
   return (
-    <div className="flex flex-row gap-3 text-gray-500 hover:text-blue-500">
+    <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
       <Accordion title={title} description={level} status={status}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">

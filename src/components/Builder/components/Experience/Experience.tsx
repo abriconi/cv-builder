@@ -7,11 +7,8 @@ export const Experience = () => {
   const { control } = useFormContext();
   const {
     append,
-    prepend,
     remove: removeParameters,
-    swap,
     move,
-    insert,
     fields,
   } = useFieldArray({
     name: "experience",
@@ -19,6 +16,9 @@ export const Experience = () => {
   });
   const experience = fields as unknown as ExperienceType[];
   const handleAddClick = () => append({ title: "", companyName: "", startDate: "", endDate: "", location: "", description: "" });
+  const handleMove = (dragIndex: number, hoverIndex: number): void => {
+    move(dragIndex, hoverIndex);
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -29,7 +29,7 @@ export const Experience = () => {
       {Boolean(fields?.length) && (
         <>
           {experience.map((item, index) => (
-            <ExperienceItem index={index} key={index} handleDelete={removeParameters} />
+            <ExperienceItem index={index} key={index} handleDelete={removeParameters} handleMove={handleMove} />
           ))}
         </>
       )}

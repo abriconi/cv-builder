@@ -9,10 +9,11 @@ import { IconButtonDelete } from "../../../../shared-components/Buttons";
 interface ItemProps {
   index: number;
   handleDelete: (index: number) => void;
+  handleMove: (dragIndex: number, hoverIndex: number) => void;
 }
-export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete }: ItemProps) => {
-  const { control } = useFormContext();
 
+export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete, handleMove }: ItemProps) => {
+  const { control } = useFormContext();
   const experienceTitle = useWatch({
     name: `experience.${index}.title`,
     control,
@@ -35,9 +36,8 @@ export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete }: Ite
   const endDateFormatted = dateFormatter(endDate);
   const description = `${startDateFormatted} - ${endDateFormatted} at ${company}`;
   const status = title === HEADING.notSpecified ? true : false;
-
   return (
-    <div className="flex flex-row gap-3 text-gray-500 hover:text-blue-500">
+    <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
       <Accordion title={title} description={description} status={status}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">

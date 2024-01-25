@@ -4,21 +4,21 @@ import { ButtonText } from "../../../../shared-components/Buttons";
 import { EducationType } from "../../../../types";
 
 export const Education = () => {
-  const { control, reset, trigger, setError } = useFormContext();
+  const { control } = useFormContext();
   const {
     fields,
     append,
-    prepend,
     remove: removeParameters,
-    swap,
     move,
-    insert,
   } = useFieldArray({
     name: "education",
     control,
   });
   const education = fields as unknown as EducationType[];
   const handleAddClick = () => append({ school: "", degree: "", startDate: "", endDate: "", location: "", description: "" });
+  const handleMove = (dragIndex: number, hoverIndex: number): void => {
+    move(dragIndex, hoverIndex);
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -29,7 +29,7 @@ export const Education = () => {
       {Boolean(fields?.length) && (
         <>
           {education.map((item, index) => (
-            <EducationItem index={index} key={index} handleDelete={removeParameters} />
+            <EducationItem index={index} key={index} handleDelete={removeParameters} handleMove={handleMove} />
           ))}
         </>
       )}

@@ -1,39 +1,34 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { ButtonText } from "../../../../shared-components/Buttons";
 import { LanguagesItem } from "./LanguagesItem";
-import { LanguagesType } from "../../../../types";
+import { LanguagesTypeWithId } from "../../../../types";
 
 export const Languages = () => {
-  const { control, reset, trigger, setError } = useFormContext();
+  const { control } = useFormContext();
   const {
     fields,
     append,
-    prepend,
     remove: removeParameters,
-    swap,
     move,
-    insert,
   } = useFieldArray({
     name: "languages",
     control,
   });
-  const languages = fields as unknown as LanguagesType[];
+  const languages = fields as unknown as LanguagesTypeWithId[];
   const handleAddClick = () => append({ language: "", level: "" });
-  const handleMove = (currentIndex: number, targetIndex: number): void => {
-    move(currentIndex, targetIndex);
+
+  const moveCard = (dragIndex: number, hoverIndex: number) => {
+    move(dragIndex, hoverIndex);
   };
 
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-xl font-semibold">Languages</h1>
-      {Boolean(fields?.length) && (
-        <>
-          {languages.map((item, index) => (
-            <LanguagesItem index={index} key={index} handleDelete={removeParameters} />
-          ))}
-        </>
-      )}
-      <ButtonText onClick={handleAddClick} name="+ Add one more languages" />
+      {Boolean(fields?.length) &&
+        languages.map((lang, index) => (
+          <LanguagesItem id={lang.id} index={index} key={index} handleDelete={removeParameters} handleMove={moveCard} />
+        ))}
+      <ButtonText onClick={handleAddClick} name="+ Add one more language" />
     </div>
   );
 };
