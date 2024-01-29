@@ -1,6 +1,6 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS, HEADING } from "../../../../constants";
+import { CV_FIELDS } from "../../../../constants";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { IconButtonDelete } from "../../../../shared-components/Buttons";
 
@@ -21,12 +21,11 @@ export const SocialItem: React.FC<ItemProps> = ({ index, handleDelete, handleMov
     control,
   });
 
-  const title = socialName || HEADING.notSpecified;
-  const status = title === HEADING.notSpecified ? true : false;
+  const status = socialName ? false : true;
 
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={title} description={link} status={status}>
+      <Accordion title={socialName} description={link} status={status}>
         <div className="flex flex-col sm:flex-row md:flex-row gap-4">
           <CustomInput name={`social.${index}.label`} control={control} type="text" label={CV_FIELDS.socialNet} />
           <CustomInput name={`social.${index}.link`} control={control} type="text" label={CV_FIELDS.link} />

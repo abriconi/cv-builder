@@ -1,6 +1,6 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS, HEADING } from "../../../../constants";
+import { CV_FIELDS } from "../../../../constants";
 import { CustomTextarea } from "../../../../shared-components/CustomTextarea";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { dateFormatter } from "../../../../helpers";
@@ -26,14 +26,14 @@ export const EducationItem: React.FC<ItemProps> = ({ index, handleDelete, handle
     name: `education.${index}.endDate`,
     control,
   });
-  const title = school || HEADING.notSpecified;
   const startDateFormatted = dateFormatter(startDate);
   const endDateFormatted = dateFormatter(endDate);
   const description = startDateFormatted && endDateFormatted ? `${startDateFormatted} - ${endDateFormatted}` : "";
+  const status = school ? false : true;
 
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={title} description={description} status={false}>
+      <Accordion title={school} description={description} status={status}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">
             <CustomInput name={`education.${index}.school`} control={control} type="text" label={CV_FIELDS.school} />

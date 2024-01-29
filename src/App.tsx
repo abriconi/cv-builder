@@ -9,7 +9,7 @@ function App() {
     <div className="flex flex-col md:flex-row sm:flex-row">
       <CvDataProvider>
         <Builder />
-        {/* <Preview /> */}
+        <Preview />
       </CvDataProvider>
     </div>
   );

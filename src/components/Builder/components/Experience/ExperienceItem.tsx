@@ -1,6 +1,6 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS, HEADING } from "../../../../constants";
+import { CV_FIELDS } from "../../../../constants";
 import { CustomTextarea } from "../../../../shared-components/CustomTextarea";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { dateFormatter } from "../../../../helpers";
@@ -31,14 +31,13 @@ export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete, handl
     control,
   });
 
-  const title = experienceTitle || HEADING.notSpecified;
   const startDateFormatted = dateFormatter(startDate);
   const endDateFormatted = dateFormatter(endDate);
-  const description = `${startDateFormatted} - ${endDateFormatted} at ${company}`;
-  const status = title === HEADING.notSpecified ? true : false;
+  const description = startDateFormatted && endDateFormatted ? `${startDateFormatted} - ${endDateFormatted} at ${company}` : "";
+  const status = experienceTitle ? false : true;
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={title} description={description} status={status}>
+      <Accordion title={experienceTitle} description={description} status={status}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">
             <CustomInput name={`experience.${index}.title`} control={control} type="text" label={CV_FIELDS.jobTitle} />

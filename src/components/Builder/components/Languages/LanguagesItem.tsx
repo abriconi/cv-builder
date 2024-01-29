@@ -1,6 +1,6 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS, HEADING, LANGUAGE_LEVELS } from "../../../../constants";
+import { CV_FIELDS, LANGUAGE_LEVELS } from "../../../../constants";
 import { CustomSelect } from "../../../../shared-components/CustomSelect";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { IconButtonDelete } from "../../../../shared-components/Buttons";
@@ -24,11 +24,10 @@ export const LanguagesItem: React.FC<ItemProps> = ({ index, handleDelete, handle
     control,
   });
 
-  const title = language || HEADING.notSpecified;
-  const status = title === HEADING.notSpecified ? true : false;
+  const status = language ? false : true;
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={title} description={level} status={status}>
+      <Accordion title={language} description={level} status={status}>
         <div className="flex flex-col gap-4 sm:flex-row md:flex-row">
           <CustomInput name={`languages.${index}.language`} control={control} type="text" label={CV_FIELDS.languages} />
           <CustomSelect name={`languages.${index}.level`} control={control} options={LANGUAGE_LEVELS} label="Level" />

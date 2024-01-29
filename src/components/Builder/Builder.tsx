@@ -11,6 +11,7 @@ import { Social } from "./components/Social/Social";
 import { Button } from "../../shared-components/Buttons";
 import { Skills } from "./components/Skills/Skills";
 import { CvType } from "../../types";
+import { ResumeScore } from "./components/ResumeScore/ResumeScore";
 
 export const Builder = () => {
   const [cvData, setCvData] = useState<CvType>(JSON.parse(localStorage.getItem("user") || "{}"));
@@ -44,19 +45,22 @@ export const Builder = () => {
   };
 
   return (
-    <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full py-8 px-20 gap-4 sm:px-10 md:px-10">
-        <Header />
-        <MainInfo />
-        <AdditionalInfo />
-        <Summary />
-        <Experience />
-        <Education />
-        <Languages />
-        <Social />
-        <Skills />
-        <Button name={"Create CV"} type="submit" />
-      </form>
-    </FormProvider>
+    <div className="flex flex-col w-full py-10 px-20 gap-4 sm:px-10 md:px-10">
+      <ResumeScore cvData={cvData} />
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full gap-4 ">
+          <Header />
+          <MainInfo />
+          <AdditionalInfo />
+          <Summary />
+          <Experience />
+          <Education />
+          <Languages />
+          <Social />
+          <Skills />
+          <Button name={"Create CV"} type="submit" />
+        </form>
+      </FormProvider>
+    </div>
   );
 };

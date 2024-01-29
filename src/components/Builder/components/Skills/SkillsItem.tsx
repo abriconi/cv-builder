@@ -1,6 +1,6 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS, HEADING } from "../../../../constants";
+import { CV_FIELDS } from "../../../../constants";
 import { CustomRange } from "../../../../shared-components/CustomRange";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { IconButtonDelete } from "../../../../shared-components/Buttons";
@@ -23,12 +23,11 @@ export const SkillsItem: React.FC<ItemProps> = ({ index, handleDelete, handleMov
     control,
   });
 
-  const title = skill || HEADING.notSpecified;
-  const status = title === HEADING.notSpecified ? true : false;
+  const status = skill ? false : true;
 
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={title} description={level} status={status}>
+      <Accordion title={skill} description={level} status={status}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">
             <CustomInput name={`skills.${index}.skill`} control={control} type="text" label={CV_FIELDS.skill} rules={{ required: true }} />

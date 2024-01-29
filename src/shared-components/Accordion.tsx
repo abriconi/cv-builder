@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { HEADING } from "../constants";
 
 interface AccordionProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   status: boolean;
   children: any;
 }
@@ -14,7 +15,7 @@ export const Accordion: React.FC<AccordionProps> = ({ title, description, childr
     <div className="border border-gray-300 rounded-md shadow-md w-full">
       <div className="flex items-center justify-between py-3 px-4 cursor-pointer bg-gray-100" onClick={() => setIsOpen(!isOpen)}>
         <div className="flex flex-col">
-          <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
+          <h2 className="text-lg font-semibold text-gray-900">{title || HEADING.notSpecified}</h2>
           <p className="text-sm text-gray-400">{description}</p>
         </div>
         <svg

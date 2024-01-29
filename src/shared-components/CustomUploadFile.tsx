@@ -25,8 +25,6 @@ export const CustomUploadFile = () => {
     localStorage.removeItem("userPhoto");
   };
 
-  console.log("image", image);
-
   return (
     <div className="flex flex-row gap-2">
       <label className="rounded-md border bg-gray-50 shadow-md border border-gray-300 w-16 h-16 flex items-center justify-center cursor-pointer">
