@@ -31,7 +31,7 @@ export const SkillsItem: React.FC<ItemProps> = ({ index, handleDelete, handleMov
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">
             <CustomInput name={`skills.${index}.skill`} control={control} type="text" label={CV_FIELDS.skill} rules={{ required: true }} />
-            <CustomRange name={`skills.${index}.level`} control={control} rules={{ required: true }} id={`${index}-level`} />
+            <CustomRange name={`skills.${index}.level`} control={control} id={`${index}-level`} />
           </div>
           <hr className="h-0.5" />
         </div>

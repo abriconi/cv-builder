@@ -3,18 +3,26 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { ButtonText } from "./Buttons";
 
+const toBase64 = (file: File): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+  });
+
 export const CustomUploadFile = () => {
   const uploadedPhoto = localStorage.getItem("userPhoto");
   const [image, setImage] = useState<string | null>(uploadedPhoto ? uploadedPhoto : null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
 
     if (selectedFile) {
-      const imageUrl = URL.createObjectURL(selectedFile);
+      const image = await toBase64(selectedFile);
 
-      setImage(imageUrl);
-      localStorage.setItem("userPhoto", imageUrl);
+      setImage(image);
+      localStorage.setItem("userPhoto", image);
     } else {
       setImage(null);
       localStorage.removeItem("userPhoto");

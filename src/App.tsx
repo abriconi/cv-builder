@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { Builder } from "./components/Builder/Builder";
 import { Preview } from "./components/Preview/Preview";
 import { CvDataProvider } from "./context/CvDataContext";

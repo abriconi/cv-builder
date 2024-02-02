@@ -16,15 +16,22 @@ export interface EducationType {
   description: string;
 }
 
-export interface SelectOption {
-  value: string;
-  label: string;
+export interface LanguageLevels {
+  nativeSpeaker: string;
+  beginner: string;
+  elementary: string;
+  intermediate: string;
+  upperIntermediate: string;
+  advanced: string;
+  proficiency: string;
 }
 
-export interface SkillOption {
-  value: string;
-  label: string;
-  color: string;
+export interface SkillLevels {
+  novice: string;
+  beginner: string;
+  skillful: string;
+  experienced: string;
+  expert: string;
 }
 
 export interface LanguagesType {
@@ -67,7 +74,7 @@ export interface CvType {
   summary: string;
 }
 
-export const ItemTypes = {
+export const DragTypes = {
   education: "education",
   experience: "experience",
   languages: "languages",

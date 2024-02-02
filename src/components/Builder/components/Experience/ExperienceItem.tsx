@@ -8,7 +8,7 @@ import { IconButtonDelete } from "../../../../shared-components/Buttons";
 
 interface ItemProps {
   index: number;
-  handleDelete: (index: number) => void;
+  handleDelete: () => void;
   handleMove: (dragIndex: number, hoverIndex: number) => void;
 }
 
@@ -55,7 +55,7 @@ export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete, handl
           <hr className="h-0.5" />
         </div>
       </Accordion>
-      <IconButtonDelete onClick={() => handleDelete(index)} />
+      <IconButtonDelete onClick={handleDelete} />
     </div>
   );
 };

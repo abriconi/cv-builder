@@ -1,4 +1,4 @@
-import { SelectOption, SkillOption } from "./types";
+import { LanguageLevels, SkillLevels } from "./types";
 
 export const CV_FIELDS = {
   jobPosition: "Job position",
@@ -29,22 +29,22 @@ export const CV_FIELDS = {
   skill: "Skill",
 };
 
-export const LANGUAGE_LEVELS: SelectOption[] = [
-  { value: "native", label: "Native speaker" },
-  { value: "a1", label: "A1 - Beginner" },
-  { value: "a2", label: "A2 - Elementary" },
-  { value: "b1", label: "B1 - Intermediate" },
-  { value: "b2", label: "B2 - Upper-Intermediate" },
-  { value: "c1", label: "C1 - Advanced" },
-  { value: "c2", label: "C2 - Proficiency" },
-];
+export const LANGUAGE_LEVELS: LanguageLevels = {
+  nativeSpeaker: "Native speaker",
+  beginner: "A1 - Beginner",
+  elementary: "A2 - Elementary",
+  intermediate: "B1 - Intermediate",
+  upperIntermediate: "B2 - Upper-Intermediate",
+  advanced: "C1 - Advanced",
+  proficiency: "C2 - Proficiency",
+};
 
-export const SKILL_LEVELS: Record<string, SkillOption> = {
-  novice: { value: "novice", label: "Novice", color: "red" },
-  beginner: { value: "beginner", label: "Beginner", color: "orange" },
-  skillful: { value: "skillful", label: "Skillful", color: "yellow" },
-  experienced: { value: "experienced", label: "Experienced", color: "blue" },
-  expert: { value: "expert", label: "Expert", color: "green" },
+export const SKILL_LEVELS: SkillLevels = {
+  novice: "novice",
+  beginner: "beginner",
+  skillful: "skillful",
+  experienced: "experienced",
+  expert: "expert",
 };
 
 export const HEADING = {

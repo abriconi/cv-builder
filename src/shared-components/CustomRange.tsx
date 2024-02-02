@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Controller, RegisterOptions } from "react-hook-form";
 import { SKILL_LEVELS } from "../constants";
 import { CustomRangeItem } from "./CustomRangeItem";
-import { SkillOption } from "../types";
+import clsx from "clsx";
 
 interface InputProps {
   name: string;
@@ -12,7 +12,7 @@ interface InputProps {
 }
 
 export const CustomRange: React.FC<InputProps> = ({ name, control, rules, id }: InputProps) => {
-  const [selectedLevel, setSelectedLevel] = useState<SkillOption>(SKILL_LEVELS.skillful);
+  const [selectedLevel, setSelectedLevel] = useState<string>(SKILL_LEVELS.novice);
 
   return (
     <Controller
@@ -22,54 +22,41 @@ export const CustomRange: React.FC<InputProps> = ({ name, control, rules, id }: 
       render={({ field }) => (
         <div className="flex flex-col w-full h-full">
           <p>
-            Level - <span className={`bg-${selectedLevel.color}`}>{selectedLevel.label}</span>
+            Level -{" "}
+            <span
+              className={clsx({
+                "text-red-300": selectedLevel === SKILL_LEVELS.novice,
+                "text-orange-300": selectedLevel === SKILL_LEVELS.beginner,
+                "text-pink-300": selectedLevel === SKILL_LEVELS.skillful,
+                "text-blue-300": selectedLevel === SKILL_LEVELS.experienced,
+                "text-green-300": selectedLevel === SKILL_LEVELS.expert,
+              })}>
+              {selectedLevel}
+            </span>
           </p>
           <div
-            className={` flex flex-row bg-${selectedLevel.color}-100 rounded-lg text-sm items-center bg-gray-50 border border-gray-300 shadow-md transition-all duration-300 ease-in-out`}>
-            <CustomRangeItem
-              color={selectedLevel.color}
-              selectLevel={() => setSelectedLevel(SKILL_LEVELS.novice)}
-              levelValue={SKILL_LEVELS.novice.value}
-              levelColor={SKILL_LEVELS.novice.color}
-              field={field}
-              id={`${id}-novice`}
-            />
-            <div className="bg-gray-300 w-px h-6" />
-            <CustomRangeItem
-              color={selectedLevel.color}
-              selectLevel={() => setSelectedLevel(SKILL_LEVELS.beginner)}
-              levelValue={SKILL_LEVELS.beginner.value}
-              levelColor={SKILL_LEVELS.beginner.color}
-              field={field}
-              id={`${id}-beginner`}
-            />
-            <div className="bg-gray-300 w-px h-6" />
-            <CustomRangeItem
-              color={selectedLevel.color}
-              selectLevel={() => setSelectedLevel(SKILL_LEVELS.skillful)}
-              levelValue={SKILL_LEVELS.skillful.value}
-              levelColor={SKILL_LEVELS.skillful.color}
-              field={field}
-              id={`${id}-skillful`}
-            />
-            <div className="bg-gray-300 w-px h-6" />
-            <CustomRangeItem
-              color={selectedLevel.color}
-              selectLevel={() => setSelectedLevel(SKILL_LEVELS.experienced)}
-              levelValue={SKILL_LEVELS.experienced.value}
-              levelColor={SKILL_LEVELS.experienced.color}
-              field={field}
-              id={`${id}-experienced`}
-            />
-            <div className="bg-gray-300 w-px h-6" />
-            <CustomRangeItem
-              color={selectedLevel.color}
-              selectLevel={() => setSelectedLevel(SKILL_LEVELS.expert)}
-              levelValue={SKILL_LEVELS.expert.value}
-              levelColor={SKILL_LEVELS.expert.color}
-              field={field}
-              id={`${id}-expert`}
-            />
+            className={clsx(
+              {
+                "bg-red-100": selectedLevel === SKILL_LEVELS.novice,
+                "bg-orange-100": selectedLevel === SKILL_LEVELS.beginner,
+                "bg-pink-100": selectedLevel === SKILL_LEVELS.skillful,
+                "bg-blue-100": selectedLevel === SKILL_LEVELS.experienced,
+                "bg-green-100": selectedLevel === SKILL_LEVELS.expert,
+              },
+              "flex flex-row rounded-lg text-sm items-center border border-gray-300 shadow-md transition-all duration-300 ease-in-out",
+            )}>
+            {Object.values(SKILL_LEVELS).map((level, index, array) => (
+              <React.Fragment key={level}>
+                <CustomRangeItem
+                  levelName={level}
+                  selectedLevel={selectedLevel}
+                  selectLevel={() => setSelectedLevel(level)}
+                  field={field}
+                  id={`${id}-${level}`}
+                />
+                {index !== array.length - 1 && <div className="bg-gray-300 w-px h-6" />}
+              </React.Fragment>
+            ))}
           </div>
         </div>
       )}

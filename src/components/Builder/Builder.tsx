@@ -42,6 +42,7 @@ export const Builder = () => {
   const onSubmit = (data: CvType) => {
     localStorage.setItem("user", JSON.stringify(data));
     setCvData(JSON.parse(localStorage.getItem("user") || "{}"));
+    console.log(data);
   };
 
   return (

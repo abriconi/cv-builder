@@ -29,8 +29,20 @@ export const LanguagesItem: React.FC<ItemProps> = ({ index, handleDelete, handle
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
       <Accordion title={language} description={level} status={status}>
         <div className="flex flex-col gap-4 sm:flex-row md:flex-row">
-          <CustomInput name={`languages.${index}.language`} control={control} type="text" label={CV_FIELDS.languages} />
-          <CustomSelect name={`languages.${index}.level`} control={control} options={LANGUAGE_LEVELS} label="Level" />
+          <CustomInput
+            name={`languages.${index}.language`}
+            control={control}
+            type="text"
+            label={CV_FIELDS.languages}
+            rules={{ required: true }}
+          />
+          <CustomSelect
+            name={`languages.${index}.level`}
+            control={control}
+            options={LANGUAGE_LEVELS}
+            label={CV_FIELDS.level}
+            rules={{ required: true }}
+          />
         </div>
       </Accordion>
       <IconButtonDelete onClick={() => handleDelete(index)} />
