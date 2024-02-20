@@ -15,6 +15,7 @@ export const Skills = () => {
     control,
   });
   const skills = fields as unknown as SkillType[];
+
   const handleAddClick = () => append({ skill: "", level: "" });
   const handleMove = (dragIndex: number, hoverIndex: number): void => {
     move(dragIndex, hoverIndex);
@@ -23,11 +24,13 @@ export const Skills = () => {
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-xl font-semibold">Skills</h1>
-      <>
-        {skills.map((item, index) => (
-          <SkillsItem index={index} key={index} handleDelete={removeParameters} handleMove={handleMove} />
-        ))}
-      </>
+      {Boolean(skills?.length) && (
+        <>
+          {skills.map((item, index) => (
+            <SkillsItem index={index} key={index} handleDelete={removeParameters} handleMove={handleMove} />
+          ))}
+        </>
+      )}
       <ButtonText onClick={handleAddClick} name="+ Add one more skill" />
     </div>
   );

@@ -7,12 +7,13 @@ import clsx from "clsx";
 interface InputProps {
   name: string;
   control: any;
+  level: string;
   rules?: RegisterOptions;
   id: string;
 }
 
-export const CustomRange: React.FC<InputProps> = ({ name, control, rules, id }: InputProps) => {
-  const [selectedLevel, setSelectedLevel] = useState<string>(SKILL_LEVELS.novice);
+export const CustomRange: React.FC<InputProps> = ({ name, control, rules, id, level }: InputProps) => {
+  const [selectedLevel, setSelectedLevel] = useState<string>(level || SKILL_LEVELS.novice);
 
   return (
     <Controller

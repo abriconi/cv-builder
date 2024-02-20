@@ -40,17 +40,46 @@ export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete, handl
       <Accordion title={experienceTitle} description={description} status={status}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-            <CustomInput name={`experience.${index}.title`} control={control} type="text" label={CV_FIELDS.jobTitle} />
-            <CustomInput name={`experience.${index}.companyName`} control={control} type="text" label={CV_FIELDS.companyName} />
+            <CustomInput
+              name={`experience.${index}.title`}
+              control={control}
+              type="text"
+              label={CV_FIELDS.jobTitle}
+              rules={{ required: true }}
+            />
+            <CustomInput
+              name={`experience.${index}.companyName`}
+              control={control}
+              type="text"
+              label={CV_FIELDS.companyName}
+              rules={{ required: true }}
+            />
           </div>
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-            <CustomInput name={`experience.${index}.startDate`} control={control} type="month" label={CV_FIELDS.startDate} />
-            <CustomInput name={`experience.${index}.endDate`} control={control} type="month" label={CV_FIELDS.endDate} />
+            <CustomInput
+              name={`experience.${index}.startDate`}
+              control={control}
+              type="month"
+              label={CV_FIELDS.startDate}
+              rules={{ required: true }}
+            />
+            <CustomInput
+              name={`experience.${index}.endDate`}
+              control={control}
+              type="month"
+              label={CV_FIELDS.endDate}
+              rules={{ required: true }}
+            />
             <CustomInput name={`experience.${index}.location`} control={control} type="text" label={CV_FIELDS.location} />
           </div>
           <div className="flex flex-col gap-2 pb-2">
             <p className="text-gray-400 text-sm">{CV_FIELDS.description}</p>
-            <CustomTextarea name={`experience.${index}.description`} control={control} label={CV_FIELDS.description} />
+            <CustomTextarea
+              name={`experience.${index}.description`}
+              control={control}
+              label={CV_FIELDS.description}
+              rules={{ required: true }}
+            />
           </div>
           <hr className="h-0.5" />
         </div>

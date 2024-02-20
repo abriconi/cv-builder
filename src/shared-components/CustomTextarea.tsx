@@ -1,12 +1,13 @@
-import { Controller } from "react-hook-form";
+import { Controller, RegisterOptions } from "react-hook-form";
 
 interface TextareaProps {
   name: string;
   control: any;
   label: string;
+  rules?: RegisterOptions;
 }
 
-export const CustomTextarea: React.FC<TextareaProps> = ({ name, control, label }: TextareaProps) => {
+export const CustomTextarea: React.FC<TextareaProps> = ({ name, control, label, rules }: TextareaProps) => {
   return (
     <Controller
       name={name}

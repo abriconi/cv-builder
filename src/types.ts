@@ -7,6 +7,16 @@ export interface ExperienceType {
   description: string;
 }
 
+export interface ExperienceTypeWithId {
+  id: string;
+  title: string;
+  companyName: string;
+  startDate: string;
+  endDate: string;
+  location?: string;
+  description: string;
+}
+
 export interface EducationType {
   school: string;
   degree: string;
@@ -14,6 +24,16 @@ export interface EducationType {
   endDate: string;
   location: string;
   description: string;
+}
+
+export interface EducationTypeWithId {
+  id: string;
+  school: string;
+  degree?: string;
+  startDate: string;
+  endDate: string;
+  location: string;
+  description?: string;
 }
 
 export interface LanguageLevels {
@@ -47,8 +67,19 @@ export interface SkillType {
   skill: string;
   level: string;
 }
+export interface SkillTypeWithId {
+  id: string;
+  skill: string;
+  level: string;
+}
 
 export interface SocialType {
+  label: string;
+  link: string;
+}
+
+export interface SocialTypeWithId {
+  id: string;
   label: string;
   link: string;
 }
@@ -66,11 +97,11 @@ export interface CvType {
   dateOfBirth: string;
   placeOfBirth: string;
   nationality: string;
-  education: EducationType[] | [];
-  experience: ExperienceType[] | [];
-  languages: LanguagesType[] | [];
-  skills: SkillType[] | [];
-  social: SocialType[] | [];
+  education: EducationTypeWithId[] | [];
+  experience: ExperienceTypeWithId[] | [];
+  languages: LanguagesTypeWithId[] | [];
+  skills: SkillTypeWithId[] | [];
+  social: SocialTypeWithId[] | [];
   summary: string;
 }
 

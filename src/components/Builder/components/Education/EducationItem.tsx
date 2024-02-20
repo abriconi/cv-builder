@@ -27,6 +27,7 @@ export const EducationItem: React.FC<ItemProps> = ({ index, handleDelete, handle
     control,
   });
   const startDateFormatted = dateFormatter(startDate);
+
   const endDateFormatted = dateFormatter(endDate);
   const description = startDateFormatted && endDateFormatted ? `${startDateFormatted} - ${endDateFormatted}` : "";
   const status = school ? false : true;
@@ -36,13 +37,43 @@ export const EducationItem: React.FC<ItemProps> = ({ index, handleDelete, handle
       <Accordion title={school} description={description} status={status}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-            <CustomInput name={`education.${index}.school`} control={control} type="text" label={CV_FIELDS.school} />
-            <CustomInput name={`education.${index}.degree`} control={control} type="text" label={CV_FIELDS.degree} />
+            <CustomInput
+              name={`education.${index}.school`}
+              control={control}
+              type="text"
+              label={CV_FIELDS.school}
+              rules={{ required: true }}
+            />
+            <CustomInput
+              name={`education.${index}.degree`}
+              control={control}
+              type="text"
+              label={CV_FIELDS.degree}
+              // rules={{ required: true }}
+            />
           </div>
           <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-            <CustomInput name={`education.${index}.startDate`} control={control} type="month" label={CV_FIELDS.startDate} />
-            <CustomInput name={`education.${index}.endDate`} control={control} type="month" label={CV_FIELDS.endDate} />
-            <CustomInput name={`education.${index}.location`} control={control} type="text" label={CV_FIELDS.location} />
+            <CustomInput
+              name={`education.${index}.startDate`}
+              control={control}
+              type="month"
+              label={CV_FIELDS.startDate}
+              rules={{ required: true }}
+            />
+            <CustomInput
+              name={`education.${index}.endDate`}
+              control={control}
+              type="month"
+              label={CV_FIELDS.endDate}
+              rules={{ required: true }}
+            />
+            <CustomInput
+              name={`education.${index}.location`}
+              control={control}
+              type="text"
+              label={CV_FIELDS.location}
+              rules={{ required: true }}
+            />
           </div>
           <div className="flex flex-col gap-2 pb-2">
             <p className="text-gray-400 text-sm">{CV_FIELDS.description}</p>

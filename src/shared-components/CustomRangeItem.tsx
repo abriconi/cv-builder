@@ -11,6 +11,7 @@ interface ItemProps {
 
 export const CustomRangeItem: React.FC<ItemProps> = ({ selectedLevel, selectLevel, id, field, levelName }: ItemProps) => {
   const isLevelSelected = selectedLevel === levelName;
+  // console.log("levelName", levelName);
 
   const isNoviceBG = selectedLevel === SKILL_LEVELS.novice;
   const isBeginnerBG = selectedLevel === SKILL_LEVELS.beginner;
@@ -38,7 +39,7 @@ export const CustomRangeItem: React.FC<ItemProps> = ({ selectedLevel, selectLeve
         },
         "w-1/5 py-5 cursor-pointer rounded-lg flex items-center`",
       )}>
-      <input {...field} type="radio" id={id} className="appearance-none" onClick={selectLevel} />
+      <input {...field} type="radio" id={id} className="appearance-none" onClick={selectLevel} value={levelName} />
     </label>
   );
 };

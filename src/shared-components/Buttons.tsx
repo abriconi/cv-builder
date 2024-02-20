@@ -7,22 +7,25 @@ interface ButtonType {
   name: string;
   aligning?: string;
   type?: "button" | "submit";
+  icon?: JSX.Element;
 }
 
 interface IconButtonType {
   onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonType> = ({ onClick, name, aligning = "", type = "button" }: ButtonType) => {
+export const Button: React.FC<ButtonType> = ({ onClick, name, aligning = "", type = "button", icon }: ButtonType) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`${aligning} bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-10 border border-blue-500 hover:border-transparent rounded`}>
+      className={`${aligning} flex flex-row justify-center gap-2 bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-5 border border-blue-500 hover:border-transparent rounded`}>
+      {icon}
       {name}
     </button>
   );
 };
+
 export const ButtonText: React.FC<ButtonType> = ({ onClick, name, aligning = "self-start", type = "button" }: ButtonType) => {
   return (
     <button

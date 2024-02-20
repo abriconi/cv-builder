@@ -1,0 +1,25 @@
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { EducationTypeWithId } from "../../../../../types";
+import { EducationVertexItem } from "./EducationVertexItem";
+
+interface EducationProps {
+  education: EducationTypeWithId[];
+}
+
+export const EducationVertex: React.FC<EducationProps> = ({ education }: EducationProps) => {
+  return (
+    <div className="flex flex-col gap-2 items-start">
+      <div className="flex flex-row gap-2 items-center">
+        <FontAwesomeIcon icon={faGraduationCap} className="text-blue-600" />
+        <h2 className="text-l">Education</h2>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        {education.map((item, index) => (
+          <EducationVertexItem key={index} item={item} />
+        ))}
+      </div>
+    </div>
+  );
+};
