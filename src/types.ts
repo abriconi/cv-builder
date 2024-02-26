@@ -105,10 +105,9 @@ export interface CvType {
   summary: string;
 }
 
-export const DragTypes = {
-  education: "education",
-  experience: "experience",
-  languages: "languages",
-  skills: "skills",
-  social: "social",
-};
+export interface ColorPalette {
+  color_name: string;
+  primary: string;
+  primary_shade: string;
+  available_templates: string[];
+}

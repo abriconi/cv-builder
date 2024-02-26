@@ -11,7 +11,7 @@ export const ExperienceVertex: React.FC<ExperienceProps> = ({ experience }: Expe
   return (
     <div className="flex flex-col gap-2 items-start">
       <div className="flex flex-row gap-2 items-center">
-        <FontAwesomeIcon icon={faBriefcase} className="text-blue-600" />
+        <FontAwesomeIcon icon={faBriefcase} className="text-blue-600" style={{ color: "var(--primary-color)" }} />
         <h2 className="text-l">Experience</h2>
       </div>
 

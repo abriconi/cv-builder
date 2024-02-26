@@ -9,7 +9,7 @@ export const SummaryVertex: React.FC<SummaryProps> = ({ summary }: SummaryProps)
   return (
     <div className="flex flex-col gap-2 items-start">
       <div className="flex flex-row gap-2 items-center">
-        <FontAwesomeIcon icon={faUser} className="text-blue-600" />
+        <FontAwesomeIcon icon={faUser} className="text-blue-600" style={{ color: "var(--primary-color)" }} />
         <h2 className="text-l">Profile</h2>
       </div>
       <p className="text-sm">{summary}</p>

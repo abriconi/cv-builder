@@ -14,7 +14,9 @@ export const DetailsVertex: React.FC<Props> = ({ city, country, phoneNumber, ema
       <p className="text-sm">{city}</p>
       <p className="text-sm">{country}</p>
       <p className="text-sm">{phoneNumber}</p>
-      <p className="text-sm text-blue-600">{email}</p>
+      <p className="text-sm" style={{ color: "var(--primary-color)" }}>
+        {email}
+      </p>
     </div>
   );
 };

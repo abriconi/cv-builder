@@ -11,8 +11,6 @@ interface ItemProps {
 
 export const CustomRangeItem: React.FC<ItemProps> = ({ selectedLevel, selectLevel, id, field, levelName }: ItemProps) => {
   const isLevelSelected = selectedLevel === levelName;
-  // console.log("levelName", levelName);
-
   const isNoviceBG = selectedLevel === SKILL_LEVELS.novice;
   const isBeginnerBG = selectedLevel === SKILL_LEVELS.beginner;
   const isSkillfulBG = selectedLevel === SKILL_LEVELS.skillful;
