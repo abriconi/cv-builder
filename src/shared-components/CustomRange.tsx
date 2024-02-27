@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Controller, RegisterOptions } from "react-hook-form";
-import { SKILL_LEVELS } from "../constants";
+import { SKILL_LEVELS } from "../helpers/constants";
 import { CustomRangeItem } from "./CustomRangeItem";
 import clsx from "clsx";
 

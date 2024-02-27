@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { SKILL_LEVELS } from "../constants";
+import { SKILL_LEVELS } from "../helpers/constants";
 
 interface ItemProps {
   selectedLevel: string;

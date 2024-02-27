@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import { CustomTextarea } from "../../../shared-components/CustomTextarea";
-import { CV_FIELDS } from "../../../constants";
+import { CV_FIELDS } from "../../../helpers/constants";
 
 export const Summary = () => {
   const { control } = useFormContext();

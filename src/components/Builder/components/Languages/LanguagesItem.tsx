@@ -1,6 +1,6 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS, LANGUAGE_LEVELS } from "../../../../constants";
+import { CV_FIELDS, LANGUAGE_LEVELS } from "../../../../helpers/constants";
 import { CustomSelect } from "../../../../shared-components/CustomSelect";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { IconButtonDelete } from "../../../../shared-components/Buttons";

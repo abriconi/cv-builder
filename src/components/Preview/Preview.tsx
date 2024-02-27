@@ -1,17 +1,35 @@
+import { useEffect, useRef } from "react";
 import { Settings } from "./Settings/Settings";
-import { Vertex } from "./Templates/Vertex/Vertex";
+import { Routes } from "../../helpers/routes";
 
 export const Preview = () => {
-  const userData = localStorage.getItem("user");
-  const user = userData ? JSON.parse(userData) : undefined;
-  const userPhoto = localStorage.getItem("userPhoto") || undefined;
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    const storedUserData = localStorage.getItem("user");
+    const storedUserPhoto = localStorage.getItem("userPhoto");
+
+    if (storedUserData) {
+      if (iframeRef.current) {
+        setTimeout(() => {
+          iframeRef?.current?.contentWindow?.postMessage({
+            type: "custom-message-type",
+            data: JSON.parse(storedUserData),
+            photo: storedUserPhoto,
+          });
+        }, 1000);
+      }
+    }
+  }, []);
 
   const handlePrint = () => console.log("print");
 
-  return userData ? (
+  return (
     <div className="bg-gray-600 w-screen flex flex-col gap-5 py-10 px-10">
       <Settings handlePrint={handlePrint} />
-      <Vertex img={userPhoto} userData={user} />
+      <div className="flex h-full w-full">
+        <iframe title="CV Preview" ref={iframeRef} src={Routes.Vertex} className="flex h-full w-full" />
+      </div>
     </div>
-  ) : null;
+  );
 };

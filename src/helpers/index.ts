@@ -1,4 +1,4 @@
-import { ColorPalette } from "./types";
+import { ColorPalette } from "../types";
 
 export const dateFormatter = (date: string | undefined): string => {
   if (date) {

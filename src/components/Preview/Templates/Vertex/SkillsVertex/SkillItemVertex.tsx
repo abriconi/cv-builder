@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { SkillTypeWithId } from "../../../../../types";
-import { SKILL_LEVELS } from "../../../../../constants";
+import { SKILL_LEVELS } from "../../../../../helpers/constants";
 
 interface Props {
   skill: SkillTypeWithId;

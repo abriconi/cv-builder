@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { LanguagesTypeWithId } from "../../../../../types";
-import { LANGUAGE_LEVELS } from "../../../../../constants";
+import { LANGUAGE_LEVELS } from "../../../../../helpers/constants";
 
 interface Props {
   language: LanguagesTypeWithId;

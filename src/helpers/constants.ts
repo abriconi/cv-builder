@@ -1,4 +1,4 @@
-import { ColorPalette, LanguageLevels, SkillLevels } from "./types";
+import { ColorPalette, LanguageLevels, SkillLevels } from "../types";
 
 export const CV_FIELDS = {
   jobPosition: "Job position",

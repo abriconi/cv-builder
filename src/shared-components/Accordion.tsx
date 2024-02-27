@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HEADING } from "../constants";
+import { HEADING } from "../helpers/constants";
 
 interface AccordionProps {
   title?: string;

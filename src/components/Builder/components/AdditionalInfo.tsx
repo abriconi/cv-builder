@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CustomInput } from "../../../shared-components/CustomInput";
 import { useFormContext } from "react-hook-form";
-import { CV_FIELDS } from "../../../constants";
+import { CV_FIELDS } from "../../../helpers/constants";
 import { ButtonText } from "../../../shared-components/Buttons";
 
 export const AdditionalInfo = () => {

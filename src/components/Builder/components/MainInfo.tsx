@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form";
-import { CV_FIELDS } from "../../../constants";
+import { CV_FIELDS } from "../../../helpers/constants";
 import { CustomInput } from "../../../shared-components/CustomInput";
 
 export const MainInfo = () => {
