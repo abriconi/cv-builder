@@ -109,5 +109,10 @@ export interface ColorPalette {
   color_name: string;
   primary: string;
   primary_shade: string;
-  available_templates: string[];
+}
+
+export interface TemplateType {
+  name: string;
+  route: string;
+  colors: ColorPalette[];
 }

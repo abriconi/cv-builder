@@ -1,7 +1,12 @@
 import { createBrowserRouter, RouterProvider, Route, Link } from "react-router-dom";
 import App from "../App";
 import { Routes } from "./routes";
-import { Vertex } from "../components/Preview/Templates/Vertex/Vertex";
+import { Suspense, lazy } from "react";
+import Loader from "../shared-components/Loader";
+
+const Lumina = lazy(() => import("./../components/Preview/Templates/Lumina/Lumina").then((module) => ({ default: module.Lumina })));
+const Vertex = lazy(() => import("./../components/Preview/Templates/Vertex/Vertex").then((module) => ({ default: module.Vertex })));
+
 export const router = createBrowserRouter([
   {
     path: Routes.Root,
@@ -9,7 +14,19 @@ export const router = createBrowserRouter([
   },
   {
     path: Routes.Vertex,
-    element: <Vertex />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Vertex />
+      </Suspense>
+    ),
+  },
+  {
+    path: Routes.Lumina,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Lumina />
+      </Suspense>
+    ),
   },
 ]);
 

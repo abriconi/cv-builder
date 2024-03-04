@@ -1,4 +1,5 @@
-import { ColorPalette, LanguageLevels, SkillLevels } from "../types";
+import { LanguageLevels, SkillLevels, TemplateType } from "../types";
+import { Routes } from "./routes";
 
 export const CV_FIELDS = {
   jobPosition: "Job position",
@@ -52,33 +53,44 @@ export const HEADING = {
 };
 
 export const [VERTEX, LUMINA] = ["vertex", "lumina"];
-
-export const COLOR_PALETTE: ColorPalette[] = [
+export const TEMPLATES: TemplateType[] = [
   {
-    color_name: "blue",
-    primary: "#0000FF",
-    primary_shade: "#9999ff",
-    available_templates: [VERTEX, LUMINA],
+    name: VERTEX,
+    route: Routes.Vertex,
+    colors: [
+      {
+        color_name: "blue",
+        primary: "#0000FF",
+        primary_shade: "#9999ff",
+      },
+      {
+        color_name: "green",
+        primary: "#004000",
+        primary_shade: "#99b299",
+      },
+      {
+        color_name: "red",
+        primary: "#ff3232",
+        primary_shade: "#ffb2b2",
+      },
+    ],
   },
   {
-    color_name: "green",
-    primary: "#004000",
-    primary_shade: "#99b299",
-    available_templates: [VERTEX, LUMINA],
-  },
-  {
-    color_name: "purple",
-    primary: "#800080",
-    primary_shade: "#cc99cc",
-    available_templates: [LUMINA],
-  },
-  {
-    color_name: "red",
-    primary: "#ff3232",
-    primary_shade: "#ffb2b2",
-    available_templates: [VERTEX, LUMINA],
+    name: LUMINA,
+    route: Routes.Lumina,
+    colors: [
+      { color_name: "dark-green", primary: "#133337", primary_shade: "#a0adaf" },
+      {
+        color_name: "navy-blue",
+        primary: "#222F5B",
+        primary_shade: "#bcc0cd",
+      },
+      { color_name: "brown", primary: "#743818", primary_shade: "#d5c3b9" },
+      { color_name: "dark-gray", primary: "#2F2F2F", primary_shade: "#c0c0c0" },
+    ],
   },
 ];
+
 // lumina
 // Zenith
 // Aurora

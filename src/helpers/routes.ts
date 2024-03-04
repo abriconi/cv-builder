@@ -1,6 +1,7 @@
 export enum Routes {
   Root = "/",
   Vertex = "/vertex",
+  Lumina = "/lumina",
 
   //   Budget = "/budget",
 

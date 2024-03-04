@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CvType } from "../../../../types";
+import { ColorPalette, CvType } from "../../../../types";
 import { HeaderVertex } from "./HeaderVertex";
 import { EducationVertex } from "./EducationVertex/EducationVertex";
 import { ExperienceVertex } from "./ExperienceVertex/ExperienceVertex";
@@ -9,11 +9,28 @@ import { SocialVertex } from "./SocialVertex";
 import { SkillsVertex } from "./SkillsVertex/SkillsVertex";
 import { LanguageVertex } from "./LanguagesVertex/LanguageVertex";
 import { ColorSelector } from "../../../../shared-components/ColorSelector";
-import { VERTEX } from "../../../../helpers/constants";
+import { TEMPLATES, VERTEX } from "../../../../helpers/constants";
 
 export const Vertex = () => {
   const [userData, setUserData] = useState<CvType | undefined>(undefined);
   const [userPhoto, setUserPhoto] = useState(undefined);
+  const template = TEMPLATES.find((template) => template.name === VERTEX);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const zoomValue = (window.innerWidth / (document.getElementById("vertex-template")?.offsetWidth as number)).toFixed(4);
+      // @ts-ignore
+      document.body.style.zoom = zoomValue;
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const receiveMessage = (event: MessageEvent) => {
@@ -35,8 +52,8 @@ export const Vertex = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5">
-      <ColorSelector template={VERTEX} />
+    <div id="vertex-template" className="flex flex-col gap-5" style={{ width: "210mm" }}>
+      <ColorSelector template={template} />
       <div className="flex flex-col p-8 bg-white gap-10">
         <HeaderVertex img={userPhoto} userData={userData} />
         {userData && (

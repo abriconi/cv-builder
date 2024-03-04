@@ -1,14 +1,16 @@
-import { useMemo } from "react";
-import { findColors } from "../helpers";
-import { COLOR_PALETTE } from "../helpers/constants";
+import { TemplateType } from "../types";
 
 interface ColorSelectorProps {
-  template: string;
+  template: TemplateType | undefined;
 }
 
 export const ColorSelector: React.FC<ColorSelectorProps> = ({ template }: ColorSelectorProps) => {
-  const colors = useMemo(() => findColors(template, COLOR_PALETTE), [template]);
   const root = document.documentElement;
+
+  if (template) {
+    root.style.setProperty("--primary-color", template.colors[0].primary);
+    root.style.setProperty("--primary-shade", template.colors[0].primary_shade);
+  }
 
   const handleClick = (primary: string, primaryShade: string) => {
     root.style.setProperty("--primary-color", primary);
@@ -18,7 +20,7 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ template }: ColorS
     <div className="flex flex-row gap-2 items-center justify-center">
       <p className="text-white">Choose color</p>
       <div className="flex flex-row gap-2 h-11 items-center ">
-        {colors.map((color) => (
+        {template?.colors.map((color) => (
           <button
             key={color.color_name}
             className={"rounded-full w-9 h-9 cursor-pointer hover:w-10 hover:h-10"}

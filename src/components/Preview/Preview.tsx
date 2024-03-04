@@ -1,9 +1,12 @@
-import { useEffect, useRef } from "react";
-import { Settings } from "./Settings/Settings";
+import { useEffect, useRef, useState } from "react";
 import { Routes } from "../../helpers/routes";
+import { TEMPLATES } from "../../helpers/constants";
+import { Button } from "../../shared-components/Buttons";
 
 export const Preview = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [selectedTemplateRoute, setSelectedTemplateRoute] = useState(Routes.Vertex);
+  const template = TEMPLATES.find((template) => selectedTemplateRoute === template.route);
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("user");
@@ -17,19 +20,36 @@ export const Preview = () => {
             data: JSON.parse(storedUserData),
             photo: storedUserPhoto,
           });
-        }, 1000);
+        }, 500);
       }
     }
-  }, []);
+  }, [selectedTemplateRoute]);
 
   const handlePrint = () => console.log("print");
 
   return (
-    <div className="bg-gray-600 w-screen flex flex-col gap-5 py-10 px-10">
-      <Settings handlePrint={handlePrint} />
-      <div className="flex h-full w-full">
-        <iframe title="CV Preview" ref={iframeRef} src={Routes.Vertex} className="flex h-full w-full" />
+    <>
+      <div className="flex flex-row justify-between">
+        {TEMPLATES.map((template) => (
+          <div className="flex flex-row gap-1 items-center" key={template.name}>
+            <input
+              type="radio"
+              id={template.route}
+              name="template"
+              value={template.route}
+              onChange={() => setSelectedTemplateRoute(template.route as Routes)}
+              checked={template.route === selectedTemplateRoute}
+            />
+            <label htmlFor={template.route}>{template.name}</label>
+          </div>
+        ))}
+
+        <Button name="Download PDF" aligning="self-start" onClick={handlePrint} />
       </div>
-    </div>
+
+      <div className="grow">
+        <iframe title="CV Preview" ref={iframeRef} src={selectedTemplateRoute} className="h-full w-full" />
+      </div>
+    </>
   );
 };
