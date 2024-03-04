@@ -1,5 +1,6 @@
 export enum Routes {
   Root = "/",
+  ChooseTemplatePopUp = "edit",
   Vertex = "/vertex",
   Lumina = "/lumina",
 

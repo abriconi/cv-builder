@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Route, Link } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { Routes } from "./routes";
 import { Suspense, lazy } from "react";
