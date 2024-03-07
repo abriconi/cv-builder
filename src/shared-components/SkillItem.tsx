@@ -1,11 +1,11 @@
 import clsx from "clsx";
-import { SkillTypeWithId } from "../../../../../types";
-import { SKILL_LEVELS } from "../../../../../helpers/constants";
+import { SKILL_LEVELS } from "../helpers/constants";
+import { SkillTypeWithId } from "../types";
 
 interface Props {
   skill: SkillTypeWithId;
 }
-export const SkillItemVertex: React.FC<Props> = ({ skill }: Props) => {
+export const SkillItem: React.FC<Props> = ({ skill }: Props) => {
   return (
     <div className="flex flex-col">
       <p className="text-sm">{skill.skill}</p>

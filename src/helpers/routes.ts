@@ -3,6 +3,7 @@ export enum Routes {
   ChooseTemplatePopUp = "edit",
   Vertex = "/vertex",
   Lumina = "/lumina",
+  Aurora = "/aurora",
 
   //   Budget = "/budget",
 

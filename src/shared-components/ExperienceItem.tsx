@@ -1,11 +1,11 @@
-import { dateFormatter } from "../../../../../../helpers";
-import { ExperienceTypeWithId } from "../../../../../../types";
+import { dateFormatter } from "../helpers";
+import { ExperienceTypeWithId } from "../types";
 
-interface ItemProps {
+interface Props {
   item: ExperienceTypeWithId;
 }
 
-export const ExperienceItemLumina: React.FC<ItemProps> = ({ item }: ItemProps) => {
+export const ExperienceItem: React.FC<Props> = ({ item }: Props) => {
   const startDate = dateFormatter(item.startDate);
   const endDate = dateFormatter(item.endDate);
   return (

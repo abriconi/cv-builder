@@ -18,7 +18,7 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ template }: ColorS
   };
   return (
     <div className="flex flex-row gap-2 items-center justify-center">
-      <p className="text-white">Choose color</p>
+      {/* <p className="text-white">Choose color</p> */}
       <div className="flex flex-row gap-2 h-11 items-center ">
         {template?.colors.map((color) => (
           <button

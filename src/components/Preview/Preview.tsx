@@ -43,11 +43,13 @@ export const Preview = () => {
       </div>
       {isDialogOpen && (
         <Dialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
-          <ChooseTemplate templateRoute={templateRoute} selectTemplateRoute={setTemplateRoute} />
+          <ChooseTemplate selectTemplateRoute={setTemplateRoute} />
         </Dialog>
       )}
       <div className="grow">
-        <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className="h-full w-full" />
+        {/* <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className="h-full w-full" /> */}
+
+        <iframe title="CV Preview" ref={iframeRef} src={Routes.Aurora} className="h-full w-full" />
       </div>
     </>
   );

@@ -8,7 +8,8 @@ import { SocialLumina } from "./components/SocialLumina";
 import { SkillsLumina } from "./components/SkillsLumina/SkillsLumina";
 import { LanguageLumina } from "./components/SkillsLumina/LanguagesLumina/LanguagesLumina";
 import { SummaryLumina } from "./components/SummaryLumina";
-import { ExperienceLumina } from "./components/ExperienceLumina/ExperienceLumina";
+import { ExperienceLumina } from "./components/ExperienceLumina";
+import { EducationLumina } from "./components/EdicationLumina";
 
 export const Lumina = () => {
   const [userData, setUserData] = useState<CvType | undefined>(undefined);
@@ -61,6 +62,7 @@ export const Lumina = () => {
           <div className="flex flex-col gap-10 w-2/3 rounded-r bg-white p-8">
             <SummaryLumina summary={userData.summary} />
             <ExperienceLumina experience={userData.experience} />
+            <EducationLumina education={userData.education} />
           </div>
         </div>
       )}

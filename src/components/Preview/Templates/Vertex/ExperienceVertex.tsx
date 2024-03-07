@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ExperienceTypeWithId } from "../../../../../types";
+import { ExperienceTypeWithId } from "../../../../types";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
-import { ExperienceVertexItem } from "./ExperienceVertexItem";
+import { ExperienceItem } from "../../../../shared-components/ExperienceItem";
 
 interface ExperienceProps {
   experience: ExperienceTypeWithId[];
@@ -17,7 +17,7 @@ export const ExperienceVertex: React.FC<ExperienceProps> = ({ experience }: Expe
 
       <div className="flex flex-col gap-2">
         {experience.map((item, index) => (
-          <ExperienceVertexItem key={index} item={item} />
+          <ExperienceItem key={index} item={item} />
         ))}
       </div>
     </div>

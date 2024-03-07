@@ -3,6 +3,7 @@ import App from "../App";
 import { Routes } from "./routes";
 import { Suspense, lazy } from "react";
 import Loader from "../shared-components/Loader";
+import { Aurora } from "../components/Preview/Templates/Aurora/Aurora";
 
 const Lumina = lazy(() => import("./../components/Preview/Templates/Lumina/Lumina").then((module) => ({ default: module.Lumina })));
 const Vertex = lazy(() => import("./../components/Preview/Templates/Vertex/Vertex").then((module) => ({ default: module.Vertex })));
@@ -25,6 +26,14 @@ export const router = createBrowserRouter([
     element: (
       <Suspense fallback={<Loader />}>
         <Lumina />
+      </Suspense>
+    ),
+  },
+  {
+    path: Routes.Aurora,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Aurora />
       </Suspense>
     ),
   },

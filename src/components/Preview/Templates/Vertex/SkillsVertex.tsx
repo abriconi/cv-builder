@@ -1,5 +1,5 @@
-import { SkillTypeWithId } from "../../../../../types";
-import { SkillItemVertex } from "./SkillItemVertex";
+import { SkillItem } from "../../../../shared-components/SkillItem";
+import { SkillTypeWithId } from "../../../../types";
 
 interface Props {
   skills: SkillTypeWithId[];
@@ -10,7 +10,7 @@ export const SkillsVertex: React.FC<Props> = ({ skills }: Props) => {
       <h2 className="text-l pb-1">Skills:</h2>
       <div className="flex flex-col gap-2 w-full">
         {skills.map((skill, index) => (
-          <SkillItemVertex skill={skill} key={index} />
+          <SkillItem skill={skill} key={index} />
         ))}
       </div>
     </div>

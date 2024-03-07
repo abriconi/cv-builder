@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import { LanguagesTypeWithId } from "../../../../../types";
-import { LANGUAGE_LEVELS } from "../../../../../helpers/constants";
+import { LanguagesTypeWithId } from "../types";
+import { LANGUAGE_LEVELS } from "../helpers/constants";
 
 interface Props {
   language: LanguagesTypeWithId;
 }
 
-export const LangItemVertex: React.FC<Props> = ({ language }: Props) => {
+export const LanguageItem: React.FC<Props> = ({ language }: Props) => {
   return (
     <div className="flex flex-col">
       <p className="text-sm">{language.language}</p>
