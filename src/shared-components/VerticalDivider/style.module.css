@@ -1,0 +1,29 @@
+.divider {
+    position: relative;
+    width: 100%;
+    padding-left: 21px;
+}
+
+.divider::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: solid var(--primary-color) 1px;
+    border-radius: 50%;
+    top: 8px;
+    left: -2px;
+}
+
+.divider::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    background-color:var(--primary-color);
+    top: 13px;
+    bottom: -9px;
+    left: 0px;
+}
+.divider:last-child::after {
+    bottom: 10px;
+}

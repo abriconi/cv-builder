@@ -1,0 +1,35 @@
+.item {
+    border: 1px solid white ;
+    border-radius: 50%;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.item:hover::after {
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+}
+.check {
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+}
+.chosen {
+    position: relative;
+    border: 1px solid white ;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer; 
+}

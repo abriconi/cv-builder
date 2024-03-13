@@ -4,12 +4,13 @@ import { LANGUAGE_LEVELS } from "../helpers/constants";
 
 interface Props {
   language: LanguagesTypeWithId;
+  aligning?: "self-center" | "self-auto";
 }
 
-export const LanguageItem: React.FC<Props> = ({ language }: Props) => {
+export const LanguageItem: React.FC<Props> = ({ language, aligning = "self-auto" }: Props) => {
   return (
     <div className="flex flex-col">
-      <p className="text-sm">{language.language}</p>
+      <p className={clsx(aligning, "text-sm")}>{language.language}</p>
       <div className="w-full h-1 relative rounded" style={{ backgroundColor: "var(--primary-shade)" }}>
         <span
           style={{ backgroundColor: "var(--primary-color)" }}

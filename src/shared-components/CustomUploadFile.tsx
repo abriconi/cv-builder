@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { ButtonText } from "./Buttons";
+import { ButtonText } from "./Buttons/Buttons";
 
 const toBase64 = (file: File): Promise<string> =>
   new Promise((resolve, reject) => {

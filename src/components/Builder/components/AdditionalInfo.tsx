@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CustomInput } from "../../../shared-components/CustomInput";
 import { useFormContext } from "react-hook-form";
 import { CV_FIELDS } from "../../../helpers/constants";
-import { ButtonText } from "../../../shared-components/Buttons";
+import { ButtonText } from "../../../shared-components/Buttons/Buttons";
 
 export const AdditionalInfo = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,6 +1,6 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { ExperienceItem } from "./ExperienceItem";
-import { ButtonText } from "../../../../shared-components/Buttons";
+import { ButtonText } from "../../../../shared-components/Buttons/Buttons";
 import { LanguagesTypeWithId } from "../../../../types";
 
 export const Experience = () => {

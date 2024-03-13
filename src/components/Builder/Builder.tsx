@@ -8,7 +8,7 @@ import { Experience } from "./components/Experience/Experience";
 import { Education } from "./components/Education/Education";
 import { Languages } from "./components/Languages/Languages";
 import { Social } from "./components/Social/Social";
-import { Button } from "../../shared-components/Buttons";
+import { Button } from "../../shared-components/Buttons/Buttons";
 import { Skills } from "./components/Skills/Skills";
 import { CvType } from "../../types";
 import { ResumeScore } from "./components/ResumeScore/ResumeScore";

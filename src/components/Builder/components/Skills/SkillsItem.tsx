@@ -3,7 +3,7 @@ import { CustomInput } from "../../../../shared-components/CustomInput";
 import { CV_FIELDS } from "../../../../helpers/constants";
 import { CustomRange } from "../../../../shared-components/CustomRange";
 import { Accordion } from "../../../../shared-components/Accordion";
-import { IconButtonDelete } from "../../../../shared-components/Buttons";
+import { IconButtonDelete } from "../../../../shared-components/Buttons/Buttons";
 
 interface ItemProps {
   index: number;

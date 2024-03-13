@@ -1,6 +1,6 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { EducationItem } from "./EducationItem";
-import { ButtonText } from "../../../../shared-components/Buttons";
+import { ButtonText } from "../../../../shared-components/Buttons/Buttons";
 import { EducationType } from "../../../../types";
 
 export const Education = () => {

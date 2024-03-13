@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import { TEMPLATES } from "../../helpers/constants";
 import { Routes } from "../../helpers/routes";
-import { ColorSelector } from "../../shared-components/ColorSelector";
-import { Button } from "../../shared-components/Buttons";
+import { ColorSelector } from "../../shared-components/ColorSelector/ColorSelector";
+import { Button } from "../../shared-components/Buttons/Buttons";
 
 interface Props {
   selectTemplateRoute: Dispatch<SetStateAction<Routes>>;

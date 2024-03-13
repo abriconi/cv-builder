@@ -4,11 +4,12 @@ import { SkillTypeWithId } from "../types";
 
 interface Props {
   skill: SkillTypeWithId;
+  aligning?: "self-center" | "self-auto";
 }
-export const SkillItem: React.FC<Props> = ({ skill }: Props) => {
+export const SkillItem: React.FC<Props> = ({ skill, aligning = "self-auto" }: Props) => {
   return (
     <div className="flex flex-col">
-      <p className="text-sm">{skill.skill}</p>
+      <p className={clsx(aligning, "text-sm")}>{skill.skill}</p>
       <div style={{ backgroundColor: "var(--primary-shade)" }} className="w-full h-1 relative rounded">
         <span
           style={{ backgroundColor: "var(--primary-color)" }}

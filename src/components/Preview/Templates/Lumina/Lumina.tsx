@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LUMINA, TEMPLATES } from "../../../../helpers/constants";
-import { ColorSelector } from "../../../../shared-components/ColorSelector";
+import { ColorSelector } from "../../../../shared-components/ColorSelector/ColorSelector";
 import { CvType } from "../../../../types";
 import { HeaderLumina } from "./components/HeaderLumina";
 import { DetailsLumina } from "./components/DetailsLumina";
@@ -9,7 +9,7 @@ import { SkillsLumina } from "./components/SkillsLumina/SkillsLumina";
 import { LanguageLumina } from "./components/SkillsLumina/LanguagesLumina/LanguagesLumina";
 import { SummaryLumina } from "./components/SummaryLumina";
 import { ExperienceLumina } from "./components/ExperienceLumina";
-import { EducationLumina } from "./components/EdicationLumina";
+import { EducationLumina } from "./components/EducationLumina";
 
 export const Lumina = () => {
   const [userData, setUserData] = useState<CvType | undefined>(undefined);

@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { CvType } from "../../../../types";
-import { HeaderVertex } from "./HeaderVertex";
-import { EducationVertex } from "./EducationVertex";
-import { ExperienceVertex } from "./ExperienceVertex";
-import { SummaryVertex } from "./SummaryVertex";
-import { DetailsVertex } from "./DetailsVertex";
-import { SocialVertex } from "./SocialVertex";
-import { SkillsVertex } from "./SkillsVertex";
-import { LanguagesVertex } from "./LanguagesVertex";
 import { ColorSelector } from "../../../../shared-components/ColorSelector/ColorSelector";
-import { TEMPLATES, VERTEX } from "../../../../helpers/constants";
+import { ECHO, TEMPLATES, VERTEX } from "../../../../helpers/constants";
+import { HeaderEcho } from "./HeaderEcho";
+import { SummaryEcho } from "./SummaryEcho";
+import { ExperienceEcho } from "./ExperienceEcho";
+import { EducationEcho } from "./EducationEcho";
+import { DetailsEcho } from "./DetailsEcho";
+import { SocialEcho } from "./SocialEcho";
+import { SkillsEcho } from "./SkillsEcho";
+import { LanguagesEcho } from "./LanguagesEcho";
 
-export const Vertex = () => {
+export const Echo = () => {
   const [userData, setUserData] = useState<CvType | undefined>(undefined);
   const [userPhoto, setUserPhoto] = useState(undefined);
-  const template = TEMPLATES.find((template) => template.name === VERTEX);
+  const template = TEMPLATES.find((template) => template.name === ECHO);
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,24 +54,24 @@ export const Vertex = () => {
   return (
     <div id="vertex-template" className="flex flex-col gap-5" style={{ width: "210mm" }}>
       <ColorSelector template={template} />
-      <div className="flex flex-col p-8 bg-white gap-10">
-        <HeaderVertex img={userPhoto} userData={userData} />
-        {userData && (
+      {userData && (
+        <div className="flex flex-col p-8 bg-white gap-10">
+          <HeaderEcho img={userPhoto} userData={userData} />
           <div className="flex flex-row gap-5 w-full">
-            <div className="flex flex-col gap-10 w-2/3">
-              <SummaryVertex summary={userData.summary} />
-              <ExperienceVertex experience={userData.experience} />
-              <EducationVertex education={userData.education} />
+            <div className="w-1/3 gap-5 flex flex-col items-center pr-10 pl-10">
+              <DetailsEcho country={userData.country} city={userData.city} phoneNumber={userData.phone} email={userData.email} />
+              <SocialEcho socialLinks={userData.social} />
+              <SkillsEcho skills={userData.skills} />
+              <LanguagesEcho languages={userData.languages} />
             </div>
-            <div className="w-1/3 gap-5 flex flex-col">
-              <DetailsVertex country={userData.country} city={userData.city} phoneNumber={userData.phone} email={userData.email} />
-              <SocialVertex socialLinks={userData.social} />
-              <SkillsVertex skills={userData.skills} />
-              <LanguagesVertex languages={userData.languages} />
+            <div className="flex flex-col gap-10 w-2/3">
+              <SummaryEcho summary={userData.summary} />
+              <ExperienceEcho experience={userData.experience} />
+              <EducationEcho education={userData.education} />
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

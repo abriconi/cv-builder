@@ -1,4 +1,10 @@
-import { TemplateType } from "../types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TemplateType } from "../../types";
+import { ButtonColorSelector } from "./ColorItem";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import clsx from "clsx";
+import style from "./style.module.css";
+import { useState } from "react";
 
 interface ColorSelectorProps {
   template: TemplateType | undefined;
@@ -6,8 +12,9 @@ interface ColorSelectorProps {
 
 export const ColorSelector: React.FC<ColorSelectorProps> = ({ template }: ColorSelectorProps) => {
   const root = document.documentElement;
+  const [chosenColor, setChosenColor] = useState("");
 
-  if (template) {
+  if (template && !chosenColor) {
     root.style.setProperty("--primary-color", template.colors[0].primary);
     root.style.setProperty("--primary-shade", template.colors[0].primary_shade);
   }
@@ -15,18 +22,20 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ template }: ColorS
   const handleClick = (primary: string, primaryShade: string) => {
     root.style.setProperty("--primary-color", primary);
     root.style.setProperty("--primary-shade", primaryShade);
+    setChosenColor(primary);
   };
+
   return (
     <div className="flex flex-row gap-2 items-center justify-center">
-      {/* <p className="text-white">Choose color</p> */}
       <div className="flex flex-row gap-2 h-11 items-center ">
         {template?.colors.map((color) => (
-          <button
-            key={color.color_name}
-            className={"rounded-full w-9 h-9 cursor-pointer hover:w-10 hover:h-10"}
+          <ButtonColorSelector
             onClick={() => handleClick(color.primary, color.primary_shade)}
-            style={{ backgroundColor: color.primary }}
-          />
+            color={color.primary}
+            key={color.color_name}
+            chosen={color.primary === chosenColor ? true : false}>
+            {color.primary === chosenColor && <FontAwesomeIcon icon={faCheck} color="white" className={clsx(style.check)} />}
+          </ButtonColorSelector>
         ))}
       </div>
     </div>

@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Routes } from "../../helpers/routes";
-import { TEMPLATES } from "../../helpers/constants";
-import { Button } from "../../shared-components/Buttons";
-import { useNavigate } from "react-router-dom";
+import { Button } from "../../shared-components/Buttons/Buttons";
 import { Dialog } from "../../shared-components/Dialog";
 import { ChooseTemplate } from "../ChooseTemplate/ChooseTemplate";
 
@@ -10,7 +8,6 @@ export const Preview = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [templateRoute, setTemplateRoute] = useState(Routes.Vertex);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const template = TEMPLATES.find((template) => templateRoute === template.route);
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("user");
@@ -32,7 +29,6 @@ export const Preview = () => {
   const handlePrint = () => console.log("print");
   const openDialog = () => {
     setIsDialogOpen(true);
-    // navigate(Routes.ChooseTemplatePopUp);
   };
 
   return (
@@ -48,8 +44,7 @@ export const Preview = () => {
       )}
       <div className="grow">
         {/* <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className="h-full w-full" /> */}
-
-        <iframe title="CV Preview" ref={iframeRef} src={Routes.Aurora} className="h-full w-full" />
+        <iframe title="CV Preview" ref={iframeRef} src={"/echo"} className="h-full w-full" />
       </div>
     </>
   );

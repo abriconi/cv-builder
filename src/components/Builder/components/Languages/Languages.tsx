@@ -1,5 +1,5 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { ButtonText } from "../../../../shared-components/Buttons";
+import { ButtonText } from "../../../../shared-components/Buttons/Buttons";
 import { LanguagesItem } from "./LanguagesItem";
 import { LanguagesTypeWithId } from "../../../../types";
 

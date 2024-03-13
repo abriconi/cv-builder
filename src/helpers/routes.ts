@@ -4,6 +4,7 @@ export enum Routes {
   Vertex = "/vertex",
   Lumina = "/lumina",
   Aurora = "/aurora",
+  Echo = "/echo",
 
   //   Budget = "/budget",
 

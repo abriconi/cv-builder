@@ -14,11 +14,6 @@ interface IconButtonType {
   onClick?: () => void;
 }
 
-interface ColorButtonType {
-  onClick: any;
-  color: any;
-}
-
 export const Button: React.FC<ButtonType> = ({ onClick, name, aligning = "", type = "button", icon }: ButtonType) => {
   return (
     <button
@@ -48,8 +43,4 @@ export const IconButtonDelete: React.FC<IconButtonType> = ({ onClick }: IconButt
       <FontAwesomeIcon icon={faTrashCan} />
     </button>
   );
-};
-
-export const ButtonChooseColor: React.FC<ColorButtonType> = ({ onClick, color }: ColorButtonType) => {
-  return <button className={`bg-${color} rounded-full w-10 h-10 cursor-pointer hover:w-11 hover:h-11`} onClick={onClick} />;
 };

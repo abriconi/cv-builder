@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AURORA, TEMPLATES } from "../../../../helpers/constants";
 import { CvType } from "../../../../types";
-import { ColorSelector } from "../../../../shared-components/ColorSelector";
+import { ColorSelector } from "../../../../shared-components/ColorSelector/ColorSelector";
 import { HeaderAurora } from "./HeaderAurora";
 import { SkillsAurora } from "./SkillsAurora";
 import { SocialAurora } from "./SocialAurora";
