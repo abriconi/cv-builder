@@ -1,5 +1,5 @@
-import { EducationTypeWithId } from "../../../../types";
-import { EducationItem } from "../../../../shared-components/EducationItem";
+import { EducationTypeWithId } from "../../../../../types";
+import { EducationItem } from "../../../../../shared-components/EducationItem";
 
 interface Props {
   education: EducationTypeWithId[];

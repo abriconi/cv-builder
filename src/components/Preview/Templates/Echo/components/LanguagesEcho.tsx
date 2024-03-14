@@ -1,9 +1,9 @@
-import { LanguageItem } from "../../../../shared-components/LanguageItem";
-import { SectionHeader } from "../../../../shared-components/SectionHeader/SectionHeader";
-import { LanguagesTypeWithId } from "../../../../types";
+import { LanguageItem } from "../../../../../shared-components/LanguageItem";
+import { SectionHeader } from "../../../../../shared-components/SectionHeader/SectionHeader";
+import { LanguagesType } from "../../../../../types";
 
 interface Props {
-  languages: LanguagesTypeWithId[];
+  languages: LanguagesType[];
 }
 export const LanguagesEcho: React.FC<Props> = ({ languages }) => {
   return (

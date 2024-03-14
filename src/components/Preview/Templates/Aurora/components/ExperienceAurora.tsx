@@ -1,5 +1,5 @@
-import { ExperienceTypeWithId } from "../../../../types";
-import { ExperienceItem } from "../../../../shared-components/ExperienceItem";
+import { ExperienceTypeWithId } from "../../../../../types";
+import { ExperienceItem } from "../../../../../shared-components/ExperienceItem";
 
 interface Props {
   experience: ExperienceTypeWithId[];

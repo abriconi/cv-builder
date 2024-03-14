@@ -52,7 +52,7 @@ export const HEADING = {
   notSpecified: "Not specified",
 };
 
-export const [VERTEX, LUMINA, AURORA, ECHO] = ["vertex", "lumina", "aurora", "echo"];
+export const [VERTEX, LUMINA, AURORA, ECHO, ZENITH] = ["vertex", "lumina", "aurora", "echo", "zenith"];
 export const TEMPLATES: TemplateType[] = [
   {
     name: VERTEX,
@@ -120,6 +120,27 @@ export const TEMPLATES: TemplateType[] = [
         color_name: "coral-jelly-fish",
         primary: "#12587b",
         primary_shade: "#b7ccd7",
+      },
+    ],
+  },
+  {
+    name: ZENITH,
+    route: Routes.Zenith,
+    colors: [
+      {
+        color_name: "wasteland",
+        primary: "#42496A",
+        primary_shade: "#ececf0",
+      },
+      {
+        color_name: "obsidian",
+        primary: "#5B4965",
+        primary_shade: "#bdb6c1",
+      },
+      {
+        color_name: "triadic",
+        primary: "#2E293A",
+        primary_shade: "#aba9b0",
       },
     ],
   },

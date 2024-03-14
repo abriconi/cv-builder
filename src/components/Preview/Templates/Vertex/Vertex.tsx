@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { CvType } from "../../../../types";
-import { HeaderVertex } from "./HeaderVertex";
-import { EducationVertex } from "./EducationVertex";
-import { ExperienceVertex } from "./ExperienceVertex";
-import { SummaryVertex } from "./SummaryVertex";
-import { DetailsVertex } from "./DetailsVertex";
-import { SocialVertex } from "./SocialVertex";
-import { SkillsVertex } from "./SkillsVertex";
-import { LanguagesVertex } from "./LanguagesVertex";
+import { HeaderVertex } from "./components/HeaderVertex";
+import { EducationVertex } from "./components/EducationVertex";
+import { ExperienceVertex } from "./components/ExperienceVertex";
+import { SummaryVertex } from "./components/SummaryVertex";
+import { DetailsVertex } from "./components/DetailsVertex";
+import { SocialVertex } from "./components/SocialVertex";
+import { SkillsVertex } from "./components/SkillsVertex";
+import { LanguagesVertex } from "./components/LanguagesVertex";
 import { ColorSelector } from "../../../../shared-components/ColorSelector/ColorSelector";
 import { TEMPLATES, VERTEX } from "../../../../helpers/constants";
 

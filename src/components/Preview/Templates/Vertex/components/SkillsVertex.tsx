@@ -1,11 +1,10 @@
-import React from "react";
-import { SkillTypeWithId } from "../../../../types";
-import { SkillItem } from "../../../../shared-components/SkillItem";
+import { SkillItem } from "../../../../../shared-components/SkillItem";
+import { SkillType } from "../../../../../types";
 
 interface Props {
-  skills: SkillTypeWithId[];
+  skills: SkillType[];
 }
-export const SkillsAurora: React.FC<Props> = ({ skills }: Props) => {
+export const SkillsVertex: React.FC<Props> = ({ skills }: Props) => {
   return (
     <div className="flex flex-col items-start w-full">
       <h2 className="text-l pb-1">Skills:</h2>

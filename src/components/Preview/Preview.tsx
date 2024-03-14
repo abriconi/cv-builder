@@ -44,7 +44,7 @@ export const Preview = () => {
       )}
       <div className="grow">
         {/* <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className="h-full w-full" /> */}
-        <iframe title="CV Preview" ref={iframeRef} src={"/echo"} className="h-full w-full" />
+        <iframe title="CV Preview" ref={iframeRef} src={"/zenith"} className="h-full w-full" />
       </div>
     </>
   );

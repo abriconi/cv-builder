@@ -1,5 +1,5 @@
 import React from "react";
-import { CvType } from "../../../../types";
+import { CvType } from "../../../../../types";
 
 interface HeaderProps {
   img: string | undefined;

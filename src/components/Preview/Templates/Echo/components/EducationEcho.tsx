@@ -1,7 +1,7 @@
 import React from "react";
-import { EducationTypeWithId } from "../../../../types";
-import { EducationItem } from "../../../../shared-components/EducationItem";
-import { VerticalDivider } from "../../../../shared-components/VerticalDivider/VerticalDivider";
+import { EducationTypeWithId } from "../../../../../types";
+import { EducationItem } from "../../../../../shared-components/EducationItem";
+import { VerticalDivider } from "../../../../../shared-components/VerticalDivider/VerticalDivider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 

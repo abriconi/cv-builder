@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ExperienceTypeWithId } from "../../../../types";
+import { ExperienceTypeWithId } from "../../../../../types";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
-import { ExperienceItem } from "../../../../shared-components/ExperienceItem";
-import { VerticalDivider } from "../../../../shared-components/VerticalDivider/VerticalDivider";
+import { ExperienceItem } from "../../../../../shared-components/ExperienceItem";
+import { VerticalDivider } from "../../../../../shared-components/VerticalDivider/VerticalDivider";
 
 interface Props {
   experience: ExperienceTypeWithId[];

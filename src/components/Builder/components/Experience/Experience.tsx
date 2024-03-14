@@ -1,7 +1,7 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { ExperienceItem } from "./ExperienceItem";
 import { ButtonText } from "../../../../shared-components/Buttons/Buttons";
-import { LanguagesTypeWithId } from "../../../../types";
+import { LanguagesType } from "../../../../types";
 
 export const Experience = () => {
   const { control } = useFormContext();
@@ -9,7 +9,7 @@ export const Experience = () => {
     name: "experience",
     control,
   });
-  const experience = fields as unknown as LanguagesTypeWithId[];
+  const experience = fields as unknown as LanguagesType[];
   const handleAddClick = () => append({ title: "", companyName: "", startDate: "", endDate: "", location: "", description: "" });
   const handleMove = (dragIndex: number, hoverIndex: number): void => {
     move(dragIndex, hoverIndex);
@@ -24,7 +24,7 @@ export const Experience = () => {
       {Boolean(fields?.length) && (
         <>
           {experience.map((item, index) => (
-            <ExperienceItem index={index} key={item.id} handleDelete={() => remove(index)} handleMove={handleMove} />
+            <ExperienceItem index={index} key={index} handleDelete={() => remove(index)} handleMove={handleMove} />
           ))}
         </>
       )}

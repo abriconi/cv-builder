@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { CvType } from "../../../../types";
 import { ColorSelector } from "../../../../shared-components/ColorSelector/ColorSelector";
 import { ECHO, TEMPLATES, VERTEX } from "../../../../helpers/constants";
-import { HeaderEcho } from "./HeaderEcho";
-import { SummaryEcho } from "./SummaryEcho";
-import { ExperienceEcho } from "./ExperienceEcho";
-import { EducationEcho } from "./EducationEcho";
-import { DetailsEcho } from "./DetailsEcho";
-import { SocialEcho } from "./SocialEcho";
-import { SkillsEcho } from "./SkillsEcho";
-import { LanguagesEcho } from "./LanguagesEcho";
+import { HeaderEcho } from "./components/HeaderEcho";
+import { SummaryEcho } from "./components/SummaryEcho";
+import { ExperienceEcho } from "./components/ExperienceEcho";
+import { EducationEcho } from "./components/EducationEcho";
+import { DetailsEcho } from "./components/DetailsEcho";
+import { SocialEcho } from "./components/SocialEcho";
+import { SkillsEcho } from "./components/SkillsEcho";
+import { LanguagesEcho } from "./components/LanguagesEcho";
 
 export const Echo = () => {
   const [userData, setUserData] = useState<CvType | undefined>(undefined);

@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import { SkillTypeWithId } from "../../../../../../types";
+import { SkillType } from "../../../../../../types";
 import { SKILL_LEVELS } from "../../../../../../helpers/constants";
 
 interface Props {
-  skill: SkillTypeWithId;
+  skill: SkillType;
 }
 export const SkillItemLumina: React.FC<Props> = ({ skill }: Props) => {
   return (

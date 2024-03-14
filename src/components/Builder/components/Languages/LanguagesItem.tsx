@@ -8,12 +8,11 @@ import React from "react";
 
 interface ItemProps {
   index: number;
-  id: any;
   handleDelete: (index: number) => void;
   handleMove: (dragIndex: number, hoverIndex: number) => void;
 }
 
-export const LanguagesItem: React.FC<ItemProps> = ({ index, handleDelete, handleMove, id }: ItemProps) => {
+export const LanguagesItem: React.FC<ItemProps> = ({ index, handleDelete, handleMove }: ItemProps) => {
   const { control } = useFormContext();
   const language = useWatch({
     name: `languages.${index}.language`,

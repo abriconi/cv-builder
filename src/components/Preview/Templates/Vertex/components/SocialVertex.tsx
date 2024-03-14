@@ -1,4 +1,4 @@
-import { SocialType } from "../../../../types";
+import { SocialType } from "../../../../../types";
 
 interface Props {
   socialLinks: SocialType[];

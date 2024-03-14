@@ -1,7 +1,7 @@
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { EducationTypeWithId } from "../../../../types";
-import { EducationItem } from "../../../../shared-components/EducationItem";
+import { EducationTypeWithId } from "../../../../../types";
+import { EducationItem } from "../../../../../shared-components/EducationItem";
 
 interface EducationProps {
   education: EducationTypeWithId[];

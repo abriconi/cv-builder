@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ExperienceTypeWithId } from "../../../../types";
+import { ExperienceTypeWithId } from "../../../../../types";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
-import { ExperienceItem } from "../../../../shared-components/ExperienceItem";
+import { ExperienceItem } from "../../../../../shared-components/ExperienceItem";
 
 interface ExperienceProps {
   experience: ExperienceTypeWithId[];

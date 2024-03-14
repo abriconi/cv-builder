@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { VerticalDivider } from "../../../../shared-components/VerticalDivider/VerticalDivider";
+import { VerticalDivider } from "../../../../../shared-components/VerticalDivider/VerticalDivider";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {

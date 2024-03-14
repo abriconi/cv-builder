@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CvType } from "../../../../types";
+import { CvType } from "../../../../../types";
 import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 interface HeaderProps {

@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { LANGUAGE_LEVELS } from "../../../../../../../helpers/constants";
-import { LanguagesTypeWithId } from "../../../../../../../types";
+import { LanguagesType } from "../../../../../../../types";
 
 interface Props {
-  language: LanguagesTypeWithId;
+  language: LanguagesType;
 }
 
 export const LangItemLumina: React.FC<Props> = ({ language }: Props) => {

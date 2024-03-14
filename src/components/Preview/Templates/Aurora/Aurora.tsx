@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { AURORA, TEMPLATES } from "../../../../helpers/constants";
 import { CvType } from "../../../../types";
 import { ColorSelector } from "../../../../shared-components/ColorSelector/ColorSelector";
-import { HeaderAurora } from "./HeaderAurora";
-import { SkillsAurora } from "./SkillsAurora";
-import { SocialAurora } from "./SocialAurora";
-import { LanguagesAurora } from "./LanguagesAurora";
-import { SummaryAurora } from "./SummaryAurora";
-import { ExperienceAurora } from "./ExperienceAurora";
-import { EducationAurora } from "./EducationAurora";
+import { HeaderAurora } from "./components/HeaderAurora";
+import { SkillsAurora } from "./components/SkillsAurora";
+import { SocialAurora } from "./components/SocialAurora";
+import { LanguagesAurora } from "./components/LanguagesAurora";
+import { SummaryAurora } from "./components/SummaryAurora";
+import { ExperienceAurora } from "./components/ExperienceAurora";
+import { EducationAurora } from "./components/EducationAurora";
 
 export const Aurora = () => {
   const [userData, setUserData] = useState<CvType | undefined>(undefined);

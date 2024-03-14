@@ -1,8 +1,8 @@
-import { SectionHeader } from "../../../../shared-components/SectionHeader/SectionHeader";
-import { SocialTypeWithId } from "../../../../types";
+import { SectionHeader } from "../../../../../shared-components/SectionHeader/SectionHeader";
+import { SocialType } from "../../../../../types";
 
 interface Props {
-  socialLinks: SocialTypeWithId[];
+  socialLinks: SocialType[];
 }
 export const SocialEcho: React.FC<Props> = ({ socialLinks }: Props) => {
   return (

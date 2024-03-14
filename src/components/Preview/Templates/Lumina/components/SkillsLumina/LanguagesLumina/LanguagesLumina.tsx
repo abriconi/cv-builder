@@ -1,8 +1,8 @@
-import { LanguagesTypeWithId } from "../../../../../../../types";
+import { LanguagesType } from "../../../../../../../types";
 import { LangItemLumina } from "./LangItemLumina";
 
 interface Props {
-  languages: LanguagesTypeWithId[];
+  languages: LanguagesType[];
 }
 export const LanguageLumina: React.FC<Props> = ({ languages }: Props) => {
   return (

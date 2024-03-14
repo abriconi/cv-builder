@@ -1,9 +1,9 @@
-import { SectionHeader } from "../../../../shared-components/SectionHeader/SectionHeader";
-import { SkillItem } from "../../../../shared-components/SkillItem";
-import { SkillTypeWithId } from "../../../../types";
+import { SectionHeader } from "../../../../../shared-components/SectionHeader/SectionHeader";
+import { SkillItem } from "../../../../../shared-components/SkillItem";
+import { SkillType } from "../../../../../types";
 
 interface Props {
-  skills: SkillTypeWithId[];
+  skills: SkillType[];
 }
 
 export const SkillsEcho: React.FC<Props> = ({ skills }: Props) => {

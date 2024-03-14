@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { SKILL_LEVELS } from "../helpers/constants";
-import { SkillTypeWithId } from "../types";
+import { SkillType } from "../types";
 
 interface Props {
-  skill: SkillTypeWithId;
+  skill: SkillType;
   aligning?: "self-center" | "self-auto";
 }
 export const SkillItem: React.FC<Props> = ({ skill, aligning = "self-auto" }: Props) => {

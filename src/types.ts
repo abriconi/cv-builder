@@ -54,32 +54,17 @@ export interface SkillLevels {
   expert: string;
 }
 
-export interface LanguagesType {
-  language: string;
-  level: string;
-}
-export interface LanguagesTypeWithId {
-  id: string;
-  language: string;
-  level: string;
-}
 export interface SkillType {
   skill: string;
   level: string;
 }
-export interface SkillTypeWithId {
-  id: string;
-  skill: string;
+
+export interface LanguagesType {
+  language: string;
   level: string;
 }
 
 export interface SocialType {
-  label: string;
-  link: string;
-}
-
-export interface SocialTypeWithId {
-  id: string;
   label: string;
   link: string;
 }
@@ -99,9 +84,9 @@ export interface CvType {
   nationality: string;
   education: EducationTypeWithId[] | [];
   experience: ExperienceTypeWithId[] | [];
-  languages: LanguagesTypeWithId[] | [];
-  skills: SkillTypeWithId[] | [];
-  social: SocialTypeWithId[] | [];
+  languages: LanguagesType[] | [];
+  skills: SkillType[] | [];
+  social: SocialType[] | [];
   summary: string;
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { SectionHeader } from "../../../../shared-components/SectionHeader/SectionHeader";
+import { SectionHeader } from "../../../../../shared-components/SectionHeader/SectionHeader";
 
 interface Props {
   country: string;

@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import { LanguagesTypeWithId } from "../types";
+import { LanguagesType } from "../types";
 import { LANGUAGE_LEVELS } from "../helpers/constants";
 
 interface Props {
-  language: LanguagesTypeWithId;
+  language: LanguagesType;
   aligning?: "self-center" | "self-auto";
 }
 

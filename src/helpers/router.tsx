@@ -3,6 +3,7 @@ import App from "../App";
 import { Routes } from "./routes";
 import { Suspense, lazy } from "react";
 import Loader from "../shared-components/Loader";
+import { Zenith } from "../components/Preview/Templates/Zenith/Zenith";
 
 const Lumina = lazy(() => import("./../components/Preview/Templates/Lumina/Lumina").then((module) => ({ default: module.Lumina })));
 const Vertex = lazy(() => import("./../components/Preview/Templates/Vertex/Vertex").then((module) => ({ default: module.Vertex })));
@@ -43,6 +44,14 @@ export const router = createBrowserRouter([
     element: (
       <Suspense fallback={<Loader />}>
         <Echo />
+      </Suspense>
+    ),
+  },
+  {
+    path: Routes.Zenith,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Zenith />
       </Suspense>
     ),
   },

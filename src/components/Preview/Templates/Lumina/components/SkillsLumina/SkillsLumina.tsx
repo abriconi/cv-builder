@@ -1,8 +1,8 @@
-import { SkillTypeWithId } from "../../../../../../types";
+import { SkillType } from "../../../../../../types";
 import { SkillItemLumina } from "./SkillItemLumina";
 
 interface Props {
-  skills: SkillTypeWithId[];
+  skills: SkillType[];
 }
 export const SkillsLumina: React.FC<Props> = ({ skills }: Props) => {
   return (
