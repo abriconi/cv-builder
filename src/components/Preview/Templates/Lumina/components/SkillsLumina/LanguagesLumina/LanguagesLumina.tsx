@@ -1,4 +1,5 @@
 import { LanguagesType } from "../../../../../../../types";
+import { HeadingLumina } from "../../HeadingLumina";
 import { LangItemLumina } from "./LangItemLumina";
 
 interface Props {
@@ -6,8 +7,8 @@ interface Props {
 }
 export const LanguageLumina: React.FC<Props> = ({ languages }: Props) => {
   return (
-    <div className="flex flex-col items-start w-full">
-      <h2 className="text-l pb-1 text-semibold">LANGUAGES</h2>
+    <div className="flex flex-col items-start w-full gap-2">
+      <HeadingLumina tag="h2" title="languages" uppercase={true} />
       <div className="flex flex-col gap-2 w-full">
         {languages.map((lang, index) => (
           <LangItemLumina language={lang} key={index} />

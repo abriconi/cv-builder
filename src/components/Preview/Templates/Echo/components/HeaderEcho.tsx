@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CvType } from "../../../../../types";
 import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { HeadingEcho } from "./HeadingEcho";
 
 interface HeaderProps {
   img: string | undefined;
@@ -12,20 +13,16 @@ export const HeaderEcho: React.FC<HeaderProps> = ({ img, userData }: HeaderProps
       <div className="w-1/6">
         <img src={img} alt="Uploaded user" className="object-cover aspect-square rounded-md" />
       </div>
-      <h1 className="uppercase text-2xl">
-        {userData.firstName} {userData.lastName}
-      </h1>
+      <HeadingEcho tag="h1" title={`${userData.firstName} ${userData.lastName}`} />
       <div className="flex flex-row gap-5">
-        <p>{userData.jobPosition}</p>
+        <HeadingEcho tag="h2" title={userData.jobPosition} />
         <div className="flex flex-row gap-1 items-center">
           <FontAwesomeIcon icon={faLocationDot} />
-          <p className="uppercase">
-            {userData.city}, {userData.country}
-          </p>
+          <HeadingEcho tag="h2" title={`${userData.city}, ${userData.country}`} />
         </div>
         <div className="flex flex-row gap-1 items-center">
           <FontAwesomeIcon icon={faPhone} />
-          <p className="uppercase">{userData?.phone}</p>
+          <HeadingEcho tag="h2" title={userData.phone} />
         </div>
       </div>
     </div>

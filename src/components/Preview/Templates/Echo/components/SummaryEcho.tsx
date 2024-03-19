@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { VerticalDivider } from "../../../../../shared-components/VerticalDivider/VerticalDivider";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { HeadingEcho } from "./HeadingEcho";
 
 interface Props {
   summary: string;
@@ -15,9 +16,7 @@ export const SummaryEcho: React.FC<Props> = ({ summary }: Props) => {
     <div className="flex flex-col gap-3">
       <div className="flex flex-row gap-4 items-center -ml-1.5">
         <FontAwesomeIcon icon={faUser} style={{ color: "var(--primary-color)" }} />
-        <h2 className="uppercase" style={{ color: "var(--primary-color)" }}>
-          Profile
-        </h2>
+        <HeadingEcho tag="h2" title="Profile" />
       </div>
 
       <VerticalDivider>

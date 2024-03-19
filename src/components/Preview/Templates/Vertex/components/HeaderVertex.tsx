@@ -1,5 +1,6 @@
 import React from "react";
 import { CvType } from "../../../../../types";
+import { HeadingVertex } from "./HeadingVertex";
 
 interface HeaderProps {
   img: string | undefined;
@@ -13,10 +14,8 @@ export const HeaderVertex: React.FC<HeaderProps> = ({ img, userData }: HeaderPro
         <img src={img} alt="Uploaded user" className="h-full w-full" />
       </div>
       <div className="flex flex-col gap-2">
-        <h1 className="text-2xl">
-          {userData.firstName} {userData.lastName}
-        </h1>
-        <p>{userData.jobPosition}</p>
+        <HeadingVertex tag="h1" title={`${userData.firstName} ${userData.lastName}`} />
+        <HeadingVertex tag="h2" title={userData.jobPosition} />
       </div>
     </div>
   ) : null;

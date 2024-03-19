@@ -1,5 +1,6 @@
 import React from "react";
 import { CvType } from "../../../../../types";
+import { HeadingAurora } from "./HeadingAurora";
 
 interface HeaderProps {
   img: string | undefined;
@@ -14,10 +15,8 @@ export const HeaderAurora: React.FC<HeaderProps> = ({ img, userData }: HeaderPro
 
       <div className="flex flex-col justify-between w-2/3 p-10" style={{ backgroundColor: "var(--primary-color)" }}>
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-semibold">
-            {userData?.firstName} {userData?.lastName}
-          </h1>
-          <p>{userData?.jobPosition}</p>
+          <HeadingAurora tag="h1" title={`${userData?.firstName} ${userData?.lastName}`} />
+          <HeadingAurora tag="h2" title={`${userData?.jobPosition}`} />
         </div>
         <div className="flex flex-col gap-1">
           <p>

@@ -9,7 +9,7 @@ export const ExperienceItem: React.FC<Props> = ({ item }: Props) => {
   const startDate = dateFormatter(item.startDate);
   const endDate = dateFormatter(item.endDate);
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pt-2">
       <p className="font-semibold text-sm">
         {item.title}
         {item.location && <span>{`, ${item.location}`}</span>}

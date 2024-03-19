@@ -1,5 +1,6 @@
 import { ExperienceTypeWithId } from "../../../../../types";
 import { ExperienceItem } from "../../../../../shared-components/ExperienceItem";
+import { HeadingLumina } from "./HeadingLumina";
 
 interface Props {
   experience: ExperienceTypeWithId[];
@@ -8,7 +9,7 @@ interface Props {
 export const ExperienceLumina: React.FC<Props> = ({ experience }: Props) => {
   return (
     <div className="flex flex-col gap-2 items-start">
-      <h2 className="text-xl font-semibold">Experience</h2>
+      <HeadingLumina tag="h2" title="Experience" />
 
       <div className="flex flex-col gap-2">
         {experience.map((item, index) => (

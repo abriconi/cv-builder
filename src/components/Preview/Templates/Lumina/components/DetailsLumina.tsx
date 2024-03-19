@@ -1,3 +1,5 @@
+import { HeadingLumina } from "./HeadingLumina";
+
 interface Props {
   city: string;
   country: string;
@@ -6,12 +8,14 @@ interface Props {
 }
 export const DetailsLumina: React.FC<Props> = ({ city, country, phoneNumber, email }) => {
   return (
-    <div className="flex flex-col gap-2 text-sm">
-      <h2 className="text-l pb-1 font-semibold">DETAILS</h2>
-      <p>{city}</p>
-      <p>{country}</p>
-      <p>{phoneNumber}</p>
-      <p>{email}</p>
+    <div className="flex flex-col gap-2">
+      <HeadingLumina tag="h2" title="details" uppercase={true} />
+      <div className="flex flex-col text-sm">
+        <p>{city}</p>
+        <p>{country}</p>
+        <p>{phoneNumber}</p>
+        <p>{email}</p>
+      </div>
     </div>
   );
 };

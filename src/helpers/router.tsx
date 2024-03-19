@@ -3,12 +3,12 @@ import App from "../App";
 import { Routes } from "./routes";
 import { Suspense, lazy } from "react";
 import Loader from "../shared-components/Loader";
-import { Zenith } from "../components/Preview/Templates/Zenith/Zenith";
 
 const Lumina = lazy(() => import("./../components/Preview/Templates/Lumina/Lumina").then((module) => ({ default: module.Lumina })));
 const Vertex = lazy(() => import("./../components/Preview/Templates/Vertex/Vertex").then((module) => ({ default: module.Vertex })));
 const Aurora = lazy(() => import("./../components/Preview/Templates/Aurora/Aurora").then((module) => ({ default: module.Aurora })));
 const Echo = lazy(() => import("./../components/Preview/Templates/Echo/Echo").then((module) => ({ default: module.Echo })));
+const Zenith = lazy(() => import("./../components/Preview/Templates/Zenith/Zenith").then((module) => ({ default: module.Zenith })));
 
 export const router = createBrowserRouter([
   {

@@ -1,4 +1,5 @@
 import React from "react";
+import { HeadingVertex } from "./HeadingVertex";
 
 interface Props {
   city: string;
@@ -10,7 +11,7 @@ interface Props {
 export const DetailsVertex: React.FC<Props> = ({ city, country, phoneNumber, email }: Props) => {
   return (
     <div className="flex flex-col items-start">
-      <h2 className="text-l pb-1">Details:</h2>
+      <HeadingVertex tag="h2" title="Details" />
       <p className="text-sm">{city}</p>
       <p className="text-sm">{country}</p>
       <p className="text-sm">{phoneNumber}</p>

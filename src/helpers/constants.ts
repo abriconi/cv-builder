@@ -135,12 +135,12 @@ export const TEMPLATES: TemplateType[] = [
       {
         color_name: "obsidian",
         primary: "#5B4965",
-        primary_shade: "#bdb6c1",
+        primary_shade: "#eeecef",
       },
       {
         color_name: "triadic",
         primary: "#2E293A",
-        primary_shade: "#aba9b0",
+        primary_shade: "#eae9eb",
       },
     ],
   },
