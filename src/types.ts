@@ -91,9 +91,8 @@ export interface CvType {
 }
 
 export interface ColorPalette {
-  color_name: string;
   primary: string;
-  primary_shade: string;
+  secondary: string;
 }
 
 export interface TemplateType {

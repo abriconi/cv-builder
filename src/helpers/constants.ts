@@ -59,19 +59,16 @@ export const TEMPLATES: TemplateType[] = [
     route: Routes.Vertex,
     colors: [
       {
-        color_name: "blue",
         primary: "#0000FF",
-        primary_shade: "#9999ff",
+        secondary: "#9999ff",
       },
       {
-        color_name: "green",
         primary: "#004000",
-        primary_shade: "#99b299",
+        secondary: "#99b299",
       },
       {
-        color_name: "red",
         primary: "#ff3232",
-        primary_shade: "#ffb2b2",
+        secondary: "#ffb2b2",
       },
     ],
   },
@@ -79,27 +76,25 @@ export const TEMPLATES: TemplateType[] = [
     name: LUMINA,
     route: Routes.Lumina,
     colors: [
-      { color_name: "dark-green", primary: "#133337", primary_shade: "#a0adaf" },
+      { primary: "#133337", secondary: "#a0adaf" },
       {
-        color_name: "navy-blue",
         primary: "#222F5B",
-        primary_shade: "#bcc0cd",
+        secondary: "#bcc0cd",
       },
-      { color_name: "brown", primary: "#743818", primary_shade: "#d5c3b9" },
-      { color_name: "dark-gray", primary: "#2F2F2F", primary_shade: "#c0c0c0" },
+      { primary: "#743818", secondary: "#d5c3b9" },
+      { primary: "#2F2F2F", secondary: "#c0c0c0" },
     ],
   },
   {
     name: AURORA,
     route: Routes.Aurora,
     colors: [
-      { color_name: "tiffany-blue", primary: "#81D2C7", primary_shade: "#d9f1ee" },
+      { primary: "#81D2C7", secondary: "#d9f1ee" },
       {
-        color_name: "french-gray",
         primary: "#b5bad0",
-        primary_shade: "#e8eaf0",
+        secondary: "#e8eaf0",
       },
-      { color_name: "lapis-lazuli", primary: "#a0b3c3", primary_shade: "#e2e8ed" },
+      { primary: "#a0b3c3", secondary: "#e2e8ed" },
     ],
   },
   {
@@ -107,19 +102,16 @@ export const TEMPLATES: TemplateType[] = [
     route: Routes.Echo,
     colors: [
       {
-        color_name: "space-cadette",
         primary: "#011f4b",
-        primary_shade: "#b2bbc9",
+        secondary: "#b2bbc9",
       },
       {
-        color_name: "celestial-echo",
         primary: "#35485e",
-        primary_shade: "#c2c8ce",
+        secondary: "#c2c8ce",
       },
       {
-        color_name: "coral-jelly-fish",
         primary: "#12587b",
-        primary_shade: "#b7ccd7",
+        secondary: "#b7ccd7",
       },
     ],
   },
@@ -128,19 +120,16 @@ export const TEMPLATES: TemplateType[] = [
     route: Routes.Zenith,
     colors: [
       {
-        color_name: "wasteland",
         primary: "#42496A",
-        primary_shade: "#ececf0",
+        secondary: "#ececf0",
       },
       {
-        color_name: "obsidian",
         primary: "#5B4965",
-        primary_shade: "#eeecef",
+        secondary: "#eeecef",
       },
       {
-        color_name: "triadic",
         primary: "#2E293A",
-        primary_shade: "#eae9eb",
+        secondary: "#eae9eb",
       },
     ],
   },
@@ -163,3 +152,9 @@ export const TEMPLATES: TemplateType[] = [
 // Catalyst
 // Resonance
 // Horizon
+const fromParent = {
+  primary: "#35485e",
+  primary_shade: "#c2c8ce",
+  secondary: "#35485e",
+  secondary_shade: "#c2c8ce",
+};

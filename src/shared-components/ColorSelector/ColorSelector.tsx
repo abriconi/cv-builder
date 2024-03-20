@@ -1,40 +1,38 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { TemplateType } from "../../types";
+import { ColorPalette } from "../../types";
 import { ButtonColorSelector } from "./ColorItem";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import clsx from "clsx";
 import style from "./style.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ColorSelectorProps {
-  template: TemplateType | undefined;
+  colors: ColorPalette[];
+  setColor: (color: ColorPalette) => void;
 }
 
-export const ColorSelector: React.FC<ColorSelectorProps> = ({ template }: ColorSelectorProps) => {
-  const root = document.documentElement;
-  const [chosenColor, setChosenColor] = useState("");
+export const ColorSelector: React.FC<ColorSelectorProps> = ({ colors, setColor }: ColorSelectorProps) => {
+  const [chosenColor, setChosenColor] = useState(0);
 
-  if (template && !chosenColor) {
-    root.style.setProperty("--primary-color", template.colors[0].primary);
-    root.style.setProperty("--primary-shade", template.colors[0].primary_shade);
-  }
-
-  const handleClick = (primary: string, primaryShade: string) => {
-    root.style.setProperty("--primary-color", primary);
-    root.style.setProperty("--primary-shade", primaryShade);
-    setChosenColor(primary);
+  const handleClick = (indexColor: number, color: ColorPalette) => {
+    setChosenColor(indexColor);
+    setColor(color);
   };
+
+  useEffect(() => {
+    setChosenColor(0);
+  }, [colors]);
 
   return (
     <div className="flex flex-row gap-2 items-center justify-center">
       <div className="flex flex-row gap-2 h-11 items-center ">
-        {template?.colors.map((color) => (
+        {colors.map((color, index) => (
           <ButtonColorSelector
-            onClick={() => handleClick(color.primary, color.primary_shade)}
+            onClick={() => handleClick(index, color)}
             color={color.primary}
-            key={color.color_name}
-            chosen={color.primary === chosenColor ? true : false}>
-            {color.primary === chosenColor && <FontAwesomeIcon icon={faCheck} color="white" className={clsx(style.check)} />}
+            key={index}
+            chosen={index === chosenColor ? true : false}>
+            {index === chosenColor && <FontAwesomeIcon icon={faCheck} color="white" className={clsx(style.check)} />}
           </ButtonColorSelector>
         ))}
       </div>

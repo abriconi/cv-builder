@@ -3,11 +3,30 @@ import { Routes } from "../../helpers/routes";
 import { Button } from "../../shared-components/Buttons/Buttons";
 import { Dialog } from "../../shared-components/Dialog";
 import { ChooseTemplate } from "../ChooseTemplate/ChooseTemplate";
+import { ColorSelector } from "../../shared-components/ColorSelector/ColorSelector";
+import { ColorPalette } from "../../types";
 
 export const Preview = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [templateRoute, setTemplateRoute] = useState(Routes.Vertex);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [palette, setPalette] = useState<ColorPalette[] | []>([]);
+  const [color, setColor] = useState<ColorPalette>(palette[0]);
+  const [templateRoute, setTemplateRoute] = useState<string>(Routes.Vertex);
+
+  useEffect(() => {
+    window.onmessage = function (event: MessageEvent) {
+      const receivedData = event.data;
+
+      if (receivedData.type === "message-to-parent") {
+        setPalette(receivedData.colors);
+      }
+    };
+    window.addEventListener("message", window.onmessage);
+
+    return () => {
+      window.removeEventListener("message", () => {});
+    };
+  }, []);
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("user");
@@ -26,6 +45,34 @@ export const Preview = () => {
     }
   }, [templateRoute]);
 
+  useEffect(() => {
+    const receiveMessage = (event: MessageEvent) => {
+      const receivedData = event.data;
+      if (receivedData.type === "colors-to-parent") {
+        setPalette(receivedData.colors);
+      }
+    };
+
+    window.addEventListener("message", receiveMessage);
+
+    return () => {
+      window.removeEventListener("message", () => {});
+    };
+  }, []);
+
+  useEffect(() => {
+    if (color) {
+      if (iframeRef.current) {
+        setTimeout(() => {
+          iframeRef?.current?.contentWindow?.postMessage({
+            type: "colors-to-iframe",
+            color,
+          });
+        }, 100);
+      }
+    }
+  }, [color]);
+
   const handlePrint = () => console.log("print");
   const openDialog = () => {
     setIsDialogOpen(true);
@@ -35,16 +82,16 @@ export const Preview = () => {
     <>
       <div className="flex flex-row justify-between">
         <Button name="Choose template" onClick={openDialog} />
+        {palette && <ColorSelector colors={palette} setColor={setColor} />}
         <Button name="Download PDF" aligning="self-start" onClick={handlePrint} />
       </div>
       {isDialogOpen && (
         <Dialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
-          <ChooseTemplate selectTemplateRoute={setTemplateRoute} />
+          <ChooseTemplate setTemplateRoute={setTemplateRoute} />
         </Dialog>
       )}
       <div className="grow">
-        {/* <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className="h-full w-full" /> */}
-        <iframe title="CV Preview" ref={iframeRef} src={"/lumina"} className="h-full w-full" />
+        <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className="h-full w-full" />
       </div>
     </>
   );

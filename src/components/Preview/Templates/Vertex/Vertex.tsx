@@ -8,13 +8,18 @@ import { DetailsVertex } from "./components/DetailsVertex";
 import { SocialVertex } from "./components/SocialVertex";
 import { SkillsVertex } from "./components/SkillsVertex";
 import { LanguagesVertex } from "./components/LanguagesVertex";
-import { ColorSelector } from "../../../../shared-components/ColorSelector/ColorSelector";
 import { TEMPLATES, VERTEX } from "../../../../helpers/constants";
 
 export const Vertex = () => {
   const [userData, setUserData] = useState<CvType | undefined>(undefined);
   const [userPhoto, setUserPhoto] = useState(undefined);
+  const root = document.documentElement;
   const template = TEMPLATES.find((template) => template.name === VERTEX);
+
+  if (template && template.colors.length > 0) {
+    root.style.setProperty("--primary-color", template.colors[0].primary);
+    root.style.setProperty("--primary-shade", template.colors[0].secondary);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,6 +38,17 @@ export const Vertex = () => {
   }, []);
 
   useEffect(() => {
+    if (window.top && template) {
+      // @ts-ignore
+      window.top.postMessage({
+        type: "colors-to-parent",
+        colors: template.colors,
+        templateName: template.name,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     const receiveMessage = (event: MessageEvent) => {
       if (event.origin !== "http://localhost:3000") return;
 
@@ -41,6 +57,10 @@ export const Vertex = () => {
       if (receivedData.type === "custom-message-type") {
         setUserData(receivedData.data);
         setUserPhoto(receivedData.photo);
+      }
+      if (receivedData.type === "colors-to-iframe") {
+        root.style.setProperty("--primary-color", receivedData.color.primary);
+        root.style.setProperty("--primary-shade", receivedData.color.secondary);
       }
     };
 
@@ -53,7 +73,6 @@ export const Vertex = () => {
 
   return (
     <div id="vertex-template" className="flex flex-col gap-5" style={{ width: "210mm" }}>
-      <ColorSelector template={template} />
       <div className="flex flex-col p-8 bg-white gap-10">
         <HeaderVertex img={userPhoto} userData={userData} />
         {userData && (

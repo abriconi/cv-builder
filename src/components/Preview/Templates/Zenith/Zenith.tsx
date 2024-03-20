@@ -12,7 +12,13 @@ import { SkillsZenith } from "./components/SkillsZenith";
 export const Zenith = () => {
   const [userData, setUserData] = useState<CvType | undefined>(undefined);
   const [userPhoto, setUserPhoto] = useState(undefined);
+  const root = document.documentElement;
   const template = TEMPLATES.find((template) => template.name === ZENITH);
+
+  if (template && template.colors.length > 0) {
+    root.style.setProperty("--primary-color", template.colors[0].primary);
+    root.style.setProperty("--primary-shade", template.colors[0].secondary);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,6 +37,17 @@ export const Zenith = () => {
   }, []);
 
   useEffect(() => {
+    if (window.top && template) {
+      // @ts-ignore
+      window.top.postMessage({
+        type: "colors-to-parent",
+        colors: template.colors,
+        templateName: template.name,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     const receiveMessage = (event: MessageEvent) => {
       if (event.origin !== "http://localhost:3000") return;
 
@@ -40,6 +57,12 @@ export const Zenith = () => {
         setUserData(receivedData.data);
         setUserPhoto(receivedData.photo);
       }
+      if (receivedData.type === "colors-to-iframe") {
+        console.log("works");
+
+        root.style.setProperty("--primary-color", receivedData.color.primary);
+        root.style.setProperty("--primary-shade", receivedData.color.secondary);
+      }
     };
 
     window.addEventListener("message", receiveMessage);
@@ -48,11 +71,9 @@ export const Zenith = () => {
       window.removeEventListener("message", () => {});
     };
   }, []);
-  console.log(userData);
 
   return (
     <div id="vertex-template" className="flex flex-col gap-5" style={{ width: "210mm" }}>
-      <ColorSelector template={template} />
       {userData && (
         <div className="flex flex-col p-8 bg-white gap-10" style={{ color: "var(--primary-color)" }}>
           <HeaderZenith

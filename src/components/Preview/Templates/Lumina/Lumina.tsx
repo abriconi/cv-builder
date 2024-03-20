@@ -14,6 +14,14 @@ import { EducationLumina } from "./components/EducationLumina";
 export const Lumina = () => {
   const [userData, setUserData] = useState<CvType | undefined>(undefined);
   const [userPhoto, setUserPhoto] = useState(undefined);
+  const root = document.documentElement;
+  const template = TEMPLATES.find((template) => template.name === LUMINA);
+
+  if (template && template.colors.length > 0) {
+    root.style.setProperty("--primary-color", template.colors[0].primary);
+    root.style.setProperty("--primary-shade", template.colors[0].secondary);
+  }
+
   useEffect(() => {
     const handleResize = () => {
       const zoomValue = (window.innerWidth / (document.getElementById("vertex-template")?.offsetWidth as number)).toFixed(4);
@@ -31,25 +39,41 @@ export const Lumina = () => {
   }, []);
 
   useEffect(() => {
+    if (window.top && template) {
+      // @ts-ignore
+      window.top.postMessage({
+        type: "colors-to-parent",
+        colors: template.colors,
+        templateName: template.name,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     const receiveMessage = (event: MessageEvent) => {
       if (event.origin !== "http://localhost:3000") return;
+
       const receivedData = event.data;
+
       if (receivedData.type === "custom-message-type") {
         setUserData(receivedData.data);
         setUserPhoto(receivedData.photo);
       }
+      if (receivedData.type === "colors-to-iframe") {
+        root.style.setProperty("--primary-color", receivedData.color.primary);
+        root.style.setProperty("--primary-shade", receivedData.color.secondary);
+      }
     };
+
     window.addEventListener("message", receiveMessage);
+
     return () => {
       window.removeEventListener("message", () => {});
     };
   }, []);
 
-  const template = TEMPLATES.find((template) => template.name === LUMINA);
-
   return (
     <div id="vertex-template" className="flex flex-col gap-5" style={{ width: "210mm" }}>
-      <ColorSelector template={template} />
       {userData && (
         <div className="flex flex-row">
           <div className="text-white p-8 flex flex-col gap-10 w-1/3 rounded-l" style={{ backgroundColor: "var(--primary-color)" }}>
