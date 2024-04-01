@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { MainInfo } from "./components/MainInfo";
 import { Header } from "./components/Header";
-import { AdditionalInfo } from "./components/AdditionalInfo";
 import { Summary } from "./components/Summary";
 import { Experience } from "./components/Experience/Experience";
 import { Education } from "./components/Education/Education";
@@ -12,6 +10,7 @@ import { Button } from "../../shared-components/Buttons/Buttons";
 import { Skills } from "./components/Skills/Skills";
 import { CvType } from "../../types";
 import { ResumeScore } from "./components/ResumeScore/ResumeScore";
+import { useState } from "react";
 
 export const Builder = () => {
   const [cvData, setCvData] = useState<CvType>(JSON.parse(localStorage.getItem("user") || "{}"));
@@ -25,11 +24,6 @@ export const Builder = () => {
       phone: cvData.phone || "",
       country: cvData.country || "",
       city: cvData.city || "",
-      address: cvData.address || "",
-      postalCode: cvData.postalCode || "",
-      nationality: cvData.nationality || "",
-      placeOfBirth: cvData.placeOfBirth || "",
-      dateOfBirth: cvData.dateOfBirth || "",
       summary: cvData.summary || "",
       experience: cvData.experience || [],
       education: cvData.education || [],
@@ -51,7 +45,6 @@ export const Builder = () => {
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full gap-4 ">
           <Header />
           <MainInfo />
-          <AdditionalInfo />
           <Summary />
           <Experience />
           <Education />

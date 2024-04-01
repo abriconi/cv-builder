@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { Routes } from "../../helpers/routes";
 import { Button } from "../../shared-components/Buttons/Buttons";
 import { Dialog } from "../../shared-components/Dialog";
 import { ChooseTemplate } from "../ChooseTemplate/ChooseTemplate";
 import { ColorSelector } from "../../shared-components/ColorSelector/ColorSelector";
 import { ColorPalette } from "../../types";
+import { TemplateRoutes } from "../../helpers/templatesInfo";
 
 export const Preview = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [palette, setPalette] = useState<ColorPalette[] | []>([]);
   const [color, setColor] = useState<ColorPalette>(palette[0]);
-  const [templateRoute, setTemplateRoute] = useState<string>(Routes.Vertex);
+  const [templateRoute, setTemplateRoute] = useState<string>(TemplateRoutes.Vertex);
 
   useEffect(() => {
     window.onmessage = function (event: MessageEvent) {
@@ -35,11 +35,14 @@ export const Preview = () => {
     if (storedUserData) {
       if (iframeRef.current) {
         setTimeout(() => {
-          iframeRef?.current?.contentWindow?.postMessage({
-            type: "custom-message-type",
-            data: JSON.parse(storedUserData),
-            photo: storedUserPhoto,
-          });
+          iframeRef.current?.contentWindow?.postMessage(
+            {
+              type: "custom-message-type",
+              data: JSON.parse(storedUserData),
+              photo: storedUserPhoto,
+            },
+            "*",
+          );
         }, 500);
       }
     }
@@ -64,10 +67,13 @@ export const Preview = () => {
     if (color) {
       if (iframeRef.current) {
         setTimeout(() => {
-          iframeRef?.current?.contentWindow?.postMessage({
-            type: "colors-to-iframe",
-            color,
-          });
+          iframeRef?.current?.contentWindow?.postMessage(
+            {
+              type: "colors-to-iframe",
+              color,
+            },
+            "*",
+          );
         }, 100);
       }
     }
@@ -91,7 +97,8 @@ export const Preview = () => {
         </Dialog>
       )}
       <div className="grow">
-        <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className="h-full w-full" />
+        <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className=" w-full h-full" />
+        {/* <iframe title="CV Preview" ref={iframeRef} src={Routes.Vertex} className="h-full w-full" /> */}
       </div>
     </>
   );

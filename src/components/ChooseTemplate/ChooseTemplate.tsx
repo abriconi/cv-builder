@@ -1,4 +1,4 @@
-import { TEMPLATES } from "../../helpers/constants";
+import { TEMPLATES } from "../../helpers/templatesInfo";
 import { Button } from "../../shared-components/Buttons/Buttons";
 
 interface Props {
@@ -17,6 +17,3 @@ export const ChooseTemplate: React.FC<Props> = ({ setTemplateRoute }: Props) => 
     </div>
   );
 };
-
-{
-}

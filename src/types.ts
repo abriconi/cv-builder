@@ -73,15 +73,10 @@ export interface CvType {
   jobPosition: string;
   firstName: string;
   lastName: string;
-  address: string;
-  postalCode: string;
   phone: string;
   email: string;
   city: string;
   country: string;
-  dateOfBirth: string;
-  placeOfBirth: string;
-  nationality: string;
   education: EducationTypeWithId[] | [];
   experience: ExperienceTypeWithId[] | [];
   languages: LanguagesType[] | [];
