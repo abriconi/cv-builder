@@ -1,9 +1,10 @@
-import { useFormContext } from "react-hook-form";
+import { useController, useFormContext } from "react-hook-form";
 import { CV_FIELDS } from "../../../helpers/constants";
 import { CustomInput } from "../../../shared-components/CustomInput";
 
 export const MainInfo = () => {
   const { control } = useFormContext();
+
   return (
     <>
       <h1 className="text-xl font-semibold">Personal details</h1>

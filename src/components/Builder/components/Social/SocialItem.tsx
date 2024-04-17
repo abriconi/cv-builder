@@ -27,7 +27,7 @@ export const SocialItem: React.FC<ItemProps> = ({ index, handleDelete, handleMov
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
       <Accordion title={socialName} description={link} status={status}>
         <div className="flex flex-col sm:flex-row md:flex-row gap-4">
-          <CustomInput name={`social.${index}.label`} control={control} type="text" label={CV_FIELDS.socialNet} />
+          <CustomInput name={`social.${index}.label`} control={control} type="text" label={CV_FIELDS.social} />
           <CustomInput name={`social.${index}.link`} control={control} type="text" label={CV_FIELDS.link} />
           <hr className="h-0.5" />
         </div>

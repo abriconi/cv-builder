@@ -25,17 +25,15 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ colors, setColor }
 
   return (
     <div className="flex flex-row gap-2 items-center justify-center">
-      <div className="flex flex-row gap-2 h-11 items-center ">
-        {colors.map((color, index) => (
-          <ButtonColorSelector
-            onClick={() => handleClick(index, color)}
-            color={color.primary}
-            key={index}
-            chosen={index === chosenColor ? true : false}>
-            {index === chosenColor && <FontAwesomeIcon icon={faCheck} color="white" className={clsx(style.check)} />}
-          </ButtonColorSelector>
-        ))}
-      </div>
+      {colors.map((color, index) => (
+        <ButtonColorSelector
+          onClick={() => handleClick(index, color)}
+          color={color.primary}
+          key={index}
+          chosen={index === chosenColor ? true : false}>
+          {index === chosenColor && <FontAwesomeIcon icon={faCheck} color="white" className={clsx(style.check)} />}
+        </ButtonColorSelector>
+      ))}
     </div>
   );
 };

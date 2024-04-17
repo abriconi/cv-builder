@@ -1,3 +1,4 @@
+import { CvType } from "../types";
 import { SKILL_LEVELS } from "./constants";
 
 export const dateFormatter = (date: string | undefined): string => {
@@ -20,3 +21,24 @@ export const determineSkillLevel = (skillLevel: string) =>
         : skillLevel === SKILL_LEVELS.experienced
           ? "4/5"
           : "5/5";
+
+export const roundNumber = (x: number) => {
+  if (x % 5 == 0) {
+    return Math.floor(x / 5) * 5;
+  } else {
+    return Math.floor(x / 5) * 5 + 5;
+  }
+};
+
+export const calculateScore = (cvData: CvType, scoreMap: Record<keyof CvType, number>): number => {
+  return Object.keys(scoreMap).reduce((totalScore, key) => {
+    const value = cvData[key as keyof CvType];
+    const score = scoreMap[key as keyof CvType] || 0;
+
+    if (Array.isArray(value) && value.length > 0) {
+      return totalScore + score;
+    } else {
+      return totalScore + score;
+    }
+  }, 0);
+};

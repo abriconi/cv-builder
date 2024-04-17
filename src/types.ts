@@ -93,5 +93,6 @@ export interface ColorPalette {
 export interface TemplateType {
   name: string;
   route: string;
+  img: string;
   colors: ColorPalette[];
 }

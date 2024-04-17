@@ -24,7 +24,7 @@ export const CV_FIELDS = {
   degree: "Degree",
   languages: "Language",
   level: "Level",
-  socialNet: "Social network",
+  social: "Social network",
   link: "Link",
   skill: "Skill",
 };

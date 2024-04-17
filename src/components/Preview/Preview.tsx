@@ -86,7 +86,7 @@ export const Preview = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between gap-2">
         <Button name="Choose template" onClick={openDialog} />
         {palette && <ColorSelector colors={palette} setColor={setColor} />}
         <Button name="Download PDF" aligning="self-start" onClick={handlePrint} />
@@ -98,7 +98,6 @@ export const Preview = () => {
       )}
       <div className="grow">
         <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className=" w-full h-full" />
-        {/* <iframe title="CV Preview" ref={iframeRef} src={Routes.Vertex} className="h-full w-full" /> */}
       </div>
     </>
   );
