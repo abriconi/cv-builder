@@ -43,7 +43,12 @@ export const calculateScore = (cvData: CvType, scoreMap: Record<keyof CvType, nu
   }, 0);
 };
 
-export const constructDescription = (startDate: string | undefined, endDate: string | undefined, company: string | undefined): string => {
+export const constructDescription = (
+  startDate: string | undefined,
+  endDate: string | undefined,
+  company: string | undefined,
+  isCurrentWork: boolean,
+): string => {
   const dateFormatter = (date: string | undefined): string => {
     if (date) {
       const parsedDate = new Date(`${date}-01`);
@@ -54,7 +59,11 @@ export const constructDescription = (startDate: string | undefined, endDate: str
   };
 
   const startDateFormatted = dateFormatter(startDate);
-  const endDateFormatted = dateFormatter(endDate);
+  let endDateFormatted = dateFormatter(endDate);
+
+  if (isCurrentWork) {
+    endDateFormatted = "current";
+  }
 
   let description = "";
 

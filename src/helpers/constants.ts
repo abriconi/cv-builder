@@ -43,4 +43,5 @@ export const SKILL_LEVELS: SkillLevels = {
 
 export const HEADING = {
   notSpecified: "Not specified",
+  currentlyWork: "CurrentlyWork here",
 };
