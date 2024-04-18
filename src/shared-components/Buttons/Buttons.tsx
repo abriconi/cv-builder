@@ -31,7 +31,7 @@ export const ButtonText: React.FC<ButtonType> = ({ onClick, name, aligning = "se
     <button
       type={type}
       onClick={onClick}
-      className={`${aligning} box-border py-2 px-3 bg-transparent hover:bg-gray-50 hover:border-gray-300 hover:border hover:shadow-md hover:rounded-lg text-blue-500 font-semibold`}>
+      className={`${aligning} box-border py-2 px-3 bg-transparent text-blue-500 font-semibold hover:bg-blue-50 hover:rounded-lg`}>
       {name}
     </button>
   );

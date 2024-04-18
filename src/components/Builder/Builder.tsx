@@ -42,7 +42,7 @@ export const Builder = () => {
     <>
       <ResumeScore cvData={cvData} />
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full gap-4 ">
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full gap-10 ">
           <Header />
           <MainInfo />
           <Summary />

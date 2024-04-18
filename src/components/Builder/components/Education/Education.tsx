@@ -1,24 +1,18 @@
-import { useFieldArray, useFormContext } from "react-hook-form";
+import { useFieldArray } from "react-hook-form";
 import { EducationItem } from "./EducationItem";
 import { ButtonText } from "../../../../shared-components/Buttons/Buttons";
 import { EducationType } from "../../../../types";
 
 export const Education = () => {
-  const { control } = useFormContext();
   const {
     fields,
     append,
     remove: removeParameters,
-    move,
   } = useFieldArray({
     name: "education",
-    control,
   });
   const education = fields as unknown as EducationType[];
   const handleAddClick = () => append({ school: "", degree: "", startDate: "", endDate: "", location: "", description: "" });
-  const handleMove = (dragIndex: number, hoverIndex: number): void => {
-    move(dragIndex, hoverIndex);
-  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -29,7 +23,7 @@ export const Education = () => {
       {Boolean(fields?.length) && (
         <>
           {education.map((item, index) => (
-            <EducationItem index={index} key={index} handleDelete={removeParameters} handleMove={handleMove} />
+            <EducationItem index={index} key={index} handleDelete={removeParameters} />
           ))}
         </>
       )}

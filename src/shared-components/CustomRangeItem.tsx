@@ -35,7 +35,7 @@ export const CustomRangeItem: React.FC<ItemProps> = ({ selectedLevel, selectLeve
           "bg-blue-300": isLevelSelected && isExperiencedBG,
           "bg-green-300": isLevelSelected && isExpertBG,
         },
-        "w-1/5 py-5 cursor-pointer rounded-lg flex items-center`",
+        "w-1/5 py-5 cursor-pointer rounded-lg flex items-center h-[55px]",
       )}>
       <input {...field} type="radio" id={id} className="appearance-none" onClick={selectLevel} value={levelName} />
     </label>

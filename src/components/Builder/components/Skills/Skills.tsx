@@ -1,25 +1,19 @@
-import { useFieldArray, useFormContext } from "react-hook-form";
+import { useFieldArray } from "react-hook-form";
 import { ButtonText } from "../../../../shared-components/Buttons/Buttons";
 import { SkillsItem } from "./SkillsItem";
 import { SkillType } from "../../../../types";
 
 export const Skills = () => {
-  const { control } = useFormContext();
   const {
     fields,
     append,
     remove: removeParameters,
-    move,
   } = useFieldArray({
     name: "skills",
-    control,
   });
-  const skills = fields as unknown as SkillType[];
 
+  const skills = fields as unknown as SkillType[];
   const handleAddClick = () => append({ skill: "", level: "" });
-  const handleMove = (dragIndex: number, hoverIndex: number): void => {
-    move(dragIndex, hoverIndex);
-  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -27,7 +21,7 @@ export const Skills = () => {
       {Boolean(skills?.length) && (
         <>
           {skills.map((item, index) => (
-            <SkillsItem index={index} key={index} handleDelete={removeParameters} handleMove={handleMove} />
+            <SkillsItem index={index} key={index} handleDelete={removeParameters} />
           ))}
         </>
       )}

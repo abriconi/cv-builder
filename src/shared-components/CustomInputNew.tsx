@@ -2,15 +2,16 @@ import { RegisterOptions, useController } from "react-hook-form";
 import { CV_FIELDS } from "../helpers/constants";
 
 interface InputProps {
-  name: keyof typeof CV_FIELDS;
+  name: string;
+  label: string;
   type?: React.InputHTMLAttributes<HTMLInputElement>["type"];
   rules?: RegisterOptions;
 }
-export const CustomInput: React.FC<InputProps> = ({ name, type = "text", rules }: InputProps) => {
+export const CustomInputNew: React.FC<InputProps> = ({ name, type = "text", rules, label }: InputProps) => {
   const { field, fieldState } = useController({ name, rules });
   return (
     <label className="text-gray w-full">
-      {CV_FIELDS[name]}
+      {label}
       <input
         {...field}
         type={type}
