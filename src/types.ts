@@ -1,20 +1,10 @@
 export interface ExperienceType {
-  title: string;
-  companyName: string;
-  startDate: string;
-  endDate: string;
-  location: string;
-  description: string;
-}
-
-export interface ExperienceTypeWithId {
-  id: string;
-  title: string;
-  companyName: string;
-  startDate: string;
-  endDate: string;
+  title?: string;
+  companyName?: string;
+  startDate?: string;
+  endDate?: string;
   location?: string;
-  description: string;
+  description?: string;
 }
 
 export interface EducationType {
@@ -70,19 +60,19 @@ export interface SocialType {
 }
 
 export interface CvType {
-  jobPosition: string;
-  firstName: string;
-  lastName: string;
-  phone: string;
-  email: string;
-  city: string;
-  country: string;
+  jobPosition?: string;
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+  email?: string;
+  city?: string;
+  country?: string;
   education: EducationTypeWithId[] | [];
-  experience: ExperienceTypeWithId[] | [];
+  experience: ExperienceType[] | [];
   languages: LanguagesType[] | [];
   skills: SkillType[] | [];
   social: SocialType[] | [];
-  summary: string;
+  summary?: string;
 }
 
 export interface ColorPalette {

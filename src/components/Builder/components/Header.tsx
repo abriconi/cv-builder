@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <div className="flex flex-row gap-4 items-end">
       <div className="w-1/2">
-        <CustomInput name="jobPosition" label={CV_FIELDS.jobPosition} rules={{ required: true }} />
+        <CustomInput name="jobPosition" label={CV_FIELDS.jobPosition} />
       </div>
       <div className="w-1/2">
         <CustomUploadFile />

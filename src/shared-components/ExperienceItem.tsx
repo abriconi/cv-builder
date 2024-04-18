@@ -1,8 +1,8 @@
 import { dateFormatter } from "../helpers";
-import { ExperienceTypeWithId } from "../types";
+import { ExperienceType } from "../types";
 
 interface Props {
-  item: ExperienceTypeWithId;
+  item: ExperienceType;
 }
 
 export const ExperienceItem: React.FC<Props> = ({ item }: Props) => {

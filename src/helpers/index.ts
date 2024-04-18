@@ -42,3 +42,37 @@ export const calculateScore = (cvData: CvType, scoreMap: Record<keyof CvType, nu
     }
   }, 0);
 };
+
+export const constructDescription = (startDate: string | undefined, endDate: string | undefined, company: string | undefined): string => {
+  const dateFormatter = (date: string | undefined): string => {
+    if (date) {
+      const parsedDate = new Date(`${date}-01`);
+      return new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long" }).format(parsedDate);
+    } else {
+      return "";
+    }
+  };
+
+  const startDateFormatted = dateFormatter(startDate);
+  const endDateFormatted = dateFormatter(endDate);
+
+  let description = "";
+
+  if (startDateFormatted) {
+    description += startDateFormatted;
+  }
+
+  if (endDateFormatted) {
+    if (startDateFormatted) {
+      description += ` - ${endDateFormatted}`;
+    } else {
+      description += endDateFormatted;
+    }
+  }
+
+  if (company) {
+    description += ` at ${company}`;
+  }
+
+  return description;
+};
