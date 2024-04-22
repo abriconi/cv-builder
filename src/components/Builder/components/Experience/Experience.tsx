@@ -8,7 +8,8 @@ export const Experience = () => {
     name: "experience",
   });
   const experience = fields as unknown as LanguagesType[];
-  const handleAddClick = () => append({ title: "", companyName: "", startDate: "", endDate: "", location: "", description: "" });
+  const handleAddClick = () =>
+    append({ title: "", companyName: "", startDate: "", endDate: "", location: "", description: "", isCurrentWork: false });
 
   return (
     <div className="flex flex-col gap-4">

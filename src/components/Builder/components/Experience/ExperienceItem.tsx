@@ -6,7 +6,6 @@ import { Accordion } from "../../../../shared-components/Accordion";
 import { constructDescription } from "../../../../helpers";
 import { IconButtonDelete } from "../../../../shared-components/Buttons/Buttons";
 import { Toggle } from "../../../../shared-components/Toggle/Toggle";
-import { useState } from "react";
 
 interface ItemProps {
   index: number;
@@ -26,9 +25,11 @@ export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete }: Ite
   const endDate = useWatch({
     name: `experience.${index}.endDate`,
   });
-  const [currentWork, setCurrentWork] = useState<boolean>(false);
+  const isCurrentWork = useWatch({
+    name: `experience.${index}.isCurrentWork`,
+  });
 
-  const description = constructDescription(startDate, endDate, company, currentWork);
+  const description = constructDescription(startDate, endDate, company, isCurrentWork);
   const status = experienceTitle ? false : true;
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
@@ -40,10 +41,10 @@ export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete }: Ite
           </div>
           <div className="flex flex-row gap-4">
             <CustomInput name={`experience.${index}.startDate`} type="month" label={CV_FIELDS.startDate} />
-            <CustomInput name={`experience.${index}.endDate`} type="month" label={CV_FIELDS.endDate} readonly={currentWork} />
+            <CustomInput name={`experience.${index}.endDate`} type="month" label={CV_FIELDS.endDate} readonly={isCurrentWork} />
             <CustomInput name={`experience.${index}.location`} label={CV_FIELDS.location} />
           </div>
-          <Toggle name={`experience.${index}.toggle`} label={HEADING.currentlyWork} setChecked={setCurrentWork} checked={currentWork} />
+          <Toggle name={`experience.${index}.isCurrentWork`} label={HEADING.currentlyWork} />
           <CustomTextarea name={`experience.${index}.description`} label={CV_FIELDS.description} />
         </div>
       </Accordion>

@@ -3,6 +3,7 @@ export interface ExperienceType {
   companyName?: string;
   startDate?: string;
   endDate?: string;
+  isCurrentWork?: boolean;
   location?: string;
   description?: string;
 }
