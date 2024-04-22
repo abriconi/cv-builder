@@ -1,29 +1,5 @@
 .divider {
-    position: relative;
-    width: 100%;
-    padding-left: 21px;
-}
-
-.divider::before {
-    content: "";
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border: solid var(--primary-color) 1px;
-    border-radius: 50%;
-    top: 15px;
-    left: -2px;
-}
-
-.divider::after {
-    content: "";
-    position: absolute;
     width: 1px;
-    background-color:var(--primary-color);
-    top: 20px;
-    bottom: -31px;
-    left: 0px;
-}
-.divider:last-child::after {
-    bottom: 10px;
+    background-color: gray;
+    height: 100%;
 }

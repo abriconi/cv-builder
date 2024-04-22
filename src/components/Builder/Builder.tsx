@@ -39,10 +39,10 @@ export const Builder = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col w-full gap-10 px-10 py-10">
       <ResumeScore cvData={cvData} />
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full gap-10 ">
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full gap-10">
           <Header />
           <MainInfo />
           <Summary />
@@ -54,6 +54,6 @@ export const Builder = () => {
           <Button name={"Create CV"} type="submit" />
         </form>
       </FormProvider>
-    </>
+    </div>
   );
 };

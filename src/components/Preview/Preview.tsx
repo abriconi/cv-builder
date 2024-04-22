@@ -1,14 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../../shared-components/Buttons/Buttons";
-import { Dialog } from "../../shared-components/Dialog";
-import { ChooseTemplate } from "../ChooseTemplate/ChooseTemplate";
 import { ColorSelector } from "../../shared-components/ColorSelector/ColorSelector";
 import { ColorPalette } from "../../types";
 import { TemplateRoutes } from "../../helpers/templatesInfo";
 
-export const Preview = () => {
+interface Props {
+  showTemplates: boolean;
+  setShowTemplates: (val: boolean) => void;
+}
+
+export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }: Props) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [palette, setPalette] = useState<ColorPalette[] | []>([]);
   const [color, setColor] = useState<ColorPalette>(palette[0]);
   const [templateRoute, setTemplateRoute] = useState<string>(TemplateRoutes.Vertex);
@@ -80,22 +82,14 @@ export const Preview = () => {
   }, [color]);
 
   const handlePrint = () => console.log("print");
-  const openDialog = () => {
-    setIsDialogOpen(true);
-  };
 
   return (
     <>
       <div className="flex flex-row justify-between gap-2">
-        <Button name="Choose template" onClick={openDialog} />
+        <Button name={showTemplates ? "Back to editor" : "Choose template"} onClick={() => setShowTemplates(!showTemplates)} />
         {palette && <ColorSelector colors={palette} setColor={setColor} />}
         <Button name="Download PDF" aligning="self-start" onClick={handlePrint} />
       </div>
-      {isDialogOpen && (
-        <Dialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
-          <ChooseTemplate setTemplateRoute={setTemplateRoute} />
-        </Dialog>
-      )}
       <div className="grow">
         <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className=" w-full h-full" />
       </div>

@@ -1,26 +1,16 @@
 import clsx from "clsx";
 import { TEMPLATES } from "../../helpers/templatesInfo";
-import { Button } from "../../shared-components/Buttons/Buttons";
-import style from "./style.module.css";
+import { TemplateItem } from "./TemplateItem";
 
 interface Props {
-  setTemplateRoute: (template: string) => void;
+  setTemplateRoute?: (template: string) => void;
 }
 
 export const ChooseTemplate: React.FC<Props> = ({ setTemplateRoute }: Props) => {
   return (
-    <div className="flex flex-col gap-4 p-5">
-      <h2 className="text-xl font-semibold mb-4 self-center">Templates</h2>
+    <div className="grid grid-cols-2 gap-5 bg-gray-600 px-10 py-10">
       {TEMPLATES.map((template) => (
-        <div className="flex flex-col gap-2 items-center" key={template.name} onClick={() => setTemplateRoute(template.route)}>
-          <h2 text-xl font-semibold mb-4>
-            {template.name}
-          </h2>
-          <div className={clsx(style.card)}>
-            <img src={require(`../../img/${template.img}`)}></img>
-          </div>
-          {/* <Button name={template.name} onClick={() => setTemplateRoute(template.route)} /> */}
-        </div>
+        <TemplateItem template={template} key={template.name} />
       ))}
     </div>
   );
