@@ -11,8 +11,14 @@ import { Skills } from "./components/Skills/Skills";
 import { CvType } from "../../types";
 import { ResumeScore } from "./components/ResumeScore/ResumeScore";
 import { useState } from "react";
+import clsx from "clsx";
+import style from "./style.module.css";
 
-export const Builder = () => {
+interface Props {
+  showTemplates: boolean;
+}
+
+export const Builder: React.FC<Props> = ({ showTemplates }: Props) => {
   const [cvData, setCvData] = useState<CvType>(JSON.parse(localStorage.getItem("user") || "{}"));
 
   const methods = useForm({
@@ -39,7 +45,8 @@ export const Builder = () => {
   };
 
   return (
-    <div className="flex flex-col w-full gap-10 px-10 py-10">
+    // <div className="flex flex-col w-full gap-10 px-10 py-10 absolute">
+    <div className={clsx(style.wrapper, showTemplates ? style.moveIntoDark : style.moveIntoPlace)}>
       <ResumeScore cvData={cvData} />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full gap-10">

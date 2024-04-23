@@ -1,14 +1,16 @@
 import clsx from "clsx";
 import { TEMPLATES } from "../../helpers/templatesInfo";
 import { TemplateItem } from "./TemplateItem";
+import style from "./style.module.css";
 
 interface Props {
+  showTemplates: boolean;
   setTemplateRoute?: (template: string) => void;
 }
 
-export const ChooseTemplate: React.FC<Props> = ({ setTemplateRoute }: Props) => {
+export const ChooseTemplate: React.FC<Props> = ({ setTemplateRoute, showTemplates }: Props) => {
   return (
-    <div className="grid grid-cols-2 gap-5 bg-gray-600 px-10 py-10">
+    <div className={clsx(style.wrapper, showTemplates ? style.moveIntoPlace : style.moveIntoDark)}>
       {TEMPLATES.map((template) => (
         <TemplateItem template={template} key={template.name} />
       ))}
