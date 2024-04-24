@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../../shared-components/Buttons/Buttons";
 import { ColorSelector } from "../../shared-components/ColorSelector/ColorSelector";
 import { ColorPalette } from "../../types";
-import { TemplateRoutes } from "../../helpers/templatesInfo";
+import { useTemplateContext } from "../../context/TemplateContext";
 
 interface Props {
   showTemplates: boolean;
@@ -13,7 +13,7 @@ export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }: Pr
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [palette, setPalette] = useState<ColorPalette[] | []>([]);
   const [color, setColor] = useState<ColorPalette>(palette[0]);
-  const [templateRoute, setTemplateRoute] = useState<string>(TemplateRoutes.Vertex);
+  const { template } = useTemplateContext();
 
   useEffect(() => {
     window.onmessage = function (event: MessageEvent) {
@@ -48,7 +48,7 @@ export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }: Pr
         }, 500);
       }
     }
-  }, [templateRoute]);
+  }, [template.route]);
 
   useEffect(() => {
     const receiveMessage = (event: MessageEvent) => {
@@ -91,7 +91,7 @@ export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }: Pr
         <Button name="Download PDF" aligning="self-start" onClick={handlePrint} />
       </div>
       <div className="grow">
-        <iframe title="CV Preview" ref={iframeRef} src={templateRoute} className=" w-full h-full" />
+        <iframe title="CV Preview" ref={iframeRef} src={template.route} className=" w-full h-full" />
       </div>
     </>
   );

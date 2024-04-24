@@ -11,8 +11,6 @@ import { Skills } from "./components/Skills/Skills";
 import { CvType } from "../../types";
 import { ResumeScore } from "./components/ResumeScore/ResumeScore";
 import { useState } from "react";
-import clsx from "clsx";
-import style from "./style.module.css";
 
 interface Props {
   showTemplates: boolean;
@@ -45,8 +43,7 @@ export const Builder: React.FC<Props> = ({ showTemplates }: Props) => {
   };
 
   return (
-    // <div className="flex flex-col w-full gap-10 px-10 py-10 absolute">
-    <div className={clsx(style.wrapper, showTemplates ? style.moveIntoDark : style.moveIntoPlace)}>
+    <div className="flex flex-col w-full gap-10 px-10 py-10 h-full overflow-y-auto">
       <ResumeScore cvData={cvData} />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col w-full gap-10">

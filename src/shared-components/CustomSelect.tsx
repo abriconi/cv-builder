@@ -10,7 +10,7 @@ interface SelectProps {
 }
 
 export const CustomSelect: React.FC<SelectProps> = ({ name, options, rules, label, additionalLabel = "" }: SelectProps) => {
-  const { field, fieldState } = useController({ name, rules });
+  const { field } = useController({ name, rules });
   return (
     <label className="w-full flex flex-col">
       <div className="flex flex-row justify-between">
@@ -30,7 +30,6 @@ export const CustomSelect: React.FC<SelectProps> = ({ name, options, rules, labe
           </option>
         ))}
       </select>
-      {fieldState.error && <p style={{ color: "red" }}>This field is required</p>}
     </label>
   );
 };
