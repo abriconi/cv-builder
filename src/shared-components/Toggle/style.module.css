@@ -27,14 +27,12 @@
     left: 0;
     width: 40px;
     height: 24px;
-    /* background-color: #2196F3; */
     background-color: rgb(243 244 246 );
     border-radius: 34px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   
-  /* Anahtarın yuvarlak kısmının stil */
   .toggleSwitch .toggleLabel::before {
     content: "";
     position: absolute;
@@ -48,7 +46,6 @@
     transition: transform 0.3s;
   }
   
-  /* Anahtarın etkin hale gelmesindeki stil değişiklikleri */
   .toggleSwitch .toggleInput:checked + .toggleLabel {
     background-color: #2196F3;
   }

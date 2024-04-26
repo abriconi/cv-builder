@@ -4,10 +4,11 @@ import { Preview } from "./components/Preview/Preview";
 import { ChooseTemplate } from "./components/ChooseTemplate/ChooseTemplate";
 import { VerticalDivider } from "./shared-components/VerticalDivider/VerticalDivider";
 import { TemplateProvider } from "./context/TemplateContext";
+import { TemplateType } from "./types";
+import { TEMPLATES } from "./helpers/templatesInfo";
 
 function App() {
   const [showTemplates, setShowTemplates] = useState(false);
-  console.log(showTemplates);
 
   return (
     <TemplateProvider>
