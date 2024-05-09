@@ -1,4 +1,4 @@
-import { LanguageLevels, SkillLevels } from "../types";
+import { CvType, LanguageLevels, SkillLevels } from "../types";
 
 export const CV_FIELDS = {
   jobPosition: "Job position",
@@ -44,4 +44,25 @@ export const SKILL_LEVELS: SkillLevels = {
 export const HEADING = {
   notSpecified: "Not specified",
   currentlyWork: "Currently work here",
+};
+
+export enum MESSAGE_TYPE {
+  userDataFromParentToIframe = "user-data-to-iframe",
+  templateUploaded = "template-uploaded",
+}
+
+export const defaultUserData: CvType = {
+  jobPosition: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  country: "",
+  city: "",
+  summary: "",
+  experience: [],
+  education: [],
+  languages: [],
+  social: [],
+  skills: [],
 };

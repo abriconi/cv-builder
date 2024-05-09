@@ -4,8 +4,6 @@ import { Preview } from "./components/Preview/Preview";
 import { ChooseTemplate } from "./components/ChooseTemplate/ChooseTemplate";
 import { VerticalDivider } from "./shared-components/VerticalDivider/VerticalDivider";
 import { TemplateProvider } from "./context/TemplateContext";
-import { TemplateType } from "./types";
-import { TEMPLATES } from "./helpers/templatesInfo";
 
 function App() {
   const [showTemplates, setShowTemplates] = useState(false);
@@ -16,7 +14,7 @@ function App() {
         <div className="w-1/2 relative h-full">
           {/* overflow-y-auto */}
           <ChooseTemplate showTemplates={showTemplates} />
-          <Builder showTemplates={showTemplates} />
+          <Builder />
         </div>
         <VerticalDivider />
         <div className="bg-gray-600 w-1/2 flex flex-col gap-3 pt-10 px-10 h-full pb-5 overflow-hidden">

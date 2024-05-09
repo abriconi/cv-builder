@@ -10,10 +10,12 @@ interface Props {
 }
 
 export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }: Props) => {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  // const iframeRef = useRef<HTMLIFrameElement>(null);
   const [palette, setPalette] = useState<ColorPalette[] | []>([]);
   const [color, setColor] = useState<ColorPalette>(palette[0]);
   const { template } = useTemplateContext();
+
+  const { iframeRef } = useTemplateContext();
 
   useEffect(() => {
     window.onmessage = function (event: MessageEvent) {
@@ -30,25 +32,25 @@ export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }: Pr
     };
   }, []);
 
-  useEffect(() => {
-    const storedUserData = localStorage.getItem("user");
-    const storedUserPhoto = localStorage.getItem("userPhoto");
+  // useEffect(() => {
+  //   const storedUserData = localStorage.getItem("user");
+  //   const storedUserPhoto = localStorage.getItem("userPhoto");
 
-    if (storedUserData) {
-      if (iframeRef.current) {
-        setTimeout(() => {
-          iframeRef.current?.contentWindow?.postMessage(
-            {
-              type: "custom-message-type",
-              data: JSON.parse(storedUserData),
-              photo: storedUserPhoto,
-            },
-            "*",
-          );
-        }, 500);
-      }
-    }
-  }, [template.route]);
+  //   if (storedUserData) {
+  //     if (iframeRef?.current) {
+  //       setTimeout(() => {
+  //         iframeRef.current?.contentWindow?.postMessage(
+  //           {
+  //             type: "custom-message-type",
+  //             data: JSON.parse(storedUserData),
+  //             photo: storedUserPhoto,
+  //           },
+  //           "*",
+  //         );
+  //       }, 500);
+  //     }
+  //   }
+  // }, [template.route]);
 
   useEffect(() => {
     const receiveMessage = (event: MessageEvent) => {
@@ -67,7 +69,7 @@ export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }: Pr
 
   useEffect(() => {
     if (color) {
-      if (iframeRef.current) {
+      if (iframeRef?.current) {
         setTimeout(() => {
           iframeRef?.current?.contentWindow?.postMessage(
             {
