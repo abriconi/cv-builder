@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, ReactNode, Dispatch, SetStateAction, useEffect, useRef, MutableRefObject } from "react";
 import { TEMPLATES } from "../helpers/templatesInfo";
-import { CvType, TemplateType } from "../types";
+import { ColorPalette, CvType, TemplateType } from "../types";
 import { MESSAGE_TYPE, defaultUserData } from "../helpers/constants";
 
 interface Props {
@@ -15,6 +15,11 @@ type TemplateContextType = {
   updateUserData: (cvData: CvType) => void;
   iframeRef: React.RefObject<HTMLIFrameElement> | null;
   handleIframeUpload: () => void;
+  sendColorsToIframe: (color: ColorPalette) => void;
+  palette: ColorPalette[] | [];
+  setPalette: Dispatch<SetStateAction<ColorPalette[] | []>>;
+  color: ColorPalette;
+  setColor: Dispatch<SetStateAction<ColorPalette>>;
 };
 
 const TemplateContext = createContext<TemplateContextType>({
@@ -24,6 +29,11 @@ const TemplateContext = createContext<TemplateContextType>({
   userData: defaultUserData,
   iframeRef: null,
   handleIframeUpload: () => {},
+  sendColorsToIframe: () => {},
+  palette: [],
+  setPalette: () => {},
+  color: TEMPLATES[0].colors[0],
+  setColor: () => {},
 });
 
 export const TemplateProvider = ({ children, ref }: Props) => {
@@ -31,11 +41,13 @@ export const TemplateProvider = ({ children, ref }: Props) => {
   const [template, setTemplate] = useState(TEMPLATES[0]);
   const storedUserData = localStorage.getItem("user");
   const [userData, setUserData] = useState<CvType>(storedUserData ? JSON.parse(storedUserData) : defaultUserData);
+  const [palette, setPalette] = useState<ColorPalette[] | []>(TEMPLATES[0].colors);
+  const [color, setColor] = useState<ColorPalette>(palette[0]);
 
   const updateUserData = (cvData: CvType) => {
     localStorage.setItem("user", JSON.stringify(cvData));
     setUserData(cvData);
-    sendDataToIframe(cvData, iframeRef);
+    sendDataToIframe(cvData);
   };
 
   const handleIframeUpload = () => {
@@ -43,7 +55,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
       const receivedData = event.data;
 
       if (receivedData.type === MESSAGE_TYPE.templateUploaded) {
-        sendDataToIframe(userData, iframeRef);
+        sendDataToIframe(userData);
       }
     };
 
@@ -54,7 +66,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
     };
   };
 
-  const sendDataToIframe = (userData: CvType, iframeRef: MutableRefObject<HTMLIFrameElement>) => {
+  const sendDataToIframe = (userData: CvType) => {
     iframeRef.current?.contentWindow?.postMessage(
       {
         type: MESSAGE_TYPE.userDataFromParentToIframe,
@@ -64,8 +76,33 @@ export const TemplateProvider = ({ children, ref }: Props) => {
     );
   };
 
+  const sendColorsToIframe = (color: ColorPalette) => {
+    if (color && iframeRef?.current) {
+      iframeRef?.current?.contentWindow?.postMessage(
+        {
+          type: MESSAGE_TYPE.colorsToIframe,
+          color,
+        },
+        "*",
+      );
+    }
+  };
+
   return (
-    <TemplateContext.Provider value={{ template, setTemplate, userData, updateUserData, iframeRef, handleIframeUpload }}>
+    <TemplateContext.Provider
+      value={{
+        template,
+        setTemplate,
+        userData,
+        updateUserData,
+        iframeRef,
+        handleIframeUpload,
+        sendColorsToIframe,
+        palette,
+        setPalette,
+        color,
+        setColor,
+      }}>
       {children}
     </TemplateContext.Provider>
   );

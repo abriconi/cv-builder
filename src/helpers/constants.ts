@@ -49,6 +49,8 @@ export const HEADING = {
 export enum MESSAGE_TYPE {
   userDataFromParentToIframe = "user-data-to-iframe",
   templateUploaded = "template-uploaded",
+  colorsToIframe = "colors-to-iframe",
+  colorsToParent = "colors-to-parent",
 }
 
 export const defaultUserData: CvType = {
