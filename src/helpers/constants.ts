@@ -51,6 +51,7 @@ export enum MESSAGE_TYPE {
   templateUploaded = "template-uploaded",
   colorsToIframe = "colors-to-iframe",
   colorsToParent = "colors-to-parent",
+  userPhotoToIframe = "user-photo-to-iframe",
 }
 
 export const defaultUserData: CvType = {

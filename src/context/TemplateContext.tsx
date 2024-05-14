@@ -2,6 +2,7 @@ import { createContext, useState, useContext, ReactNode, Dispatch, SetStateActio
 import { TEMPLATES } from "../helpers/templatesInfo";
 import { ColorPalette, CvType, TemplateType } from "../types";
 import { MESSAGE_TYPE, defaultUserData } from "../helpers/constants";
+import { toBase64 } from "../helpers";
 
 interface Props {
   children: ReactNode;
@@ -20,6 +21,9 @@ type TemplateContextType = {
   color: ColorPalette;
   setColor: Dispatch<SetStateAction<ColorPalette>>;
   getColorPaletteFromIframe: () => void;
+  userPhoto: string | null;
+  updateUserPhoto: (file: File | undefined) => void;
+  deleteUserPhoto: () => void;
 };
 
 const TemplateContext = createContext<TemplateContextType>({
@@ -34,20 +38,43 @@ const TemplateContext = createContext<TemplateContextType>({
   color: TEMPLATES[0].colors[0],
   setColor: () => {},
   getColorPaletteFromIframe: () => {},
+  userPhoto: null,
+  updateUserPhoto: () => {},
+  deleteUserPhoto: () => {},
 });
 
 export const TemplateProvider = ({ children, ref }: Props) => {
   const iframeRef = useRef<HTMLIFrameElement>(ref || null);
   const [template, setTemplate] = useState(TEMPLATES[0]);
   const storedUserData = localStorage.getItem("user");
+  const storedUserPhoto = localStorage.getItem("userPhoto");
   const [userData, setUserData] = useState<CvType>(storedUserData ? JSON.parse(storedUserData) : defaultUserData);
   const [palette, setPalette] = useState<ColorPalette[] | []>(TEMPLATES[0].colors);
   const [color, setColor] = useState<ColorPalette>(palette[0]);
+  const [userPhoto, setUserPhoto] = useState<string | null>(storedUserPhoto || null);
 
   const updateUserData = (cvData: CvType) => {
     localStorage.setItem("user", JSON.stringify(cvData));
     setUserData(cvData);
     sendUserDataToIframe(cvData);
+  };
+
+  const updateUserPhoto = async (file: File | undefined) => {
+    if (!file) {
+      localStorage.removeItem("userPhoto");
+      return;
+    } else {
+      const image = await toBase64(file);
+      setUserPhoto(image);
+      localStorage.setItem("userPhoto", image);
+      sendUserPhotoToIframe(userPhoto);
+    }
+  };
+
+  const deleteUserPhoto = () => {
+    localStorage.removeItem("userPhoto");
+    setUserPhoto(null);
+    sendUserPhotoToIframe(null);
   };
 
   const handleIframeUpload = () => {
@@ -56,6 +83,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
 
       if (receivedData.type === MESSAGE_TYPE.templateUploaded) {
         sendUserDataToIframe(userData);
+        sendUserPhotoToIframe(userPhoto);
       }
     };
 
@@ -104,6 +132,18 @@ export const TemplateProvider = ({ children, ref }: Props) => {
     }
   };
 
+  const sendUserPhotoToIframe = (photo: string | null) => {
+    if (iframeRef?.current) {
+      iframeRef?.current?.contentWindow?.postMessage(
+        {
+          type: MESSAGE_TYPE.userPhotoToIframe,
+          photo,
+        },
+        "*",
+      );
+    }
+  };
+
   return (
     <TemplateContext.Provider
       value={{
@@ -118,6 +158,9 @@ export const TemplateProvider = ({ children, ref }: Props) => {
         color,
         setColor,
         getColorPaletteFromIframe,
+        userPhoto,
+        updateUserPhoto,
+        deleteUserPhoto,
       }}>
       {children}
     </TemplateContext.Provider>
