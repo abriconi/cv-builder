@@ -15,11 +15,11 @@ type TemplateContextType = {
   updateUserData: (cvData: CvType) => void;
   iframeRef: React.RefObject<HTMLIFrameElement> | null;
   handleIframeUpload: () => void;
-  sendColorsToIframe: (color: ColorPalette) => void;
+  sendColorToIframe: (color: ColorPalette) => void;
   palette: ColorPalette[] | [];
-  setPalette: Dispatch<SetStateAction<ColorPalette[] | []>>;
   color: ColorPalette;
   setColor: Dispatch<SetStateAction<ColorPalette>>;
+  getColorPaletteFromIframe: () => void;
 };
 
 const TemplateContext = createContext<TemplateContextType>({
@@ -29,11 +29,11 @@ const TemplateContext = createContext<TemplateContextType>({
   userData: defaultUserData,
   iframeRef: null,
   handleIframeUpload: () => {},
-  sendColorsToIframe: () => {},
+  sendColorToIframe: () => {},
   palette: [],
-  setPalette: () => {},
   color: TEMPLATES[0].colors[0],
   setColor: () => {},
+  getColorPaletteFromIframe: () => {},
 });
 
 export const TemplateProvider = ({ children, ref }: Props) => {
@@ -47,7 +47,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
   const updateUserData = (cvData: CvType) => {
     localStorage.setItem("user", JSON.stringify(cvData));
     setUserData(cvData);
-    sendDataToIframe(cvData);
+    sendUserDataToIframe(cvData);
   };
 
   const handleIframeUpload = () => {
@@ -55,7 +55,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
       const receivedData = event.data;
 
       if (receivedData.type === MESSAGE_TYPE.templateUploaded) {
-        sendDataToIframe(userData);
+        sendUserDataToIframe(userData);
       }
     };
 
@@ -66,7 +66,23 @@ export const TemplateProvider = ({ children, ref }: Props) => {
     };
   };
 
-  const sendDataToIframe = (userData: CvType) => {
+  const getColorPaletteFromIframe = () => {
+    const receiveMessage = (event: MessageEvent) => {
+      const receivedData = event.data;
+      if (receivedData.type === MESSAGE_TYPE.colorsToParent) {
+        setPalette(receivedData.colors);
+        sendColorToIframe(palette[0]);
+      }
+    };
+
+    window.addEventListener("message", receiveMessage);
+
+    return () => {
+      window.removeEventListener("message", () => {});
+    };
+  };
+
+  const sendUserDataToIframe = (userData: CvType) => {
     iframeRef.current?.contentWindow?.postMessage(
       {
         type: MESSAGE_TYPE.userDataFromParentToIframe,
@@ -76,7 +92,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
     );
   };
 
-  const sendColorsToIframe = (color: ColorPalette) => {
+  const sendColorToIframe = (color: ColorPalette) => {
     if (color && iframeRef?.current) {
       iframeRef?.current?.contentWindow?.postMessage(
         {
@@ -97,11 +113,11 @@ export const TemplateProvider = ({ children, ref }: Props) => {
         updateUserData,
         iframeRef,
         handleIframeUpload,
-        sendColorsToIframe,
+        sendColorToIframe,
         palette,
-        setPalette,
         color,
         setColor,
+        getColorPaletteFromIframe,
       }}>
       {children}
     </TemplateContext.Provider>
