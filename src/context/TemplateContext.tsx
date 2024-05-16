@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, ReactNode, Dispatch, SetStateAction, useEffect, useRef, MutableRefObject } from "react";
+import { createContext, useState, useContext, ReactNode, Dispatch, SetStateAction, useRef } from "react";
 import { TEMPLATES } from "../helpers/templatesInfo";
 import { ColorPalette, CvType, TemplateType } from "../types";
 import { MESSAGE_TYPE, defaultUserData } from "../helpers/constants";
@@ -67,7 +67,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
       const image = await toBase64(file);
       setUserPhoto(image);
       localStorage.setItem("userPhoto", image);
-      sendUserPhotoToIframe(userPhoto);
+      sendUserPhotoToIframe(image);
     }
   };
 
@@ -99,7 +99,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
       const receivedData = event.data;
       if (receivedData.type === MESSAGE_TYPE.colorsToParent) {
         setPalette(receivedData.colors);
-        sendColorToIframe(palette[0]);
+        sendColorToIframe(receivedData.colors[0]);
       }
     };
 
@@ -124,7 +124,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
     if (color && iframeRef?.current) {
       iframeRef?.current?.contentWindow?.postMessage(
         {
-          type: MESSAGE_TYPE.colorsToIframe,
+          type: MESSAGE_TYPE.chosenColorToIframe,
           color,
         },
         "*",
@@ -133,15 +133,13 @@ export const TemplateProvider = ({ children, ref }: Props) => {
   };
 
   const sendUserPhotoToIframe = (photo: string | null) => {
-    if (iframeRef?.current) {
-      iframeRef?.current?.contentWindow?.postMessage(
-        {
-          type: MESSAGE_TYPE.userPhotoToIframe,
-          photo,
-        },
-        "*",
-      );
-    }
+    iframeRef?.current?.contentWindow?.postMessage(
+      {
+        type: MESSAGE_TYPE.userPhotoToIframe,
+        photo,
+      },
+      "*",
+    );
   };
 
   return (

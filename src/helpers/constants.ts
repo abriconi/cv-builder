@@ -49,7 +49,7 @@ export const HEADING = {
 export enum MESSAGE_TYPE {
   userDataFromParentToIframe = "user-data-to-iframe",
   templateUploaded = "template-uploaded",
-  colorsToIframe = "colors-to-iframe",
+  chosenColorToIframe = "chosen-color-to-iframe",
   colorsToParent = "colors-to-parent",
   userPhotoToIframe = "user-photo-to-iframe",
 }

@@ -12,7 +12,6 @@ function App() {
     <TemplateProvider>
       <div className="flex flex-row h-lvh overflow-hidden">
         <div className="w-1/2 relative h-full">
-          {/* overflow-y-auto */}
           <ChooseTemplate showTemplates={showTemplates} />
           <Builder />
         </div>
