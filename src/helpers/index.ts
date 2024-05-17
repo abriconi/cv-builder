@@ -35,11 +35,15 @@ export const calculateScore = (cvData: CvType, scoreMap: Record<keyof CvType, nu
     const value = cvData[key as keyof CvType];
     const score = scoreMap[key as keyof CvType] || 0;
 
-    if (Array.isArray(value) && value.length > 0) {
-      return totalScore + score;
-    } else {
+    if (Array.isArray(value)) {
+      if (value.length > 0) {
+        return totalScore + score;
+      }
+    } else if (value) {
       return totalScore + score;
     }
+
+    return totalScore;
   }, 0);
 };
 
