@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Button } from "../../shared-components/Buttons/Buttons";
 import { ColorSelector } from "../../shared-components/ColorSelector/ColorSelector";
 import { useTemplateContext } from "../../context/TemplateContext";
+import styles from "../main-style.module.css";
+import clsx from "clsx";
 
 interface Props {
   showTemplates: boolean;
@@ -12,20 +14,19 @@ export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }: Pr
   const { template, color, setColor, getColorPaletteFromIframe, palette, iframeRef, sendColorToIframe } = useTemplateContext();
 
   useEffect(() => getColorPaletteFromIframe(), []);
-
   useEffect(() => sendColorToIframe(color), [color]);
 
-  const handlePrint = () => console.log("print");
+  const handleClick = () => console.log("print");
 
   return (
     <>
-      <div className="flex flex-row justify-between gap-2">
+      <div className={clsx("flex flex-row justify-between gap-2", styles.noPrint)}>
         <Button name={showTemplates ? "Back to editor" : "Choose template"} onClick={() => setShowTemplates(!showTemplates)} />
         {palette && <ColorSelector colors={palette} setColor={setColor} />}
-        <Button name="Download PDF" aligning="self-start" onClick={handlePrint} />
+        <Button name="Download PDF" aligning="self-start" onClick={handleClick} />
       </div>
-      <div className="grow">
-        <iframe title="CV Preview" ref={iframeRef} src={template.route} className=" w-full h-full" />
+      <div className={clsx("grow", styles.print)}>
+        <iframe title="CV Preview" ref={iframeRef} src={template.route} className={clsx("w-full h-full")} />
       </div>
     </>
   );
