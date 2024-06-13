@@ -1,6 +1,7 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useTemplateContext } from "../../context/TemplateContext";
 
 interface ButtonType {
   onClick?: () => void;
@@ -43,4 +44,12 @@ export const IconButtonDelete: React.FC<IconButtonType> = ({ onClick }: IconButt
       <FontAwesomeIcon icon={faTrashCan} />
     </button>
   );
+};
+
+export const ButtonDeletePhoto = () => {
+  const { userPhoto, deleteUserPhoto } = useTemplateContext();
+
+  if (!userPhoto) return null;
+
+  return <ButtonText name="Delete photo" onClick={deleteUserPhoto} aligning="self-center" />;
 };

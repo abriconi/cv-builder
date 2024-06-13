@@ -4,8 +4,6 @@ import { Preview } from "./components/Preview/Preview";
 import { ChooseTemplate } from "./components/ChooseTemplate/ChooseTemplate";
 import { VerticalDivider } from "./shared-components/VerticalDivider/VerticalDivider";
 import { TemplateProvider } from "./context/TemplateContext";
-import styles from "./components/main-style.module.css";
-import clsx from "clsx";
 
 function App() {
   const [showTemplates, setShowTemplates] = useState(false);
@@ -13,12 +11,12 @@ function App() {
   return (
     <TemplateProvider>
       <div className="flex flex-row h-lvh overflow-hidden">
-        <div className={clsx("w-1/2 relative h-full", styles.noPrint)}>
+        <div className="w-1/2 relative h-full">
           <ChooseTemplate showTemplates={showTemplates} />
           <Builder />
         </div>
         <VerticalDivider />
-        <div className={clsx("bg-gray-600 w-1/2 flex flex-col gap-3 pt-10 px-10 h-full pb-5 overflow-hidden", styles.parentPrint)}>
+        <div className="bg-gray-600 w-1/2 flex flex-col gap-3 pt-10 px-10 h-full pb-5 overflow-hidden">
           <Preview showTemplates={showTemplates} setShowTemplates={setShowTemplates} />
         </div>
       </div>

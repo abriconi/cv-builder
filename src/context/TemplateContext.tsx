@@ -24,6 +24,7 @@ type TemplateContextType = {
   userPhoto: string | null;
   updateUserPhoto: (file: File | undefined) => void;
   deleteUserPhoto: () => void;
+  handlePrint: () => void;
 };
 
 const TemplateContext = createContext<TemplateContextType>({
@@ -41,6 +42,7 @@ const TemplateContext = createContext<TemplateContextType>({
   userPhoto: null,
   updateUserPhoto: () => {},
   deleteUserPhoto: () => {},
+  handlePrint: () => {},
 });
 
 export const TemplateProvider = ({ children, ref }: Props) => {
@@ -142,6 +144,17 @@ export const TemplateProvider = ({ children, ref }: Props) => {
     );
   };
 
+  const handlePrint = () => {
+    if (iframeRef?.current) {
+      iframeRef?.current?.contentWindow?.postMessage(
+        {
+          type: "print",
+        },
+        "*",
+      );
+    }
+  };
+
   return (
     <TemplateContext.Provider
       value={{
@@ -159,6 +172,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
         userPhoto,
         updateUserPhoto,
         deleteUserPhoto,
+        handlePrint,
       }}>
       {children}
     </TemplateContext.Provider>

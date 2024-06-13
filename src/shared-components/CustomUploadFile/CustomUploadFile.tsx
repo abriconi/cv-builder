@@ -1,7 +1,6 @@
-import { ButtonText } from "../Buttons/Buttons";
 import { useTemplateContext } from "../../context/TemplateContext";
 import { UserPhoto } from "./UserPhoto";
-import { ButtonDeletePhoto } from "./ButtonDeletePhoto";
+import { ButtonDeletePhoto } from "../Buttons/Buttons";
 
 export const CustomUploadFile = () => {
   const { updateUserPhoto } = useTemplateContext();

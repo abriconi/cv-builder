@@ -1,4 +1,4 @@
-import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { MainInfo } from "./components/MainInfo";
 import { Header } from "./components/Header";
 import { Summary } from "./components/Summary";
@@ -6,7 +6,6 @@ import { Experience } from "./components/Experience/Experience";
 import { Education } from "./components/Education/Education";
 import { Languages } from "./components/Languages/Languages";
 import { Social } from "./components/Social/Social";
-import { Button } from "../../shared-components/Buttons/Buttons";
 import { Skills } from "./components/Skills/Skills";
 import { ResumeScore } from "./components/ResumeScore/ResumeScore";
 import { useEffect } from "react";
@@ -40,7 +39,6 @@ export const Builder = () => {
           <Languages />
           <Social />
           <Skills />
-          <Button name={"Create CV"} type="submit" />
         </form>
       </FormProvider>
     </div>
