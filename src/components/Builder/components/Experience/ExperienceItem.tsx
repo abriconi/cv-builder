@@ -3,9 +3,10 @@ import { CustomInput } from "../../../../shared-components/CustomInput";
 import { CustomTextarea } from "../../../../shared-components/CustomTextarea";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { constructDescription } from "../../../../helpers";
-import { IconButtonDelete } from "../../../../shared-components/Buttons/Buttons";
+import { ButtonIcon } from "../../../../shared-components/Buttons/Buttons";
 import { Toggle } from "../../../../shared-components/Toggle/Toggle";
 import { CV_FIELDS, HEADING } from "../../../../helpers/enums";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   index: number;
@@ -52,7 +53,7 @@ export const ExperienceItem: React.FC<Props> = ({ index, handleDelete }) => {
           <CustomTextarea name={`experience.${index}.description`} label={CV_FIELDS.description} />
         </div>
       </Accordion>
-      <IconButtonDelete onClick={handleDelete} />
+      <ButtonIcon onClick={handleDelete} icon={faTrashCan} />
     </div>
   );
 };

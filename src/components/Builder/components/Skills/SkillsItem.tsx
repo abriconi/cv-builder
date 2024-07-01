@@ -2,8 +2,9 @@ import { useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
 import { CustomRange } from "../../../../shared-components/CustomRange";
 import { Accordion } from "../../../../shared-components/Accordion";
-import { IconButtonDelete } from "../../../../shared-components/Buttons/Buttons";
+import { ButtonIcon } from "../../../../shared-components/Buttons/Buttons";
 import { CV_FIELDS } from "../../../../helpers/enums";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   index: number;
@@ -28,7 +29,7 @@ export const SkillsItem: React.FC<Props> = ({ index, handleDelete }) => {
           <CustomRange name={`skills.${index}.level`} id={`${index}-level`} level={level} />
         </div>
       </Accordion>
-      <IconButtonDelete onClick={() => handleDelete(index)} />
+      <ButtonIcon onClick={() => handleDelete(index)} icon={faTrashCan} />
     </div>
   );
 };

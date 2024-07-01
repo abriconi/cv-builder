@@ -1,9 +1,9 @@
 import { useTemplateContext } from "../../context/TemplateContext";
 import { UserPhoto } from "./UserPhoto";
-import { ButtonDeletePhoto } from "../Buttons/Buttons";
+import { ButtonText } from "../Buttons/Buttons";
 
 export const CustomUploadFile = () => {
-  const { updateUserPhoto } = useTemplateContext();
+  const { updateUserPhoto, userPhoto, deleteUserPhoto } = useTemplateContext();
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -16,7 +16,7 @@ export const CustomUploadFile = () => {
         <input type="file" onChange={(e) => handleChange(e)} className="hidden" accept="image/png, image/jpeg" size={4000000} />
         <UserPhoto />
       </label>
-      <ButtonDeletePhoto />
+      {userPhoto && <ButtonText onClick={deleteUserPhoto} name="Delete photo" />}
     </div>
   );
 };

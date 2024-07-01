@@ -1,8 +1,9 @@
 import { useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
 import { Accordion } from "../../../../shared-components/Accordion";
-import { IconButtonDelete } from "../../../../shared-components/Buttons/Buttons";
+import { ButtonIcon } from "../../../../shared-components/Buttons/Buttons";
 import { CV_FIELDS } from "../../../../helpers/enums";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   index: number;
@@ -28,7 +29,7 @@ export const SocialItem: React.FC<Props> = ({ index, handleDelete }) => {
           <hr className="h-0.5" />
         </div>
       </Accordion>
-      <IconButtonDelete onClick={() => handleDelete(index)} />
+      <ButtonIcon onClick={() => handleDelete(index)} icon={faTrashCan} />
     </div>
   );
 };
