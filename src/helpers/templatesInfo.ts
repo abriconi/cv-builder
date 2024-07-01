@@ -1,13 +1,13 @@
 import { TemplateType } from "../types";
 
-export const [VERTEX, LUMINA, AURORA, ECHO, ZENITH] = ["vertex", "lumina", "aurora", "echo", "zenith"];
+const [VERTEX, LUMINA, AURORA, ECHO, ZENITH] = ["vertex", "lumina", "aurora", "echo", "zenith"];
 
-export enum TemplateRoutes {
-  Vertex = "http://localhost:5173/vertex",
-  Lumina = "http://localhost:5173/lumina",
-  Zenith = "http://localhost:5173/zenith",
-  Echo = "http://localhost:5173/echo",
-  Aurora = "http://localhost:5173/aurora",
+enum TemplateRoutes {
+  Vertex = "http://localhost:5174/vertex",
+  Lumina = "http://localhost:5174/lumina",
+  Zenith = "http://localhost:5174/zenith",
+  Echo = "http://localhost:5174/echo",
+  Aurora = "http://localhost:5174/aurora",
 }
 
 export const TEMPLATES: TemplateType[] = [

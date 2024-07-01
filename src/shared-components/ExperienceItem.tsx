@@ -5,7 +5,7 @@ interface Props {
   item: ExperienceType;
 }
 
-export const ExperienceItem: React.FC<Props> = ({ item }: Props) => {
+export const ExperienceItem: React.FC<Props> = ({ item }) => {
   const startDate = dateFormatter(item.startDate);
   const endDate = dateFormatter(item.endDate);
   return (

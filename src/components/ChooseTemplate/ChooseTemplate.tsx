@@ -6,7 +6,7 @@ import { useTemplateContext } from "../../context/TemplateContext";
 interface Props {
   showTemplates: boolean;
 }
-export const ChooseTemplate: React.FC<Props> = ({ showTemplates }: Props) => {
+export const ChooseTemplate: React.FC<Props> = ({ showTemplates }) => {
   const { template } = useTemplateContext();
   return (
     <div

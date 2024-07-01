@@ -1,4 +1,4 @@
-import { CV_FIELDS } from "../../../helpers/constants";
+import { CV_FIELDS } from "../../../helpers/enums";
 import { CustomInput } from "../../../shared-components/CustomInput";
 
 export const MainInfo = () => {

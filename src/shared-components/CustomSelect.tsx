@@ -9,7 +9,7 @@ interface SelectProps {
   additionalLabel?: string;
 }
 
-export const CustomSelect: React.FC<SelectProps> = ({ name, options, rules, label, additionalLabel = "" }: SelectProps) => {
+export const CustomSelect: React.FC<SelectProps> = ({ name, options, rules, label, additionalLabel = "" }) => {
   const { field } = useController({ name, rules });
   return (
     <label className="w-full flex flex-col">

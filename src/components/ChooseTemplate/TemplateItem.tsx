@@ -9,10 +9,10 @@ interface Props {
   templateItem: TemplateType;
   chosen: boolean;
 }
-export const TemplateItem: React.FC<Props> = ({ templateItem, chosen }: Props) => {
+export const TemplateItem: React.FC<Props> = ({ templateItem, chosen }) => {
   const { setTemplate } = useTemplateContext();
   return (
-    <div className="flex flex-col gap-1 items-center" key={templateItem.name} onClick={() => setTemplate(templateItem)}>
+    <div className="flex flex-col gap-1 items-center" onClick={() => setTemplate(templateItem)}>
       <h2 className="text-l text-white capitalize">{templateItem.name}</h2>
       <button
         type="button"

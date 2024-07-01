@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { HEADING } from "../helpers/constants";
+import { HEADING } from "../helpers/enums";
 
-interface AccordionProps {
+interface Props {
   title?: string;
   description?: string;
   status: boolean;
   children: any;
 }
 
-export const Accordion: React.FC<AccordionProps> = ({ title, description, children, status }: AccordionProps) => {
+export const Accordion: React.FC<Props> = ({ title, description, children, status }) => {
   const [isOpen, setIsOpen] = useState(status);
 
   return (

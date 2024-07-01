@@ -8,7 +8,7 @@ interface Props {
   setShowTemplates: (val: boolean) => void;
 }
 
-export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }: Props) => {
+export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }) => {
   const { template, color, setColor, getColorPaletteFromIframe, palette, iframeRef, sendColorToIframe, handlePrint } = useTemplateContext();
 
   useEffect(() => getColorPaletteFromIframe(), []);

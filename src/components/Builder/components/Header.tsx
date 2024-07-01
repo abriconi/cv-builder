@@ -1,5 +1,5 @@
+import { CV_FIELDS } from "../../../helpers/enums";
 import { CustomInput } from "../../../shared-components/CustomInput";
-import { CV_FIELDS } from "../../../helpers/constants";
 import { CustomUploadFile } from "../../../shared-components/CustomUploadFile/CustomUploadFile";
 
 export const Header = () => {

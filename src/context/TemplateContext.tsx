@@ -1,13 +1,9 @@
-import { createContext, useState, useContext, ReactNode, Dispatch, SetStateAction, useRef } from "react";
+import { createContext, useState, useContext, Dispatch, SetStateAction, useRef, PropsWithChildren } from "react";
 import { TEMPLATES } from "../helpers/templatesInfo";
 import { ColorPalette, CvType, TemplateType } from "../types";
-import { MESSAGE_TYPE, defaultUserData } from "../helpers/constants";
+import { defaultUserData } from "../helpers/constants";
 import { toBase64 } from "../helpers";
-
-interface Props {
-  children: ReactNode;
-  ref?: any;
-}
+import { MESSAGE_TYPE } from "../helpers/enums";
 
 type TemplateContextType = {
   template: TemplateType;
@@ -45,8 +41,8 @@ const TemplateContext = createContext<TemplateContextType>({
   handlePrint: () => {},
 });
 
-export const TemplateProvider = ({ children, ref }: Props) => {
-  const iframeRef = useRef<HTMLIFrameElement>(ref || null);
+export const TemplateProvider = ({ children }: PropsWithChildren) => {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [template, setTemplate] = useState(TEMPLATES[0]);
   const storedUserData = localStorage.getItem("user");
   const storedUserPhoto = localStorage.getItem("userPhoto");
@@ -108,7 +104,7 @@ export const TemplateProvider = ({ children, ref }: Props) => {
     window.addEventListener("message", receiveMessage);
 
     return () => {
-      window.removeEventListener("message", () => {});
+      window.removeEventListener("message", receiveMessage);
     };
   };
 

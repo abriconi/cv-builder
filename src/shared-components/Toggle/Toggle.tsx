@@ -7,7 +7,7 @@ interface Props {
   label: string;
 }
 
-export const Toggle: React.FC<Props> = ({ name, label }: Props) => {
+export const Toggle: React.FC<Props> = ({ name, label }) => {
   const { field } = useController({ name });
 
   return (

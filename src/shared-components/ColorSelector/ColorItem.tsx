@@ -8,7 +8,7 @@ interface Props {
   children?: ReactNode;
   chosen?: boolean;
 }
-export const ButtonColorSelector: React.FC<Props> = ({ onClick, color, children, chosen }: Props) => {
+export const ButtonColorSelector: React.FC<Props> = ({ onClick, color, children, chosen }) => {
   return (
     <button
       type="button"

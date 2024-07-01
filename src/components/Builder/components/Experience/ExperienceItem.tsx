@@ -1,18 +1,18 @@
 import { useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS, HEADING } from "../../../../helpers/constants";
 import { CustomTextarea } from "../../../../shared-components/CustomTextarea";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { constructDescription } from "../../../../helpers";
 import { IconButtonDelete } from "../../../../shared-components/Buttons/Buttons";
 import { Toggle } from "../../../../shared-components/Toggle/Toggle";
+import { CV_FIELDS, HEADING } from "../../../../helpers/enums";
 
-interface ItemProps {
+interface Props {
   index: number;
   handleDelete: () => void;
 }
 
-export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete }: ItemProps) => {
+export const ExperienceItem: React.FC<Props> = ({ index, handleDelete }) => {
   const experienceTitle = useWatch({
     name: `experience.${index}.title`,
   });
@@ -29,11 +29,15 @@ export const ExperienceItem: React.FC<ItemProps> = ({ index, handleDelete }: Ite
     name: `experience.${index}.isCurrentWork`,
   });
 
+  const [isCurrentWork6, endDate6] = useWatch({
+    name: [`experience.${index}.isCurrentWork`, `experience.${index}.endDate`],
+  });
+
   const description = constructDescription(startDate, endDate, company, isCurrentWork);
-  const status = experienceTitle ? false : true;
+
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={experienceTitle} description={description} status={status}>
+      <Accordion title={experienceTitle} description={description} status={!experienceTitle}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-4">
             <CustomInput name={`experience.${index}.title`} label={CV_FIELDS.jobTitle} />

@@ -37,14 +37,6 @@ export interface LanguageLevels {
   proficiency: string;
 }
 
-export interface SkillLevels {
-  novice: string;
-  beginner: string;
-  skillful: string;
-  experienced: string;
-  expert: string;
-}
-
 export interface SkillType {
   skill: string;
   level: string;

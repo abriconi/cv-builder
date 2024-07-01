@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { RegisterOptions, useController } from "react-hook-form";
-import { SKILL_LEVELS } from "../helpers/constants";
 import { CustomRangeItem } from "./CustomRangeItem";
 import clsx from "clsx";
+import { SKILL_LEVELS } from "../helpers/enums";
 
 interface Props {
   name: string;
@@ -11,7 +11,7 @@ interface Props {
   id: string;
 }
 
-export const CustomRange: React.FC<Props> = ({ name, rules, id, level }: Props) => {
+export const CustomRange: React.FC<Props> = ({ name, rules, id, level }) => {
   const [selectedLevel, setSelectedLevel] = useState<string>(level || SKILL_LEVELS.novice);
   const { field } = useController({ name, rules });
   return (

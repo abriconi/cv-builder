@@ -11,7 +11,7 @@ interface ColorSelectorProps {
   setColor: (color: ColorPalette) => void;
 }
 
-export const ColorSelector: React.FC<ColorSelectorProps> = ({ colors, setColor }: ColorSelectorProps) => {
+export const ColorSelector: React.FC<ColorSelectorProps> = ({ colors, setColor }) => {
   const [chosenColor, setChosenColor] = useState(0);
 
   const handleClick = (indexColor: number, color: ColorPalette) => {

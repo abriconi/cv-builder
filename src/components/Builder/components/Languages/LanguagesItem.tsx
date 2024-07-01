@@ -1,17 +1,17 @@
 import { useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS, LANGUAGE_LEVELS } from "../../../../helpers/constants";
 import { CustomSelect } from "../../../../shared-components/CustomSelect";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { IconButtonDelete } from "../../../../shared-components/Buttons/Buttons";
 import React from "react";
+import { CV_FIELDS, LANGUAGE_LEVELS } from "../../../../helpers/enums";
 
-interface ItemProps {
+interface Props {
   index: number;
   handleDelete: (index: number) => void;
 }
 
-export const LanguagesItem: React.FC<ItemProps> = ({ index, handleDelete }: ItemProps) => {
+export const LanguagesItem: React.FC<Props> = ({ index, handleDelete }) => {
   const language = useWatch({
     name: `languages.${index}.language`,
   });

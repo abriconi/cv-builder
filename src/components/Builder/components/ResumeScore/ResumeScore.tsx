@@ -24,7 +24,7 @@ const scoreMap: Record<keyof CvType, number> = {
 
 const maxScore = Object.values(scoreMap).reduce((acc, i) => acc + i, 0);
 
-export const ResumeScore: React.FC<ScoreProps> = ({ cvData }: ScoreProps) => {
+export const ResumeScore: React.FC<ScoreProps> = ({ cvData }) => {
   const score = useMemo(() => calculateScore(cvData, scoreMap), [cvData]);
   const percent = roundNumber((score / maxScore) * 100);
 

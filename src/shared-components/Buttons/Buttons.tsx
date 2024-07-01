@@ -15,7 +15,7 @@ interface IconButtonType {
   onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonType> = ({ onClick, name, aligning = "", type = "button", icon }: ButtonType) => {
+export const Button: React.FC<ButtonType> = ({ onClick, name, aligning = "", type = "button", icon }) => {
   return (
     <button
       type={type}
@@ -27,7 +27,7 @@ export const Button: React.FC<ButtonType> = ({ onClick, name, aligning = "", typ
   );
 };
 
-export const ButtonText: React.FC<ButtonType> = ({ onClick, name, aligning = "self-start", type = "button" }: ButtonType) => {
+export const ButtonText: React.FC<ButtonType> = ({ onClick, name, aligning = "self-start", type = "button" }) => {
   return (
     <button
       type={type}
@@ -38,7 +38,7 @@ export const ButtonText: React.FC<ButtonType> = ({ onClick, name, aligning = "se
   );
 };
 
-export const IconButtonDelete: React.FC<IconButtonType> = ({ onClick }: IconButtonType) => {
+export const IconButtonDelete: React.FC<IconButtonType> = ({ onClick }) => {
   return (
     <button onClick={onClick} type="button" className="flex px-2 items-center justify-center box-content">
       <FontAwesomeIcon icon={faTrashCan} />

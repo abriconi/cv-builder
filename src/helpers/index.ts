@@ -1,5 +1,5 @@
 import { CvType } from "../types";
-import { SKILL_LEVELS } from "./constants";
+import { SKILL_LEVELS } from "./enums";
 
 export const dateFormatter = (date: string | undefined): string => {
   if (date) {
@@ -23,7 +23,7 @@ export const determineSkillLevel = (skillLevel: string) =>
           : "5/5";
 
 export const roundNumber = (x: number) => {
-  if (x % 5 == 0) {
+  if (x % 5 === 0) {
     return Math.floor(x / 5) * 5;
   } else {
     return Math.floor(x / 5) * 5 + 5;
@@ -53,15 +53,6 @@ export const constructDescription = (
   company: string | undefined,
   isCurrentWork: boolean,
 ): string => {
-  const dateFormatter = (date: string | undefined): string => {
-    if (date) {
-      const parsedDate = new Date(`${date}-01`);
-      return new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long" }).format(parsedDate);
-    } else {
-      return "";
-    }
-  };
-
   const startDateFormatted = dateFormatter(startDate);
   let endDateFormatted = dateFormatter(endDate);
 

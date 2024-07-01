@@ -5,7 +5,7 @@ interface Props {
   item: EducationTypeWithId;
 }
 
-export const EducationItem: React.FC<Props> = ({ item }: Props) => {
+export const EducationItem: React.FC<Props> = ({ item }) => {
   const startDate = dateFormatter(item.startDate);
   const endDate = dateFormatter(item.endDate);
 

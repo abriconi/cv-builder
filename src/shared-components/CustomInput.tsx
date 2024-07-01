@@ -9,7 +9,7 @@ interface Props {
   readonly?: boolean;
 }
 
-export const CustomInput: React.FC<Props> = ({ name, type = "text", rules, label, readonly = false }: Props) => {
+export const CustomInput: React.FC<Props> = ({ name, type = "text", rules, label, readonly = false }) => {
   const { field } = useController({ name, rules });
   return (
     <label className="text-gray w-full">

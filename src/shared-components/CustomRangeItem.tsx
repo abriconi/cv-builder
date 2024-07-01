@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { SKILL_LEVELS } from "../helpers/constants";
+import { SKILL_LEVELS } from "../helpers/enums";
 
 interface ItemProps {
   selectedLevel: string;
@@ -9,7 +9,7 @@ interface ItemProps {
   levelName: string;
 }
 
-export const CustomRangeItem: React.FC<ItemProps> = ({ selectedLevel, selectLevel, id, field, levelName }: ItemProps) => {
+export const CustomRangeItem: React.FC<ItemProps> = ({ selectedLevel, selectLevel, id, field, levelName }) => {
   const isLevelSelected = selectedLevel === levelName;
   const isNoviceBG = selectedLevel === SKILL_LEVELS.novice;
   const isBeginnerBG = selectedLevel === SKILL_LEVELS.beginner;

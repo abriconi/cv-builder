@@ -1,15 +1,15 @@
 import { useWatch } from "react-hook-form";
 import { CustomInput } from "../../../../shared-components/CustomInput";
-import { CV_FIELDS } from "../../../../helpers/constants";
 import { Accordion } from "../../../../shared-components/Accordion";
 import { IconButtonDelete } from "../../../../shared-components/Buttons/Buttons";
+import { CV_FIELDS } from "../../../../helpers/enums";
 
-interface ItemProps {
+interface Props {
   index: number;
   handleDelete: (index: number) => void;
 }
 
-export const SocialItem: React.FC<ItemProps> = ({ index, handleDelete }: ItemProps) => {
+export const SocialItem: React.FC<Props> = ({ index, handleDelete }) => {
   const socialName = useWatch({
     name: `social.${index}.label`,
   });

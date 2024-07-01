@@ -16,13 +16,13 @@ export const Builder = () => {
   const methods = useForm({
     defaultValues: userData,
   });
-  const { handleSubmit } = methods;
+  const { handleSubmit, watch } = methods;
 
   useEffect(() => {
     //@ts-ignore
-    const subscription = methods.watch((data) => handleSubmit(updateUserData)(data));
+    const subscription = watch((data) => handleSubmit(updateUserData)(data));
     return () => subscription.unsubscribe();
-  }, [handleSubmit, methods]);
+  }, [handleSubmit, watch, updateUserData]);
 
   handleIframeUpload();
 

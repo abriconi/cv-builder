@@ -5,7 +5,7 @@ interface TextareaProps {
   label?: string;
 }
 
-export const CustomTextarea: React.FC<TextareaProps> = ({ name, label }: TextareaProps) => {
+export const CustomTextarea: React.FC<TextareaProps> = ({ name, label }) => {
   const { field } = useController({ name });
   return (
     <label>
