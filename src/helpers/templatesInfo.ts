@@ -1,18 +1,18 @@
 import { TemplateType } from "../types";
 
-const [VERTEX, LUMINA, AURORA, ECHO, ZENITH] = ["vertex", "lumina", "aurora", "echo", "zenith"];
+const hostRoute = "http://localhost:5174";
 
-enum TemplateRoutes {
-  Vertex = "http://localhost:5174/vertex",
-  Lumina = "http://localhost:5174/lumina",
-  Zenith = "http://localhost:5174/zenith",
-  Echo = "http://localhost:5174/echo",
-  Aurora = "http://localhost:5174/aurora",
-}
+const TemplateRoutes = {
+  Vertex: `${hostRoute}/vertex`,
+  Lumina: `${hostRoute}/lumina`,
+  Zenith: `${hostRoute}/zenith`,
+  Echo: `${hostRoute}/echo`,
+  Aurora: `${hostRoute}/aurora`,
+};
 
 export const TEMPLATES: TemplateType[] = [
   {
-    name: VERTEX,
+    name: "vertex",
     route: TemplateRoutes.Vertex,
     img: "Vertex-small.jpeg",
     colors: [
@@ -31,7 +31,7 @@ export const TEMPLATES: TemplateType[] = [
     ],
   },
   {
-    name: LUMINA,
+    name: "lumina",
     route: TemplateRoutes.Lumina,
     img: "Lumina-small.jpeg",
     colors: [
@@ -45,7 +45,7 @@ export const TEMPLATES: TemplateType[] = [
     ],
   },
   {
-    name: AURORA,
+    name: "aurora",
     route: TemplateRoutes.Aurora,
     img: "Aurora-small.jpeg",
     colors: [
@@ -58,7 +58,7 @@ export const TEMPLATES: TemplateType[] = [
     ],
   },
   {
-    name: ECHO,
+    name: "echo",
     route: TemplateRoutes.Echo,
     img: "Echo-small.jpeg",
     colors: [
@@ -77,7 +77,7 @@ export const TEMPLATES: TemplateType[] = [
     ],
   },
   {
-    name: ZENITH,
+    name: "zenith",
     route: TemplateRoutes.Zenith,
     img: "Zenith-small.jpeg",
     colors: [
@@ -96,21 +96,3 @@ export const TEMPLATES: TemplateType[] = [
     ],
   },
 ];
-
-// Zenith
-// Elysian
-// Pinnacle
-// Nimbus
-// Ethereal
-// Odyssey
-// Phoenix
-// Apex
-// Infinity
-// Vanguard
-// Serenity
-// Quasar
-// Stellar
-// Echo
-// Catalyst
-// Resonance
-// Horizon
