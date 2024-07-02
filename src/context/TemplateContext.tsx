@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, Dispatch, SetStateAction, useRef, PropsWithChildren } from "react";
+import { createContext, useState, useContext, Dispatch, SetStateAction, useRef, PropsWithChildren, useEffect } from "react";
 import { TEMPLATES } from "../helpers/templatesInfo";
 import { ColorPalette, CvType, TemplateType } from "../types";
 import { defaultUserData } from "../helpers/constants";
@@ -20,6 +20,7 @@ type TemplateContextType = {
   updateUserPhoto: (file: File | undefined) => void;
   deleteUserPhoto: () => void;
   handlePrint: () => void;
+  screenshots: string[];
 };
 
 const TemplateContext = createContext<TemplateContextType>({
@@ -37,6 +38,7 @@ const TemplateContext = createContext<TemplateContextType>({
   updateUserPhoto: () => {},
   deleteUserPhoto: () => {},
   handlePrint: () => {},
+  screenshots: [],
 });
 
 export const TemplateProvider = ({ children }: PropsWithChildren) => {
@@ -48,6 +50,9 @@ export const TemplateProvider = ({ children }: PropsWithChildren) => {
   const [palette, setPalette] = useState<ColorPalette[] | []>([]);
   const [color, setColor] = useState<ColorPalette | null>(null);
   const [userPhoto, setUserPhoto] = useState<string | null>(storedUserPhoto || null);
+  const [screenshots, setScreenshots] = useState<string[] | []>([]);
+
+  useEffect(() => sendColorToIframe(color), [color, palette]);
 
   const updateUserData = (cvData: CvType) => {
     localStorage.setItem("user", JSON.stringify(cvData));
@@ -85,8 +90,12 @@ export const TemplateProvider = ({ children }: PropsWithChildren) => {
 
         case MESSAGE_TYPE.colorsToParent:
           setPalette(receivedData.colors);
-          setColor(receivedData.colors[0]);
-          sendColorToIframe(receivedData.colors[0]);
+          saveColor(receivedData.colors);
+          sendColorToIframe(color);
+          break;
+
+        case MESSAGE_TYPE.screenshotsToParent:
+          setScreenshots(receivedData.screenshots);
           break;
 
         default:
@@ -99,6 +108,12 @@ export const TemplateProvider = ({ children }: PropsWithChildren) => {
     return () => {
       window.removeEventListener("message", receiveMessage);
     };
+  };
+
+  const saveColor = (receivedPalette: ColorPalette[] | null) => {
+    if (receivedPalette?.length) {
+      setColor(receivedPalette[0]);
+    }
   };
 
   const sendUserDataToIframe = (userData: CvType) => {
@@ -161,6 +176,7 @@ export const TemplateProvider = ({ children }: PropsWithChildren) => {
         updateUserPhoto,
         deleteUserPhoto,
         handlePrint,
+        screenshots,
       }}>
       {children}
     </TemplateContext.Provider>

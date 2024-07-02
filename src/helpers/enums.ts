@@ -9,6 +9,7 @@ export enum MESSAGE_TYPE {
   chosenColorToIframe = "chosen-color-to-iframe",
   colorsToParent = "colors-to-parent",
   userPhotoToIframe = "user-photo-to-iframe",
+  screenshotsToParent = "screenshots-to-parent",
 }
 
 export enum SKILL_LEVELS {

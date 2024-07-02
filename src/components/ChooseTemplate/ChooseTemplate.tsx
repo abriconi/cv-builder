@@ -7,7 +7,9 @@ interface Props {
   showTemplates: boolean;
 }
 export const ChooseTemplate: React.FC<Props> = ({ showTemplates }) => {
-  const { template } = useTemplateContext();
+  const { template, screenshots } = useTemplateContext();
+  console.log(screenshots);
+
   return (
     <div
       className={clsx("w-full h-full bg-gray-600 grid grid-cols-2 gap-5 py-10 absolute bottom-0 overflow-y-auto", {
