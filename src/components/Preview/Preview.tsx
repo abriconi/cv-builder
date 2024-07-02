@@ -9,9 +9,8 @@ interface Props {
 }
 
 export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }) => {
-  const { template, color, setColor, getColorPaletteFromIframe, palette, iframeRef, sendColorToIframe, handlePrint } = useTemplateContext();
+  const { template, color, setColor, palette, iframeRef, sendColorToIframe, handlePrint } = useTemplateContext();
 
-  useEffect(() => getColorPaletteFromIframe(), []);
   useEffect(() => sendColorToIframe(color), [color]);
 
   return (
