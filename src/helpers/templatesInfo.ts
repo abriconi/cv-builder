@@ -14,7 +14,7 @@ export const TEMPLATES: TemplateType[] = [
   {
     name: "vertex",
     route: TemplateRoutes.Vertex,
-    img: "Vertex-small.jpeg",
+    img: `${hostRoute}/public/img/vertex-screenshot.jpeg`,
     colors: [
       {
         primary: "#0000FF",
@@ -33,7 +33,7 @@ export const TEMPLATES: TemplateType[] = [
   {
     name: "lumina",
     route: TemplateRoutes.Lumina,
-    img: "Lumina-small.jpeg",
+    img: `${hostRoute}/public/img/lumina-screenshot.jpeg`,
     colors: [
       { primary: "#133337", secondary: "#a0adaf" },
       {
@@ -47,7 +47,7 @@ export const TEMPLATES: TemplateType[] = [
   {
     name: "aurora",
     route: TemplateRoutes.Aurora,
-    img: "Aurora-small.jpeg",
+    img: `${hostRoute}/public/img/aurora-screenshot.jpeg`,
     colors: [
       { primary: "#81D2C7", secondary: "#d9f1ee" },
       {
@@ -60,7 +60,7 @@ export const TEMPLATES: TemplateType[] = [
   {
     name: "echo",
     route: TemplateRoutes.Echo,
-    img: "Echo-small.jpeg",
+    img: `${hostRoute}/public/img/echo-screenshot.jpeg`,
     colors: [
       {
         primary: "#011f4b",
@@ -79,7 +79,7 @@ export const TEMPLATES: TemplateType[] = [
   {
     name: "zenith",
     route: TemplateRoutes.Zenith,
-    img: "Zenith-small.jpeg",
+    img: `${hostRoute}/public/img/zenith-screenshot.jpeg`,
     colors: [
       {
         primary: "#42496A",

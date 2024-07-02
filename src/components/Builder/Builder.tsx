@@ -24,7 +24,7 @@ export const Builder = () => {
     return () => subscription.unsubscribe();
   }, [handleSubmit, watch, updateUserData]);
 
-  handleIframeUpload();
+  useEffect(() => handleIframeUpload(), []);
 
   return (
     <div className="flex flex-col w-full gap-10 px-10 py-10 h-full overflow-y-auto">

@@ -27,7 +27,7 @@ export const TemplateItem: React.FC<Props> = ({ templateItem, chosen }) => {
             className="absolute top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-full p-4"
           />
         )}
-        <img src={require(`../../img/${templateItem.img}`)} alt="template preview" />
+        <img src={templateItem.img} alt="template preview" />
       </button>
     </div>
   );
