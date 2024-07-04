@@ -1,4 +1,4 @@
-import { CvType } from "../types";
+import { CvType, TemplateType, TemplateWithImg } from "../types";
 import { SKILL_LEVELS } from "./enums";
 
 export const dateFormatter = (date: string | undefined): string => {
@@ -88,3 +88,14 @@ export const toBase64 = (file: File): Promise<string> =>
     reader.onload = () => resolve(reader.result as string);
     reader.onerror = reject;
   });
+
+export const updateTemplateImages = (templates: TemplateType[], images: string[]): TemplateWithImg[] => {
+  return templates.map((template) => {
+    const imagePath = images.find((img) => img.includes(template.name));
+    return {
+      name: template.name,
+      route: template.route,
+      imgURL: imagePath || "",
+    };
+  });
+};
