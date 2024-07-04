@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "../../shared-components/Buttons/Buttons";
 import { ColorSelector } from "../../shared-components/ColorSelector/ColorSelector";
 import { useTemplateContext } from "../../context/TemplateContext";
@@ -9,9 +9,7 @@ interface Props {
 }
 
 export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }) => {
-  const { template, color, setColor, palette, iframeRef, sendColorToIframe, handlePrint } = useTemplateContext();
-
-  useEffect(() => sendColorToIframe(color), [color]);
+  const { template, setColor, palette, iframeRef, handlePrint } = useTemplateContext();
 
   return (
     <>

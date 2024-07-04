@@ -11,10 +11,7 @@ type TemplateContextType = {
   userData: CvType;
   updateUserData: (cvData: CvType) => void;
   iframeRef: React.RefObject<HTMLIFrameElement> | null;
-  receiveDataFromIframe: () => void;
-  sendColorToIframe: (color: ColorPalette | null) => void;
   palette: ColorPalette[] | [];
-  color: ColorPalette | null;
   setColor: Dispatch<SetStateAction<ColorPalette | null>>;
   userPhoto: string | null;
   updateUserPhoto: (file: File | undefined) => void;
@@ -29,10 +26,7 @@ const TemplateContext = createContext<TemplateContextType>({
   updateUserData: () => {},
   userData: defaultUserData,
   iframeRef: null,
-  receiveDataFromIframe: () => {},
-  sendColorToIframe: () => {},
   palette: [],
-  color: null,
   setColor: () => {},
   userPhoto: null,
   updateUserPhoto: () => {},
@@ -52,6 +46,7 @@ export const TemplateProvider = ({ children }: PropsWithChildren) => {
   const [userPhoto, setUserPhoto] = useState<string | null>(storedUserPhoto || null);
   const [screenshots, setScreenshots] = useState<string[] | []>([]);
 
+  useEffect(() => receiveDataFromIframe(), []);
   useEffect(() => sendColorToIframe(color), [color, palette]);
 
   const updateUserData = (cvData: CvType) => {
@@ -167,10 +162,7 @@ export const TemplateProvider = ({ children }: PropsWithChildren) => {
         userData,
         updateUserData,
         iframeRef,
-        receiveDataFromIframe,
-        sendColorToIframe,
         palette,
-        color,
         setColor,
         userPhoto,
         updateUserPhoto,
