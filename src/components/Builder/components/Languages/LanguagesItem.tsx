@@ -13,17 +13,10 @@ interface Props {
 }
 
 export const LanguagesItem: React.FC<Props> = ({ index, handleDelete }) => {
-  const language = useWatch({
-    name: `languages.${index}.language`,
-  });
-  const level = useWatch({
-    name: `languages.${index}.level`,
-  });
-
-  const status = language ? false : true;
+  const [language, level] = useWatch({ name: [`languages.${index}.language`, `languages.${index}.level`] });
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={language} description={level} status={status}>
+      <Accordion title={language} description={level} status={!language}>
         <div className="flex flex-row items-center gap-4 h-full">
           <CustomInput name={`languages.${index}.language`} label={CV_FIELDS.languages} rules={{ required: true }} />
           <CustomSelect name={`languages.${index}.level`} options={LANGUAGE_LEVELS} label={CV_FIELDS.level} rules={{ required: true }} />

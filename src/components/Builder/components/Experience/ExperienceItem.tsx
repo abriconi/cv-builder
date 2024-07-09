@@ -14,24 +14,14 @@ interface Props {
 }
 
 export const ExperienceItem: React.FC<Props> = ({ index, handleDelete }) => {
-  const experienceTitle = useWatch({
-    name: `experience.${index}.title`,
-  });
-  const company = useWatch({
-    name: `experience.${index}.companyName`,
-  });
-  const startDate = useWatch({
-    name: `experience.${index}.startDate`,
-  });
-  const endDate = useWatch({
-    name: `experience.${index}.endDate`,
-  });
-  const isCurrentWork = useWatch({
-    name: `experience.${index}.isCurrentWork`,
-  });
-
-  const [isCurrentWork6, endDate6] = useWatch({
-    name: [`experience.${index}.isCurrentWork`, `experience.${index}.endDate`],
+  const [experienceTitle, company, startDate, endDate, isCurrentWork] = useWatch({
+    name: [
+      `experience.${index}.companyName`,
+      `experience.${index}.companyName`,
+      `experience.${index}.startDate`,
+      `experience.${index}.endDate`,
+      `experience.${index}.isCurrentWork`,
+    ],
   });
 
   const description = constructDescription(startDate, endDate, company, isCurrentWork);

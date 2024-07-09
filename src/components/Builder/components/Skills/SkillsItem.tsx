@@ -11,19 +11,11 @@ interface Props {
   handleDelete: (index: number) => void;
 }
 export const SkillsItem: React.FC<Props> = ({ index, handleDelete }) => {
-  const skill = useWatch({
-    name: `skills.${index}.skill`,
-  });
-
-  const level = useWatch({
-    name: `skills.${index}.level`,
-  });
-
-  const status = skill ? false : true;
+  const [skill, level] = useWatch({ name: [`skills.${index}.skill`, `skills.${index}.level`] });
 
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={skill} description={level} status={status}>
+      <Accordion title={skill} description={level} status={!skill}>
         <div className="flex flex-row gap-4 items-start">
           <CustomInput name={`skills.${index}.skill`} label={CV_FIELDS.skill} rules={{ required: true }} />
           <CustomRange name={`skills.${index}.level`} id={`${index}-level`} level={level} />

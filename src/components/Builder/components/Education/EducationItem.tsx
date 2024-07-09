@@ -13,23 +13,16 @@ interface Props {
 }
 
 export const EducationItem: React.FC<Props> = ({ index, handleDelete }) => {
-  const school = useWatch({
-    name: `education.${index}.school`,
-  });
-  const startDate = useWatch({
-    name: `education.${index}.startDate`,
-  });
-  const endDate = useWatch({
-    name: `education.${index}.endDate`,
+  const [school, startDate, endDate] = useWatch({
+    name: [`education.${index}.school`, `education.${index}.startDate`, `education.${index}.endDate`],
   });
   const startDateFormatted = dateFormatter(startDate);
   const endDateFormatted = dateFormatter(endDate);
   const description = startDateFormatted && endDateFormatted ? `${startDateFormatted} - ${endDateFormatted}` : "";
-  const status = school ? false : true;
 
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={school} description={description} status={status}>
+      <Accordion title={school} description={description} status={!school}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-4">
             <CustomInput name={`education.${index}.school`} label={CV_FIELDS.school} rules={{ required: true }} />

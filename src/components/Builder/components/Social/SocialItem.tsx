@@ -11,18 +11,11 @@ interface Props {
 }
 
 export const SocialItem: React.FC<Props> = ({ index, handleDelete }) => {
-  const socialName = useWatch({
-    name: `social.${index}.label`,
-  });
-  const link = useWatch({
-    name: `social.${index}.link`,
-  });
-
-  const status = socialName ? false : true;
+  const [socialName, link] = useWatch({ name: [`social.${index}.label`, `social.${index}.link`] });
 
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>
-      <Accordion title={socialName} description={link} status={status}>
+      <Accordion title={socialName} description={link} status={!socialName}>
         <div className="flex flex-col gap-4">
           <CustomInput name={`social.${index}.label`} label={CV_FIELDS.social} />
           <CustomInput name={`social.${index}.link`} label={CV_FIELDS.link} />
