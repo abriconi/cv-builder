@@ -1,20 +1,20 @@
 import React from "react";
 import { TemplateType } from "../../types";
-import { useTemplateContext } from "../../context/TemplateContext";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { hostRoute } from "../../helpers/templatesInfo";
+import { IMG_PATH } from "../../helpers/constants";
 
 interface Props {
   templateItem: TemplateType;
   chosen: boolean;
-  imgURL: string;
+  imgURL?: string;
+  handleClick: (item: TemplateType) => void;
 }
-export const TemplateItem: React.FC<Props> = ({ templateItem, chosen, imgURL }) => {
-  const { setTemplate } = useTemplateContext();
+export const TemplateItem: React.FC<Props> = ({ templateItem, chosen, imgURL, handleClick }) => {
   return (
-    <div className="flex flex-col gap-1 items-center" onClick={() => setTemplate(templateItem)}>
+    <div className="flex flex-col gap-1 items-center" onClick={() => handleClick(templateItem)}>
       <h2 className="text-l text-white capitalize">{templateItem.name}</h2>
       <button
         type="button"
@@ -29,7 +29,7 @@ export const TemplateItem: React.FC<Props> = ({ templateItem, chosen, imgURL }) 
             className="absolute top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-full p-4"
           />
         )}
-        <img src={`${hostRoute}${imgURL}`} alt="template preview" />
+        <img src={imgURL} alt={`preview ${templateItem.name}`} className={clsx(imgURL === IMG_PATH ? "w-[170px] h-[240px]" : "")} />
       </button>
     </div>
   );

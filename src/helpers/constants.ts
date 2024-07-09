@@ -15,3 +15,5 @@ export const defaultUserData: CvType = {
   social: [],
   skills: [],
 };
+
+export const IMG_PATH = "/img/image-placeholder.jpg";

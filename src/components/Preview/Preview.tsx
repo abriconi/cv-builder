@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }) => {
-  const { template, setColor, palette, iframeRef, handlePrint } = useTemplateContext();
+  const { chosenTemplate, setColor, palette, iframeRef, handlePrint } = useTemplateContext();
 
   return (
     <>
@@ -19,7 +19,7 @@ export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }) =>
         <Button name="Download PDF" aligning="self-start" onClick={handlePrint} />
       </div>
       <div className="grow">
-        <iframe title="CV Preview" ref={iframeRef} src={template.route} className="w-full h-full" id="iframe" />
+        {chosenTemplate && <iframe title="CV Preview" ref={iframeRef} src={chosenTemplate.route} className="w-full h-full" id="iframe" />}
       </div>
     </>
   );

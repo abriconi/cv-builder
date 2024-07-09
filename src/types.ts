@@ -76,10 +76,5 @@ export interface ColorPalette {
 export interface TemplateType {
   name: string;
   route: string;
-}
-
-export interface TemplateWithImg {
-  name: string;
-  route: string;
-  imgURL: string;
+  imgURL?: string;
 }

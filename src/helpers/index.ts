@@ -1,4 +1,5 @@
-import { CvType, TemplateType, TemplateWithImg } from "../types";
+import { CvType, TemplateType } from "../types";
+import { IMG_PATH } from "./constants";
 import { SKILL_LEVELS } from "./enums";
 
 export const dateFormatter = (date: string | undefined): string => {
@@ -89,13 +90,13 @@ export const toBase64 = (file: File): Promise<string> =>
     reader.onerror = reject;
   });
 
-export const updateTemplateImages = (templates: TemplateType[], images: string[]): TemplateWithImg[] => {
+export const updateTemplateImages = (templates: TemplateType[], images: string[], hostRoute: string): TemplateType[] => {
   return templates.map((template) => {
     const imagePath = images.find((img) => img.includes(template.name));
     return {
       name: template.name,
       route: template.route,
-      imgURL: imagePath || "",
+      imgURL: imagePath ? `${hostRoute}/${imagePath}` : IMG_PATH,
     };
   });
 };
