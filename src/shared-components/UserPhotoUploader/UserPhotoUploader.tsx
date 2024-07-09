@@ -2,7 +2,7 @@ import { useTemplateContext } from "../../context/TemplateContext";
 import { UserPhoto } from "./UserPhoto";
 import { ButtonText } from "../Buttons/Buttons";
 
-export const CustomUploadFile = () => {
+export const UserPhotoUploader = () => {
   const { updateUserPhoto, userPhoto, deleteUserPhoto } = useTemplateContext();
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {

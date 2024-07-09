@@ -1,6 +1,6 @@
 import { CV_FIELDS } from "../../../helpers/enums";
 import { CustomInput } from "../../../shared-components/CustomInput";
-import { CustomUploadFile } from "../../../shared-components/CustomUploadFile/CustomUploadFile";
+import { UserPhotoUploader } from "../../../shared-components/UserPhotoUploader/UserPhotoUploader";
 
 export const Header = () => {
   return (
@@ -9,7 +9,7 @@ export const Header = () => {
         <CustomInput name="jobPosition" label={CV_FIELDS.jobPosition} />
       </div>
       <div className="w-1/2">
-        <CustomUploadFile />
+        <UserPhotoUploader />
       </div>
     </div>
   );
