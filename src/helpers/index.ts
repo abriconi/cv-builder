@@ -17,16 +17,31 @@ export const dateFormatter = (date: string | undefined): string => {
   }
 };
 
-export const determineSkillLevel = (skillLevel: string) =>
-  skillLevel === SKILL_LEVELS.novice
-    ? "1/5"
-    : skillLevel === SKILL_LEVELS.beginner
-      ? "2/5"
-      : skillLevel === SKILL_LEVELS.skillful
-        ? "3/5"
-        : skillLevel === SKILL_LEVELS.experienced
-          ? "4/5"
-          : "5/5";
+export const determineSkillLevel = (skillLevel: string) => {
+  let result;
+
+  switch (skillLevel) {
+    case SKILL_LEVELS.novice:
+      result = "1/5";
+      break;
+
+    case SKILL_LEVELS.beginner:
+      result = "2/5";
+      break;
+
+    case SKILL_LEVELS.skillful:
+      result = "3/5";
+      break;
+
+    case SKILL_LEVELS.experienced:
+      result = "4/5";
+      break;
+
+    default:
+      result = "5/5";
+  }
+  return result;
+};
 
 export const roundNumber = (x: number) => {
   if (x % 5 === 0) {
