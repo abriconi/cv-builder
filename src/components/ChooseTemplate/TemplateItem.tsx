@@ -3,7 +3,6 @@ import { TemplateType } from "../../types";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { hostRoute } from "../../helpers/templatesInfo";
 import { IMG_PATH } from "../../helpers/constants";
 
 interface Props {

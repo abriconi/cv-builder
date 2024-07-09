@@ -2,6 +2,11 @@ import { CvType, TemplateType } from "../types";
 import { IMG_PATH } from "./constants";
 import { SKILL_LEVELS } from "./enums";
 
+interface ScoreResult {
+  currentScore: number;
+  totalScore: number;
+}
+
 export const dateFormatter = (date: string | undefined): string => {
   if (date) {
     const parsedDate = new Date(`${date}-01`);
@@ -31,8 +36,26 @@ export const roundNumber = (x: number) => {
   }
 };
 
-export const calculateScore = (cvData: CvType, scoreMap: Record<keyof CvType, number>): number => {
-  return Object.keys(scoreMap).reduce((totalScore, key) => {
+export const calculateScore = (cvData: CvType): ScoreResult => {
+  const scoreMap: Record<keyof CvType, number> = {
+    jobPosition: 10,
+    firstName: 5,
+    lastName: 5,
+    email: 5,
+    phone: 5,
+    country: 5,
+    city: 5,
+    summary: 10,
+    experience: 10,
+    education: 10,
+    social: 10,
+    languages: 10,
+    skills: 10,
+  };
+
+  const totalScore = Object.values(scoreMap).reduce((total, score) => total + score, 0);
+
+  const currentScore = Object.keys(scoreMap).reduce((totalScore, key) => {
     const value = cvData[key as keyof CvType];
     const score = scoreMap[key as keyof CvType] || 0;
 
@@ -46,6 +69,8 @@ export const calculateScore = (cvData: CvType, scoreMap: Record<keyof CvType, nu
 
     return totalScore;
   }, 0);
+
+  return { currentScore, totalScore };
 };
 
 export const constructDescription = (

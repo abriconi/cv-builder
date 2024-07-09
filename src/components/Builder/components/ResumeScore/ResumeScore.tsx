@@ -6,27 +6,9 @@ interface ScoreProps {
   cvData: CvType;
 }
 
-const scoreMap: Record<keyof CvType, number> = {
-  jobPosition: 10,
-  firstName: 5,
-  lastName: 5,
-  email: 5,
-  phone: 5,
-  country: 5,
-  city: 5,
-  summary: 10,
-  experience: 10,
-  education: 10,
-  social: 10,
-  languages: 10,
-  skills: 10,
-};
-
-const maxScore = Object.values(scoreMap).reduce((acc, i) => acc + i, 0);
-
 export const ResumeScore: React.FC<ScoreProps> = ({ cvData }) => {
-  const score = useMemo(() => calculateScore(cvData, scoreMap), [cvData]);
-  const percent = roundNumber((score / maxScore) * 100);
+  const score = useMemo(() => calculateScore(cvData), [cvData]);
+  const percent = roundNumber((score.currentScore / score.totalScore) * 100);
 
   return (
     <div className="w-full flex flex-col gap-2">
