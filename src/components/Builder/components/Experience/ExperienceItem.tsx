@@ -24,7 +24,7 @@ export const ExperienceItem: React.FC<Props> = ({ index, handleDelete }) => {
     ],
   });
 
-  const description = constructDescription(startDate, endDate, company, isCurrentWork);
+  const description = constructDescription(startDate, endDate, isCurrentWork, "work", company);
 
   return (
     <div className={`flex flex-row gap-3 text-gray-500 hover:text-blue-500`}>

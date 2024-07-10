@@ -89,15 +89,16 @@ export const calculateScore = (cvData: CvType): ScoreResult => {
 };
 
 export const constructDescription = (
-  startDate: string | undefined,
-  endDate: string | undefined,
-  company: string | undefined,
-  isCurrentWork: boolean,
+  startDate: string,
+  endDate: string,
+  isCurrent: boolean,
+  item: "work" | "study",
+  company?: string,
 ): string => {
   const startDateFormatted = dateFormatter(startDate);
   let endDateFormatted = dateFormatter(endDate);
 
-  if (isCurrentWork) {
+  if (isCurrent) {
     endDateFormatted = "current";
   }
 
@@ -115,7 +116,7 @@ export const constructDescription = (
     }
   }
 
-  if (company) {
+  if (item === "work" && company) {
     description += ` at ${company}`;
   }
 

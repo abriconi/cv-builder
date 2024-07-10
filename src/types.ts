@@ -13,18 +13,9 @@ export interface EducationType {
   degree: string;
   startDate: string;
   endDate: string;
+  isCurrentStudy?: boolean;
   location: string;
   description: string;
-}
-
-export interface EducationTypeWithId {
-  id: string;
-  school: string;
-  degree?: string;
-  startDate: string;
-  endDate: string;
-  location: string;
-  description?: string;
 }
 
 export interface LanguageLevels {
@@ -60,7 +51,7 @@ export interface CvType {
   email?: string;
   city?: string;
   country?: string;
-  education: EducationTypeWithId[] | [];
+  education: EducationType[] | [];
   experience: ExperienceType[] | [];
   languages: LanguagesType[] | [];
   skills: SkillType[] | [];

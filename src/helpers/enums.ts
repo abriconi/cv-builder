@@ -1,6 +1,7 @@
 export enum HEADING {
   notSpecified = "Not specified",
   currentlyWork = "Currently work here",
+  currentlyStudy = "Currently study here",
 }
 
 export enum MESSAGE_TYPE {

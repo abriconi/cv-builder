@@ -12,7 +12,8 @@ export const Education = () => {
     name: "education",
   });
   const education = fields as unknown as EducationType[];
-  const handleAddClick = () => append({ school: "", degree: "", startDate: "", endDate: "", location: "", description: "" });
+  const handleAddClick = () =>
+    append({ school: "", degree: "", startDate: "", endDate: "", location: "", description: "", isCurrentStudy: false });
 
   return (
     <div className="flex flex-col gap-4">
