@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { HEADING } from "../helpers/enums";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   title?: string;
@@ -18,14 +20,8 @@ export const Accordion: React.FC<Props> = ({ title, description, children, statu
           <h2 className="text-lg font-semibold text-gray-900">{title || HEADING.notSpecified}</h2>
           <p className="text-sm text-gray-400">{description}</p>
         </div>
-        <svg
-          className={`w-6 h-6 transition-transform transform ${isOpen ? "rotate-180" : ""}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"} />
-        </svg>
+        {isOpen && <FontAwesomeIcon icon={faChevronUp} />}
+        {!isOpen && <FontAwesomeIcon icon={faChevronDown} />}
       </div>
       {isOpen && <div className="p-4 border-t border-gray-300">{children}</div>}
     </div>
