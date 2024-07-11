@@ -13,10 +13,12 @@ export const Preview: React.FC<Props> = ({ showTemplates, setShowTemplates }) =>
 
   return (
     <>
-      <div className="flex flex-row justify-between gap-2">
-        <Button name={showTemplates ? "Back to editor" : "Choose template"} onClick={() => setShowTemplates(!showTemplates)} />
+      <div className="flex flex-col justify-between gap-2">
+        <div className="flex flex-row justify-between">
+          <Button name={showTemplates ? "Back to editor" : "Choose template"} onClick={() => setShowTemplates(!showTemplates)} />
+          <Button name="Download PDF" aligning="self-start" onClick={handlePrint} />
+        </div>
         {palette && <ColorSelector colors={palette} setColor={setColor} />}
-        <Button name="Download PDF" aligning="self-start" onClick={handlePrint} />
       </div>
       <div className="grow">
         {chosenTemplate && <iframe title="CV Preview" ref={iframeRef} src={chosenTemplate.route} className="w-full h-full" id="iframe" />}

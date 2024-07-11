@@ -1,10 +1,10 @@
 export interface ExperienceType {
-  title?: string;
-  companyName?: string;
-  startDate?: string;
+  title: string;
+  companyName: string;
+  startDate: string;
   endDate?: string;
   isCurrentWork?: boolean;
-  location?: string;
+  location: string;
   description?: string;
 }
 
@@ -12,10 +12,10 @@ export interface EducationType {
   school: string;
   degree: string;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   isCurrentStudy?: boolean;
   location: string;
-  description: string;
+  description?: string;
 }
 
 export interface LanguageLevels {
